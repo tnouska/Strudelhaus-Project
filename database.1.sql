@@ -1,10 +1,10 @@
 
-CREATE TABLE "user"
+CREATE TABLE "person"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "username" varchar(80) NOT NULL UNIQUE,
     "password" varchar(1000) NOT NULL,
-    "role" varchar(500) NOT NULL
+    "role" varchar(500) 
 );
 
 CREATE TABLE "product_type"
@@ -27,7 +27,7 @@ CREATE TABLE "product"
 CREATE TABLE "organization"
 (
     "id" serial NOT NULL PRIMARY KEY,
-    "user_id" INT REFERENCES "user",
+    "person_id" INT REFERENCES "person",
     "name" varchar(500) NOT NULL,
     "street_address" varchar(500) NOT NULL,
     "city" varchar(500) NOT NULL,
