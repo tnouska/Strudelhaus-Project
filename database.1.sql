@@ -49,7 +49,8 @@ CREATE TABLE "campaign"
     "date_start" varchar(500) NOT NULL,
     "date_end" varchar(500) NOT NULL,
     "notes" varchar(1000),
-    "info_url" varchar(1000)
+    "info_url" varchar(1000),
+    "goal" varchar(500)
 );
 
 CREATE TABLE "customer"
