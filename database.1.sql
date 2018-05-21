@@ -19,6 +19,7 @@ CREATE TABLE "product"
     "name" varchar(255) NOT NULL,
     "description" varchar(1000),
     "price" varchar(200),
+    "sku" varchar(200),
     "img_url_1" varchar(1000),
     "img_url_2" varchar(1000),
     "product_type" INT REFERENCES "product_type"
