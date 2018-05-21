@@ -40,6 +40,9 @@ function* logoutUser(action) {
     yield put({
       type: USER_ACTIONS.UNSET_USER,
     });
+    yield put({
+      type: USER_ACTIONS.UNSET_ROLE,
+    });
   } catch (error) {
     console.log('LOGOUT FAILED -- CHECK YOUR SERVER', error);
   }
