@@ -49,7 +49,8 @@ CREATE TABLE "campaign"
     "date_start" varchar(500) NOT NULL,
     "date_end" varchar(500) NOT NULL,
     "notes" varchar(1000),
-    "info_url" varchar(1000)
+    "info_url" varchar(1000),
+    "goal" varchar(500)
 );
 
 CREATE TABLE "customer"
@@ -67,7 +68,7 @@ CREATE TABLE "customer"
     "date_of_order" date NOT NULL default CURRENT_DATE
 );
 
-CREATE TABLE "availible_item"
+CREATE TABLE "available_item"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "campaign_id" INT REFERENCES "campaign",
@@ -78,6 +79,6 @@ CREATE TABLE "order"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "customer_id" INT REFERENCES "customer",
-    "availible_item_id" INT REFERENCES "availible_item",
+    "available_item_id" INT REFERENCES "available_item",
     "quantity" int NOT NULL DEFAULT '0'
 );
