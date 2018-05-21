@@ -23,7 +23,18 @@ const isLoading = (state = false, action) => {
   }
 };
 
+const userRole = (state = 'customer', action) => {
+  switch (action.type) {
+    case USER_ACTIONS.SET_ROLE:
+      return action.user.role || state;
+    case USER_ACTIONS.UNSET_ROLE:
+      return 'customer';
+    default:
+      return state;
+  }
+}
 export default combineReducers({
   userName,
   isLoading,
+  userRole,
 });
