@@ -68,7 +68,7 @@ CREATE TABLE "customer"
     "date_of_order" date NOT NULL default CURRENT_DATE
 );
 
-CREATE TABLE "availible_item"
+CREATE TABLE "available_item"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "campaign_id" INT REFERENCES "campaign",
@@ -79,6 +79,6 @@ CREATE TABLE "order"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "customer_id" INT REFERENCES "customer",
-    "availible_item_id" INT REFERENCES "availible_item",
+    "available_item_id" INT REFERENCES "available_item",
     "quantity" int NOT NULL DEFAULT '0'
 );
