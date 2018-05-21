@@ -28,6 +28,7 @@ class Pipeline extends Component {
         return(
             <div>
                 <AdminNav/>
+                <button onClick={this.logout}>Log Out</button>
                 <h1>PIPELINE PAGE</h1>
             </div>
         )

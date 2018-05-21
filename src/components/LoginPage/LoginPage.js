@@ -24,14 +24,15 @@ class LoginPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user.userName) {
-      this.props.history.push('/user');
+    if (nextProps.user.userName && nextProps.user.userRole === 'admin') {
+      this.props.history.push('/pipeline');
+    } else if(nextProps.user.userName && nextProps.user.userRole === 'leader'){
+      this.props.history.push('/performance');
     }
   }
 
   login = (event) => {
     event.preventDefault();
-
     if (this.state.username === '' || this.state.password === '') {
       this.props.dispatch(formError());
     } else {

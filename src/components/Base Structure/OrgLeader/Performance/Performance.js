@@ -28,6 +28,7 @@ class Performance extends Component {
         return(
             <div>
                 <OrgLeaderNav/>
+                <button onClick={this.logout}>Log Out</button>
                 <h1>PERFORMANCE PAGE</h1>
             </div>
         )
