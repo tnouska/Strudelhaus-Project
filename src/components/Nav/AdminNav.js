@@ -6,24 +6,16 @@ const AdminNav = () => (
     <div>
       <ul>
         <li>
-            <Link to="/pipeline">
-                Pipeline
-            </Link>
+            <Link to="/pipeline">Pipeline</Link>
         </li>
         <li>
-            <Link to="/organization">
-                Info Page
-            </Link>
+            <Link to="/organizations">Organizations</Link>
         </li>
         <li>
-            <Link to="/campaigns">
-                Campaigns
-            </Link>
+            <Link to="/campaigns">Campaigns</Link>
         </li>
         <li>
-            <Link to="/products">
-                Products
-            </Link>
+            <Link to="/products">Products</Link>
         </li>
       </ul>
     </div>
