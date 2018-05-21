@@ -1,16 +1,16 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
+import Organizations from './components/Base Structure/Admin/Organizations/Organizations';
+import Campaigns from './components/Base Structure/Admin/Campaigns/Campaigns';
+import Products from './components/Base Structure/Admin/Products/Products';
+import Pipeline from './components/Base Structure/Admin/Pipeline/Pipeline';
+import Performance from './components/Base Structure/OrgLeader/Performance/Performance';
+import Orders from './components/Base Structure/OrgLeader/Orders/Orders';
+import Account from './components/Base Structure/OrgLeader/Account/Account';
+
 
 import './styles/main.css';
 
@@ -20,22 +20,15 @@ const App = () => (
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
-        <Route
-          path="/home"
-          component={LoginPage}
-        />
-        <Route
-          path="/register"
-          component={RegisterPage}
-        />
-        <Route
-          path="/user"
-          component={UserPage}
-        />
-        <Route
-          path="/info"
-          component={InfoPage}
-        />
+        <Route path="/home" component={LoginPage}/>
+        <Route path="/register" component={RegisterPage}/>
+        <Route path="/organizations" component={Organizations}/>
+        <Route path="/campaigns" component={Campaigns}/>
+        <Route path="/products" component={Products}/>
+        <Route path="/pipeline" component={Pipeline}/>
+        <Route path="/performance" component={Performance}/>
+        <Route path="/orders" component={Orders}/>
+        <Route path="/account" component={Account}/>
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

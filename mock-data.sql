@@ -177,7 +177,7 @@ VALUES
     (11,'pick up','','','','','Zoe T','ZT@email.com','jake L');
 
 
-    INSERT INTO "order"
+INSERT INTO "order"
     (customer_id,available_item_id,quantity)
 VALUES
     (1, 31, 2),

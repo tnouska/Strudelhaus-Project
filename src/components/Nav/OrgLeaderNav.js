@@ -6,21 +6,14 @@ const OrgLeaderNav = () => (
     <div>
       <ul>
         <li>
-            <Link to="/performance">
-                Performance
-            </Link>
+            <Link to="/performance">Performance</Link>
         </li>
         <li>
-            <Link to="/orders">
-                Orders
-            </Link>
+            <Link to="/orders">Orders</Link>
         </li>
         <li>
-            <Link to="/account">
-                account
-            </Link>
+            <Link to="/account">Account</Link>
         </li>
-
       </ul>
     </div>
   </div>
