@@ -7,6 +7,7 @@ import AdminNav from '../../../Nav/AdminNav';
 class Pipeline extends Component {
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+        // this.props.dispatch({type: 'GET_PIPELINE'});
       }
     
     componentDidUpdate() {
@@ -25,11 +26,15 @@ class Pipeline extends Component {
 
 
     render(){
+        // let showPipeline = this.props.state.pipeline.map( (activeCampaign) => {
+        //     return <div>{activeCampaign.organization_name}</div>
+        // })
         return(
             <div>
                 <AdminNav/>
                 <button onClick={this.logout}>Log Out</button>
                 <h1>PIPELINE PAGE</h1>
+                {/* {showPipeline} */}
             </div>
         )
     }
@@ -37,6 +42,7 @@ class Pipeline extends Component {
 
 const mapStateToProps = state => ({
     user: state.user,
+    state
 });
 
 // this allows us to use <App /> in index.js
