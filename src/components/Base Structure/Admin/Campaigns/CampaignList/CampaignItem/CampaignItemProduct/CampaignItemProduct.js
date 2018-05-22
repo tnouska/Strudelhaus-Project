@@ -7,7 +7,6 @@ class CampaignItemProduct extends Component {
             <div className="campaignItemProduct">
                 <p>{this.props.product.product_name}</p>
             </div>
-        
         )
     }
 }
