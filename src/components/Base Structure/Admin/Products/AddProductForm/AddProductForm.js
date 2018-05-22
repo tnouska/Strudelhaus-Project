@@ -19,10 +19,10 @@ class AddProductForm extends Component {
         event.preventDefault();
         console.log(this.state.newProduct);
         
-        // this.props.dispatch({
-        //     type: 'POST_PRODUCT',
-        //     payload: this.state.newProduct
-        // })
+        this.props.dispatch({
+            type: 'ADD_PRODUCT',
+            payload: this.state.newProduct
+        })
         // Clear input fields after dispatching
         this.setState({
             newProduct: {

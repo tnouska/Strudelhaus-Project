@@ -5,12 +5,14 @@ import pipelineSaga from './pipelineSaga';
 import organizationSaga from './organizationSaga';
 import addOrganizationSaga from './createOrganizationSaga';
 import addCampaign from './createCampaignSaga';
+import addProduct from './createProductSaga';
 
 
 export default function* rootSaga() {
   yield all([
     userSaga(),
     loginSaga(),
+    addProduct(),
     addCampaign(),
     pipelineSaga(),
     organizationSaga(),
