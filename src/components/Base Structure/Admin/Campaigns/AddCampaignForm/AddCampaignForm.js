@@ -25,8 +25,8 @@ class AddCampaignForm extends Component {
         console.log(this.state.newCampaign);
         
         // this.props.dispatch({
-        //     type: 'POST_ORGANIZATION',
-        //     payload: this.state.newOrg
+        //     type: 'POST_CAMPAIGN',
+        //     payload: this.state.newCampaign
         // })
         // Clear input fields after dispatching
         this.setState({
