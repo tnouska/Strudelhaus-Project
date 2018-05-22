@@ -24,10 +24,10 @@ class AddCampaignForm extends Component {
         event.preventDefault();
         console.log(this.state.newCampaign);
         
-        // this.props.dispatch({
-        //     type: 'POST_CAMPAIGN',
-        //     payload: this.state.newCampaign
-        // })
+        this.props.dispatch({
+            type: 'ADD_CAMPAIGN',
+            payload: this.state.newCampaign
+        })
         // Clear input fields after dispatching
         this.setState({
             newCampaign: {
