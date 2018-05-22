@@ -1,0 +1,7 @@
+.pipelineItem {
+    width: 90%;
+    height: 200px;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+}
