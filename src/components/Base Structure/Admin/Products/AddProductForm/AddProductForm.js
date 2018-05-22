@@ -8,9 +8,10 @@ class AddProductForm extends Component {
             newProduct: {
                 name: '',
                 sku: '',
-                type: '',
-                imageUrl: '',
-                filestackUrl:''
+                product_type: '',
+                image_url_1: '',
+                image_url_2:'',
+                description: ''
             }
         });
     };
@@ -28,9 +29,10 @@ class AddProductForm extends Component {
             newProduct: {
                 name: '',
                 sku: '',
-                type: '',
-                imageUrl: '',
-                filestackUrl:''
+                product_type: '',
+                image_url_1: '',
+                image_url_2:'',
+                description: ''
             }
         })
     };
@@ -55,8 +57,9 @@ class AddProductForm extends Component {
                 <form id="addProductForm">
                     <input value={this.state.newProduct.name} placeholder="Name" onChange={this.handleInput("name")}/>
                     <input value={this.state.newProduct.sku} placeholder="SKU #" onChange={this.handleInput("sku")}/>
-                    <input value={this.state.newProduct.type} placeholder="Sweet or Savory" onChange={this.handleInput("type")}/>
-                    <input value={this.state.newProduct.imageUrl} placeholder="Image URL" onChange={this.handleInput("imageUrl")}/>
+                    <input value={this.state.newProduct.product_type} placeholder="1=sweet, 2=savory" onChange={this.handleInput("product_type")}/>
+                    <input value={this.state.newProduct.image_url_1} placeholder="Image URL" onChange={this.handleInput("image_url_1")}/>
+                    <input value={this.state.newProduct.description} placeholder="description" onChange={this.handleInput("description")}/>
                     <button type="submit" onClick={this.addProduct}>Create!</button>
                 </form>
             </div>

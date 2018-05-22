@@ -6,14 +6,14 @@ class AddCampaignForm extends Component {
         super(props);
         this.state = ({
             newCampaign: {
-                organization: '',
+                organization_id: '',
                 name: '',
-                campaignUrl: '',
-                infoUrl: '',
+                url: '',
+                info_rl: '',
                 notes: '',
-                startDate: '',
-                endDate: '',
-                salesGoal: '',
+                date_start: '',
+                date_end: '',
+                goal: '',
                 product1: '',
                 product2: ''
             }
@@ -31,14 +31,14 @@ class AddCampaignForm extends Component {
         // Clear input fields after dispatching
         this.setState({
             newCampaign: {
-                organization: '',
+                organization_id: '',
                 name: '',
-                campaignUrl: '',
-                infoUrl: '',
+                url: '',
+                info_rl: '',
                 notes: '',
-                startDate: '',
-                endDate: '',
-                salesGoal: '',
+                date_start: '',
+                date_end: '',
+                goal: '',
                 product1: '',
                 product2: ''
             }
@@ -63,14 +63,14 @@ class AddCampaignForm extends Component {
             <div>
                 <h4>Add Campaign</h4>
                 <form id="addCampForm">
-                    <input value={this.state.newCampaign.organization} placeholder="Organization" onChange={this.handleInput("organization")}/>
+                    <input value={this.state.newCampaign.organization_id} placeholder="Organization" onChange={this.handleInput("organization_id")}/>
                     <input value={this.state.newCampaign.name} placeholder="Campaign Name" onChange={this.handleInput("name")}/>
-                    <input value={this.state.newCampaign.campaignUrl} placeholder="Campaign URL" onChange={this.handleInput("campaignUrl")}/>
-                    <input value={this.state.newCampaign.infoUrl} placeholder="Info URL" onChange={this.handleInput("infoUrl")}/>
+                    <input value={this.state.newCampaign.url} placeholder="Campaign URL" onChange={this.handleInput("url")}/>
+                    <input value={this.state.newCampaign.info_rl} placeholder="Info URL" onChange={this.handleInput("info_rl")}/>
                     <input value={this.state.newCampaign.notes} placeholder="Notes" onChange={this.handleInput("notes")}/>
-                    <input value={this.state.newCampaign.startDate} placeholder="Start Date" onChange={this.handleInput("startDate")}/>
-                    <input value={this.state.newCampaign.endDate} placeholder="End Date" onChange={this.handleInput("endDate")}/>
-                    <input value={this.state.newCampaign.salesGoal} placeholder="Sales Goal ($)" onChange={this.handleInput("salesGoal")}/>
+                    <input value={this.state.newCampaign.date_start} placeholder="Start Date" onChange={this.handleInput("date_start")}/>
+                    <input value={this.state.newCampaign.date_end} placeholder="End Date" onChange={this.handleInput("date_end")}/>
+                    <input value={this.state.newCampaign.goal} placeholder="Sales Goal ($)" onChange={this.handleInput("goal")}/>
                     <input value={this.state.newCampaign.product1} placeholder="Product 1" onChange={this.handleInput("product1")}/>
                     <input value={this.state.newCampaign.product2} placeholder="Product 2" onChange={this.handleInput("product2")}/>
                     <button type="submit" onClick={this.addCampaign}>Create!</button>
