@@ -6,6 +6,7 @@ import organizationSaga from './organizationSaga';
 import addOrganizationSaga from './createOrganizationSaga';
 import addCampaign from './createCampaignSaga';
 import addProduct from './createProductSaga';
+import campaignSaga from './campaignSaga';
 
 
 export default function* rootSaga() {
@@ -14,6 +15,7 @@ export default function* rootSaga() {
     loginSaga(),
     addProduct(),
     addCampaign(),
+    campaignSaga(),
     pipelineSaga(),
     organizationSaga(),
     addOrganizationSaga(),
