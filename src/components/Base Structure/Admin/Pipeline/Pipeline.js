@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import AdminNav from '../../../Nav/AdminNav';
+import PipelineList from './PipelineList/PipelineList';
+import './Pipeline.css';
 
 class Pipeline extends Component {
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        // this.props.dispatch({type: 'GET_PIPELINE'});
+        this.props.dispatch({type: 'GET_PIPELINE'});
       }
     
     componentDidUpdate() {
@@ -26,15 +28,11 @@ class Pipeline extends Component {
 
 
     render(){
-        // let showPipeline = this.props.state.pipeline.map( (activeCampaign) => {
-        //     return <div>{activeCampaign.organization_name}</div>
-        // })
         return(
             <div>
                 <AdminNav/>
                 <button onClick={this.logout}>Log Out</button>
-                <h1>PIPELINE PAGE</h1>
-                {/* {showPipeline} */}
+                <PipelineList/>
             </div>
         )
     }
@@ -44,7 +42,6 @@ class Pipeline extends Component {
 const mapReduxStateToProps = reduxState => ({
     user: reduxState.user,
     reduxState
-
 });
 
 // this allows us to use <App /> in index.js

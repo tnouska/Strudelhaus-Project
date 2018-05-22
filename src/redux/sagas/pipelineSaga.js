@@ -7,8 +7,12 @@ function* pipelineSaga() {
 
 function* getPipeline(action) {
     console.log('getPipeline saga triggered:', action);
+    const config ={
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+    }
     try{
-        const pipelineResponse = yield call(axios.get, `/admin/pipeline`);
+        const pipelineResponse = yield call(axios.get, `/admin/pipeline`, config);
         console.log('pipelineResponse:', pipelineResponse);
         yield put({
             type: 'FETCH_PIPELINE',
