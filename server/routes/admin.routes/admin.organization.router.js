@@ -25,7 +25,8 @@ router.get('/', (req, res) => {
                 let orgResult = organizationResult.rows                
                 for (let i = 0; i < orgResult.length; i++) {
                     let queryText2 = `SELECT
-                    campaign.name as campaign_name
+                    campaign.name as campaign_name,
+                    campaign.id as campaign_id
                     FROM campaign
                     WHERE organization_id = $1`                    
                     let organizationId = orgResult[i].organization_id;
