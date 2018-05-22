@@ -7,13 +7,13 @@ class AddOrgForm extends Component {
         this.state = ({
             newOrg: {
                 name: '',
-                address: '',
+                street_address: '',
                 city: '',
                 state: '',
-                zip: '',
-                leaderName: '',
-                leaderPhone: '',
-                leaderEmail: ''
+                zip_code: '',
+                contact_name: '',
+                contact_phone: '',
+                contact_email: ''
             }
         });
     };
@@ -29,13 +29,13 @@ class AddOrgForm extends Component {
         this.setState({
             newOrg: {
                 name: '',
-                address: '',
+                street_address: '',
                 city: '',
                 state: '',
-                zip: '',
-                leaderName: '',
-                leaderPhone: '',
-                leaderEmail: ''
+                zip_code: '',
+                contact_name: '',
+                contact_phone: '',
+                contact_email: ''
             }
         })
     };
@@ -59,14 +59,14 @@ class AddOrgForm extends Component {
                 <h4>Add Organization</h4>
                 <form id="addOrgForm">
                     <input value={this.state.newOrg.name} placeholder="Name" onChange={this.handleInput("name")}/>
-                    <input value={this.state.newOrg.address} placeholder="Mailing Address" onChange={this.handleInput("address")}/>
+                    <input value={this.state.newOrg.street_address} placeholder="Mailing Address" onChange={this.handleInput("street_address")}/>
                     <input value={this.state.newOrg.city} placeholder="City" onChange={this.handleInput("city")}/>
                     <input value={this.state.newOrg.state} placeholder="State" onChange={this.handleInput("state")}/>
-                    <input value={this.state.newOrg.zip} placeholder="Zip" onChange={this.handleInput("zip")}/>
+                    <input value={this.state.newOrg.zip_code} placeholder="Zip" onChange={this.handleInput("zip_code")}/>
                     <br/>
-                    <input value={this.state.newOrg.leaderName} placeholder="Leader Name" onChange={this.handleInput("leaderName")}/>
-                    <input value={this.state.newOrg.leaderPhone} placeholder="Leader Phone" onChange={this.handleInput("leaderPhone")}/>
-                    <input value={this.state.newOrg.leaderEmail} placeholder="Leader Email" onChange={this.handleInput("leaderEmail")}/>
+                    <input value={this.state.newOrg.contact_name} placeholder="Contact Name" onChange={this.handleInput("contact_name")}/>
+                    <input value={this.state.newOrg.contact_phone} placeholder="Contact Phone" onChange={this.handleInput("contact_phone")}/>
+                    <input value={this.state.newOrg.contact_email} placeholder="Contact Email" onChange={this.handleInput("contact_email")}/>
                     <button type="submit" onClick={this.addOrganization}>Create!</button>
                 </form>
             </div>
