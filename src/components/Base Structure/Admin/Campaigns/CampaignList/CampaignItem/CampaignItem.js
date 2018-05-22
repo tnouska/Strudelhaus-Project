@@ -8,7 +8,7 @@ class CampaignItem extends Component {
 
         let campaignProducts = this.props.campaign.productList.map((product) => {
             return (<CampaignItemProduct key={product.product_name} product={product}/>)
-        })
+        });
         // let totalSales;
         // for (let i = 0; i < this.props.campaign.productList.length; i++){
         //     console.log(this.props.campaign.productList[i].productSales);
