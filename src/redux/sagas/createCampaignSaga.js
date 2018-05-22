@@ -14,7 +14,7 @@ function* createCampaign(action) {
     try{
         yield call(axios.post, `/admin/organization`, action.payload, config);
         yield put({
-            type: 'GET_PIPELINE'
+            type: 'GET_CAMPAIGN'
         })
     } catch (error) {
         console.log('error in POST createCampaign', error);
