@@ -4,10 +4,13 @@ import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import AdminNav from '../../../Nav/AdminNav';
 import AddOrgForm from '../Organizations/AddOrgForm/AddOrgForm';
+import OrgList from './OrgList/OrgList';
+import './Organizations.css';
 
 class Organizations extends Component {
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+        this.props.dispatch({ type: 'GET_ORGANIZATION'});
       }
     
     componentDidUpdate() {
@@ -28,6 +31,7 @@ class Organizations extends Component {
             <div>
                 <AdminNav/>
                 <AddOrgForm/>
+                <OrgList/>
             </div>
         )
     }
