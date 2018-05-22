@@ -3,6 +3,7 @@ import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import pipelineSaga from './pipelineSaga';
 import organizationSaga from './organizationSaga';
+import addOrganizationSaga from './createOrganizationSaga';
 
 
 export default function* rootSaga() {
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     loginSaga(),
     pipelineSaga(),
     organizationSaga(),
+    addOrganizationSaga(),
     // watchIncrementAsync()
   ]);
 }

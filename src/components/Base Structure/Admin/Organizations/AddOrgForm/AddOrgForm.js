@@ -21,11 +21,10 @@ class AddOrgForm extends Component {
     addOrganization = (event) => {
         event.preventDefault();
         console.log(this.state.newOrg);
-        
-        // this.props.dispatch({
-        //     type: 'POST_ORGANIZATION',
-        //     payload: this.state.newOrg
-        // })
+        this.props.dispatch({
+            type: 'ADD_ORGANIZATION',
+            payload: this.state.newOrg
+        })
         // Clear input fields after dispatching
         this.setState({
             newOrg: {
