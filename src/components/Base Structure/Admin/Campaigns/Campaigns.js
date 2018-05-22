@@ -32,9 +32,10 @@ class Campaigns extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
+const mapReduxStateToProps = reduxState => ({
+    user: reduxState.user,
+    reduxState
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Campaigns);
+export default connect(mapReduxStateToProps)(Campaigns);
