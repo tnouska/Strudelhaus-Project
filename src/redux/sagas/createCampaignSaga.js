@@ -1,4 +1,4 @@
-import { call, put, takeEver } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* addCampaign() {
