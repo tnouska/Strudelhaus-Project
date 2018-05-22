@@ -1,0 +1,3 @@
+const organization = ( state = [], action) => {
+    
+}
