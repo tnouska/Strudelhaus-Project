@@ -9,7 +9,7 @@ class AddCampaignForm extends Component {
                 organization_id: '',
                 name: '',
                 url: '',
-                info_rl: '',
+                info_url: '',
                 notes: '',
                 date_start: '',
                 date_end: '',
@@ -34,7 +34,7 @@ class AddCampaignForm extends Component {
                 organization_id: '',
                 name: '',
                 url: '',
-                info_rl: '',
+                info_url: '',
                 notes: '',
                 date_start: '',
                 date_end: '',
@@ -66,7 +66,7 @@ class AddCampaignForm extends Component {
                     <input value={this.state.newCampaign.organization_id} placeholder="Organization" onChange={this.handleInput("organization_id")}/>
                     <input value={this.state.newCampaign.name} placeholder="Campaign Name" onChange={this.handleInput("name")}/>
                     <input value={this.state.newCampaign.url} placeholder="Campaign URL" onChange={this.handleInput("url")}/>
-                    <input value={this.state.newCampaign.info_rl} placeholder="Info URL" onChange={this.handleInput("info_rl")}/>
+                    <input value={this.state.newCampaign.info_url} placeholder="Info URL" onChange={this.handleInput("info_url")}/>
                     <input value={this.state.newCampaign.notes} placeholder="Notes" onChange={this.handleInput("notes")}/>
                     <input value={this.state.newCampaign.date_start} placeholder="Start Date" onChange={this.handleInput("date_start")}/>
                     <input value={this.state.newCampaign.date_end} placeholder="End Date" onChange={this.handleInput("date_end")}/>
