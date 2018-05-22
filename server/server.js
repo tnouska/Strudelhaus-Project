@@ -10,7 +10,9 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+//admin routes
 const adminCampaignRouter = require('./routes/admin.routes/admin.campaign.router');
+const adminOrganizationRouter = require('./routes/admin.routes/admin.organization.router')
 // const orgLeaderRouter = require('./routes/org.leader.router');
 // const customerRouter = require('./routes/customer.router')
 
@@ -27,7 +29,9 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/admin', adminCampaignRouter);
+//admin routes
+app.use('/admin/pipeline', adminCampaignRouter);
+app.use('/admin/organization', adminOrganizationRouter)
 // app.use('/api/orgleader', orgLeaderRouter);
 // app.use('/api/customer', customerRouter);
 
