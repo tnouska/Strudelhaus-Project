@@ -40,10 +40,12 @@ class Pipeline extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
-    state
+
+const mapReduxStateToProps = reduxState => ({
+    user: reduxState.user,
+    reduxState
+
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Pipeline);
+export default connect(mapReduxStateToProps)(Pipeline);

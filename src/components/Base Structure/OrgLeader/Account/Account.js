@@ -34,9 +34,10 @@ class Account extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
+const mapReduxStateToProps = reduxState => ({
+    user: reduxState.user,
+    reduxState
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Account);
+export default connect(mapReduxStateToProps)(Account);

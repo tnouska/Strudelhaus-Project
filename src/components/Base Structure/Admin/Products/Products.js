@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import AdminNav from '../../../Nav/AdminNav';
+import AddProductForm from '../Products/AddProductForm/AddProductForm';
 
 class Products extends Component {
     componentDidMount() {
@@ -26,15 +27,16 @@ class Products extends Component {
         return(
             <div>
                 <AdminNav/>
-                <h1>PRODUCTS PAGE</h1>
+                <AddProductForm/>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
+const mapReduxStateToProps = reduxState => ({
+    user: reduxState.user,
+    reduxState
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Products);
+export default connect(mapReduxStateToProps)(Products);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import AdminNav from '../../../Nav/AdminNav';
+import AddOrgForm from '../Organizations/AddOrgForm/AddOrgForm';
 
 class Organizations extends Component {
     componentDidMount() {
@@ -26,15 +27,16 @@ class Organizations extends Component {
         return(
             <div>
                 <AdminNav/>
-                <h1>ORGANIZATIONS PAGE</h1>
+                <AddOrgForm/>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
+const mapReduxStateToProps = reduxState => ({
+    user: reduxState.user,
+    reduxState
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Organizations);
+export default connect(mapReduxStateToProps)(Organizations);

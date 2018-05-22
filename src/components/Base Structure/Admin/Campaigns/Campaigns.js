@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import AdminNav from '../../../Nav/AdminNav';
+import AddCampaignForm from '../Campaigns/AddCampaignForm/AddCampaignForm';
 
 class Campaigns extends Component {
     componentDidMount() {
@@ -26,15 +27,16 @@ class Campaigns extends Component {
         return(
             <div>
                 <AdminNav/>
-                <h1>CAMPAIGNS PAGE</h1>
+                <AddCampaignForm/>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({
-    user: state.user,
+const mapReduxStateToProps = reduxState => ({
+    user: reduxState.user,
+    reduxState
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Campaigns);
+export default connect(mapReduxStateToProps)(Campaigns);
