@@ -82,7 +82,39 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-
-});
+    if (req.isAuthenticated()) {
+    //checking if user is authenticated
+        (async()=>{
+        //creates async function
+            const client = await pool.connect();
+            //await will wait for a return on the given function and then do whatever follows
+                try {
+                    await client.query('BEGIN')
+                    let queryText = `INSERT INTO campaign (organization_id,url,"name",date_start,date_end,notes,info_url,goal) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING "id"`
+                    const campaignResult = await client.query(queryText, [req.body.organization_id, req.body.url, req.body.name, req.body.date_start, req.body.date_end, req.body.notes, req.body.info_url, req.body.goal]);
+                    const campaignId = campaignResult.rows[0].id
+                    for (let i = 0; i < req.body.products.length; i++) {
+                        let productId = req.body.products[i];
+                        let queryText2 = `INSERT INTO available_item (campaign_id,product_id) VALUES ($1,$2)`
+                        await client.query(queryText2,[campaignId,req.body.products[i]]);
+                    };//end for loop for adding available products to each campaign
+                    await client.query('COMMIT');
+                    res.sendStatus(201);
+                } catch (error) {
+                    console.log('ROLLBACK', error);
+                    await client.query('ROLLBACK');
+                    throw error;
+                } finally {
+                    client.release();
+                    //will release the server from the database
+                };//end try/catch
+        })().catch((error)=>{
+            console.log('CATCH', error);
+            res.sendStatus(500);
+        });//end async function
+    } else {
+        res.sendStatus(403);
+    };//end if/else for authentication
+});//end router.post
 
 module.exports = router;
