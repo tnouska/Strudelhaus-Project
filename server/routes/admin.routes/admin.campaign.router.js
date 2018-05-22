@@ -36,8 +36,7 @@ router.get('/', (req, res) => {
                         let campaignResult = await client.query(queryText2, [organizationRowsResult[i].organization_id]);
                         let campaignRowsResult = campaignResult.rows;
                         for (let i = 0; i < campaignRowsResult.length; i++) {
-                            campaignGoal = campaignRowsResult[i].goal
-                            campaignGoal.split(",").join('')
+                            campaignRowsResult[i].goal = Number(campaignRowsResult[i].goal.replace(',',''))
                             let queryText3 = `SELECT
                                 SUM("order".quantity) as item_total,
                                 product.name as product_name,
@@ -48,10 +47,13 @@ router.get('/', (req, res) => {
                                 WHERE available_item.campaign_id = $1
                                 GROUP BY product.name, product.price
                                 ORDER BY product.name asc;`
+                            let totalSales = 0
                             let orderResult = await client.query(queryText3, [campaignRowsResult[i].campaign_id]);
                             for (let i = 0; i < orderResult.rows.length; i++) {
-                                orderResult.rows[i].price = Number(orderResult.rows[i].price);                                
-                            }                         
+                                orderResult.rows[i].price = Number(orderResult.rows[i].price);
+                                orderResult.rows[i].item_total = Number(orderResult.rows[i].item_total)
+                                orderResult.rows[i].productSales = orderResult.rows[i].price * orderResult.rows[i].item_total;
+                            }                                                      
                             campaignRowsResult[i].productList = orderResult.rows                            
                             campaignPageArray.push(campaignRowsResult[i])
                             // console.log('campaignRowsResult', campaignRowsResult);
