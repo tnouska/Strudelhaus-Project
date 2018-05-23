@@ -12,7 +12,7 @@ function* deleteCampaign(action) {
         withCredentials: true,
     } 
     try{
-        yield call(axios.delete, `/admin/campaign/${action.payload.campign.id}`, config);
+        yield call(axios.delete, `/admin/campaign/${action.payload.campaign_id}`, config);
         yield put({
             type: 'GET_CAMPAIGN',
         })
