@@ -15,7 +15,8 @@ let products = [{name:'apple', price:15.00, quantity:0},
 const mapStateToProps = state => ({
     // user: state.user,
     // login: state.login,
-    cart: state.orderView
+    cart: state.orderView,
+    products: state.customerProducts
   });
 
 class StrudelList extends Component {
@@ -27,23 +28,25 @@ class StrudelList extends Component {
       };
     }
 componentDidMount() {
-        // this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-        
+  this.props.dispatch({
+    type: 'GET_CUSTOMERPRODUCTS',
+    payload: this.props.campaignName
+    
+  });
+        console.log(this.props.products)
       }
     
 componentDidUpdate() {
-        // if (!this.props.user.isLoading && this.props.user.userName === null) {
-        //   this.props.history.push('home');
-        // }
+        
       }
 addToOrder = (product)=>{
 
-  const evalProduct = (item => item.name === product.name);
+  const evalProduct = (item => item.product_name === product.product_name);
   const findItem = this.props.cart.find(evalProduct);
   if(!findItem){
     console.log(product)
   
-    product.quantity++
+    product.quantity = 1
     this.props.dispatch({
       type: 'CURRENT_ORDER',
       payload: product
@@ -62,29 +65,18 @@ subtractFromOrder = (product)=>{
   });
 }
 render() {
-let displayProducts = products.map( (product) => {
-  return(
   
-      <Button key={product.name} onClick={()=>this.addToOrder(product)}>
-      <h2>{product.name} {product.price}</h2>
+let displayProducts = this.props.products && this.props.products.map( (product) => {
+  return(
+    
+      <Button key={product.product_name} onClick={()=>this.addToOrder(product)}>
+      <h2>{product.product_name} {product.product_price}</h2> 
       </Button>
   )
 })
-        let content = null;
 
-    // if (this.props.user.userName) {
-    //   content = (
-    //     <div>
-    //          <h2>Item Page</h2>
-    //          {displayProducts}
-    //   </div>
-      
-    //   )
-    // }
-    
     return (
       <div>
-       
        
         { displayProducts }
         </div>
