@@ -13,18 +13,15 @@ class CampaignItem extends Component {
     }
 
     render() {
-
         let campaignProducts = this.props.campaign.productList.map((product) => {
             return (<CampaignItemProduct key={product.product_name} product={product}/>)
         });
-        // let totalSales;
-        // for (let i = 0; i < this.props.campaign.productList.length; i++){
-        //     console.log(this.props.campaign.productList[i].productSales);
-        //     let totalSales = totalSales + this.props.campaign.productList[i].productSales;
-        //     console.log(totalSales);
-               
-        // }
-
+        
+        let totalSales = 0;
+        for (let i = 0; i < this.props.campaign.productList.length; i++){
+            totalSales = totalSales + this.props.campaign.productList[i].productSales;
+        }
+        console.log('TOTAL', totalSales);
 
         return(
             <div className="campaignItemDiv">
@@ -32,7 +29,7 @@ class CampaignItem extends Component {
                 <p>Start Date: {this.props.campaign.date_start}</p>
                 <p>End Date: {this.props.campaign.date_end}</p>
                 <p>Sales Goal: ${this.props.campaign.goal}</p>
-                <p>Total Sales: $</p>
+                <p>Total Sales: ${totalSales}</p>
                 <p>Products:</p>
                 {campaignProducts}
                 <button>Edit</button>

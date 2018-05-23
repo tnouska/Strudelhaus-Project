@@ -6,7 +6,7 @@ import organization from './organizationReducer';
 import campaign from './campaignReducer';
 import product from './productReducer';
 
-import orgLeaderOrder from './orgLeaderOrderReducer';
+import order from './orderReducer';
 import orderView from './orderViewReducer';
 import customerProducts from './customerProductReducer';
 
@@ -18,8 +18,7 @@ const store = combineReducers({
   campaign,
   pipeline,
   organization,
-
-  orgLeaderOrder,
+  order,
   orderView,
   customerProducts
 });
