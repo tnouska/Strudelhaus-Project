@@ -64,4 +64,21 @@ router.post('/', (req, res) => {
 
 });
 
+router.delete('/:id', (req, res) => {
+    console.log('req.params:', req.params);
+    if(req.isAuthenticated()) {
+        let queryText = `DELETE FROM organization WHERE organization.id = $1`;
+        pool.query(queryText, [req.params.id])
+        .then( () => {
+            res.sendStatus(201);
+        })
+        .catch( (error) => {
+            console.log('error in deleteAdminOrg', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 module.exports = router;
