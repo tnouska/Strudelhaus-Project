@@ -1,0 +1,1 @@
+// strudel store list
