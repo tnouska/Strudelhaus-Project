@@ -25,6 +25,7 @@ export default function* rootSaga() {
     organizationSaga(),
     adminDeleteOrgSaga(),
     orgLeaderOrderSaga(),
+    adminDeleteCampSaga(),
     addOrganizationSaga(),
     currentOrder()
     // watchIncrementAsync()

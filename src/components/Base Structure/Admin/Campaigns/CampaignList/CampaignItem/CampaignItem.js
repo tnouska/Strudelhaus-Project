@@ -4,6 +4,14 @@ import CampaignItemProduct from './CampaignItemProduct/CampaignItemProduct';
 
 class CampaignItem extends Component {
 
+    deleteCampaign = () => {
+        console.log('org:', this.props.campaign);
+        this.props.dispatch({
+            type: 'DELETE_CAMPAIGN',
+            payload: this.props.campaign
+        })
+    }
+
     render() {
 
         let campaignProducts = this.props.campaign.productList.map((product) => {
@@ -28,7 +36,7 @@ class CampaignItem extends Component {
                 <p>Products:</p>
                 {campaignProducts}
                 <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={this.deleteCampaign}>Delete</button>
             </div>
         )
     };
