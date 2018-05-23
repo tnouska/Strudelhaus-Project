@@ -10,6 +10,7 @@ import campaignSaga from './campaignSaga';
 import productSaga from './productSaga';
 import orgLeaderOrderSaga from './orgLeaderOrderSaga';
 import adminDeleteOrgSaga from './adminDeleteOrg';
+import adminDeleteCampSaga from './adminDeleteCamp';
 
 
 export default function* rootSaga() {
@@ -24,6 +25,7 @@ export default function* rootSaga() {
     organizationSaga(),
     adminDeleteOrgSaga(),
     orgLeaderOrderSaga(),
+    adminDeleteCampSaga(),
     addOrganizationSaga(),
     // watchIncrementAsync()
   ]);
