@@ -27,6 +27,8 @@ class CampaignItem extends Component {
                 <p>Total Sales: $</p>
                 <p>Products:</p>
                 {campaignProducts}
+                <button>Edit</button>
+                <button>Delete</button>
             </div>
         )
     };

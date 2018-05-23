@@ -16,6 +16,8 @@ class OrgItem extends Component {
                 <p>Contact: {this.props.org.contact_name}</p>
                 <p>Campaigns</p>
                 {campaignList}
+                <button>Edit</button>
+                <button>Delete</button>
             </div>
         )
     }

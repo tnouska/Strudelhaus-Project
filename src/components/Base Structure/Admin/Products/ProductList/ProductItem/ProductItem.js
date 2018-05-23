@@ -9,6 +9,9 @@ class ProductItem extends Component {
             <div className="productItemDiv">
                 <p>{this.props.product.name}</p>
                 <img className="smallProductImg" src={this.props.product.img_url_1} alt="strudel" />
+                <br/>
+                <button>Edit</button>
+                <button>Delete</button>
             </div>
         )
     }
