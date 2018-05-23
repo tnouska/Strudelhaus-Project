@@ -61,7 +61,17 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-
-});
+    if (req.isAuthenticated()) {
+        (async() => {
+            
+        })().catch((error) => {
+            console.log('error in Catch: ', error);
+            res.sendStatus(500)
+        });//end async/await
+    } else {
+        res.sendStatus(403);
+        //if user is not authenticated, will send unauthorized
+    };//end authorization if/else
+});//end admin.organization.router.post
 
 module.exports = router;
