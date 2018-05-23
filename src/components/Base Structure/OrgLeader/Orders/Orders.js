@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
+import OrderList from '../Orders/OrderList/OrderList';
 
 class Orders extends Component {
     componentDidMount() {
@@ -28,7 +29,7 @@ class Orders extends Component {
         return(
             <div>
                 <OrgLeaderNav/>
-                <h1>ORDERS PAGE</h1>
+                <OrderList/>
             </div>
         )
     }
