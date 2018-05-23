@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
+
 import { Button } from 'react-bootstrap';
 
 
@@ -73,20 +74,20 @@ let displayProducts = products.map( (product) => {
 })
         let content = null;
 
-    if (this.props.user.userName) {
-      content = (
-        <div>
-             <h2>Item Page</h2>
-             {displayProducts}
-      </div>
+    // if (this.props.user.userName) {
+    //   content = (
+    //     <div>
+    //          <h2>Item Page</h2>
+    //          {displayProducts}
+    //   </div>
       
-      )
-    }
+    //   )
+    // }
     return (
       <div>
+       <h2>Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
        
-       
-        { content }
+        { displayProducts }
         </div>
     )
   }
