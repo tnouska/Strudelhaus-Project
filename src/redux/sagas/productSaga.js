@@ -3,7 +3,8 @@ import axios from 'axios';
 
 function* productSaga() {
     yield takeEvery('GET_PRODUCT', getProduct),
-    yield takeEvery('ADD_PRODUCT', createProduct)
+    yield takeEvery('ADD_PRODUCT', createProduct),
+    yield takeEvery('DELETE_PRODUCT', deleteProduct)
 }
 
 function* getProduct(action) {
@@ -35,5 +36,21 @@ function* createProduct(action) {
         console.log('error in POST createProduct:', error);
     }
 } 
+
+function* deleteProduct(action) {
+    console.log('deleteProduct triggered:', action);
+    const config = {
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+    } 
+    try{
+        yield call(axios.delete, `/admin/product/${action.payload.product_id}`, config);
+        yield put({
+            type: 'GET_PRODUCT',
+        })
+    } catch (error) {
+        console.log('error in deleteProduct:', error);
+    }
+}
 
 export default productSaga;
