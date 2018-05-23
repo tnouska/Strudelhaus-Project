@@ -11,6 +11,7 @@ import { Modal,Popover,Tooltip } from 'react-bootstrap';
 import StrudelList from '../StrudelList/StrudelList';
 import ShoppingCartList from '../ShoppingCartList/ShoppingCartList';
 import Nav from '../../../Nav/Nav';
+import SquareForm from '../SquareForm/SquareForm';
 
 const mapStateToProps = state => ({
 
@@ -72,7 +73,7 @@ render() {
     </Col>
     <Col xs={6} md={4}>
    <ShoppingCartList />
-    
+    <SquareForm/>
     </Col>
   </Row>
   </Grid>
