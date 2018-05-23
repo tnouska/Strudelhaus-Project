@@ -64,7 +64,7 @@ render() {
         <Grid>
   <Row className="show-grid">
     <Col xs={12} md={8}>
-    <Button onClick={()=>this.toggleShop()}>Toggle View</Button>
+    {/* <Button onClick={()=>this.toggleShop()}>Toggle View</Button> */}
              <StrudelList />
                <div className="static-modal">
   

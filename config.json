@@ -1,0 +1,11 @@
+{
+    "development": {
+      "squareApplicationId": "sandbox-sq0idp-YldqxOSfurHmr3XsFZ59jg",
+      "squareAccessToken": "sandbox-sq0atb-ffNvoCsEpPIf8cJyXHELlw"
+    },
+    "production": {
+      "squareApplicationId": "sandbox-sq0idp-YldqxOSfurHmr3XsFZ59jg",
+      "squareAccessToken": "sandbox-sq0atb-ffNvoCsEpPIf8cJyXHELlw"
+    }
+  }
+  
