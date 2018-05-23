@@ -11,6 +11,7 @@ import productSaga from './productSaga';
 import orgLeaderOrderSaga from './orgLeaderOrderSaga';
 import adminDeleteOrgSaga from './adminDeleteOrg';
 import currentOrder from './currentOrder';
+import adminDeleteCampSaga from './adminDeleteCamp';
 
 
 export default function* rootSaga() {
