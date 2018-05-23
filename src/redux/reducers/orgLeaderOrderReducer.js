@@ -1,5 +1,5 @@
 const orgLeaderOrder = ( state = [], action) => {
-    switch(aciton.type) {
+    switch(action.type) {
         case 'FETCH_EVENT':
         console.log('orgLeaderOrder:', action.payload);
         return action.payload
