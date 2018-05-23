@@ -12,7 +12,7 @@ function* deleteOrganization(action) {
         withCredentials: true,
     } 
     try{
-        yield call(axios.delete, `/admin/organization/${action.payload.id}`, config);
+        yield call(axios.delete, `/admin/organization/${action.payload.organization_id}`, config);
         yield put({
             type: 'GET_ORGANIZATION',
         })
