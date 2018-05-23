@@ -85,7 +85,7 @@ router.get('/', (req, res) => {
 // });//end admin.organization.router.post
 
 router.delete('/:id', (req, res) => {
-    console.log('req.params:', req.params);
+    console.log('req.params:', req.params.id);
     if(req.isAuthenticated()) {
         let queryText = `DELETE FROM organization WHERE organization.id = $1`;
         pool.query(queryText, [req.params.id])
