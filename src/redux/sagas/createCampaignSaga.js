@@ -12,7 +12,7 @@ function* createCampaign(action) {
         withCredentials: true,
     }
     try{
-        yield call(axios.post, `/admin/organization`, action.payload, config);
+        yield call(axios.post, `/admin/campaign`, action.payload, config);
         yield put({
             type: 'GET_CAMPAIGN'
         })
