@@ -23,6 +23,9 @@ const customerStorefrontRouter = require('./routes/customer.routes/customer.stor
 // const orgLeaderRouter = require('./routes/org.leader.router');
 // const customerRouter = require('./routes/customer.router')
 
+//payment router
+const paymentRouter = require('./routes/payment.router');
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,6 +50,9 @@ app.use('/orgleader/order',orgLeaderOrderRouter);
 app.use('/fundraiser',customerStorefrontRouter)
 // app.use('/api/orgleader', orgLeaderRouter);
 // app.use('/api/customer', customerRouter);
+
+//payment router
+app.use('/api/payment', paymentRouter);
 
 // Serve static files
 app.use(express.static('build'));
