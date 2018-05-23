@@ -7,7 +7,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    const queryText = `SELECT * FROM product JOIN product_type ON product.product_type = product_type.id`;
+    const queryText = `SELECT product.id as product_id, * FROM product JOIN product_type ON product.product_type = product_type.id`;
     pool.query(queryText)
     .then( (result) => {
         res.send(result.rows);

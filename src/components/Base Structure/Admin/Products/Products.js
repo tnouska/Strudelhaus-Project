@@ -4,10 +4,13 @@ import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import AdminNav from '../../../Nav/AdminNav';
 import AddProductForm from '../Products/AddProductForm/AddProductForm';
+import ProductList from './ProductList/ProductList';
+import './Products.css';
 
 class Products extends Component {
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+        this.props.dispatch({ type: 'GET_PRODUCT' });
       }
     
     componentDidUpdate() {
@@ -28,6 +31,7 @@ class Products extends Component {
             <div>
                 <AdminNav/>
                 <AddProductForm/>
+                <ProductList/>
             </div>
         )
     }
