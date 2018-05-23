@@ -121,8 +121,8 @@ router.delete('/:id', (req, res) => {
     console.log('req.params campaign delete:', req.params);
     console.log('req.body campaign delete:', req.body);
     if(req.isAuthenticated()) {
-        let queryText = `DELETE FROM campaign WHERE campaign.id = $1 AND id = $2`;
-        pool.query(queryText, [req.params.id, req.user.id])
+        let queryText = `DELETE FROM campaign WHERE campaign.id = $1`;
+        pool.query(queryText, [req.params.id])
         .then( () => {
             res.sendStatus(201);
         })
