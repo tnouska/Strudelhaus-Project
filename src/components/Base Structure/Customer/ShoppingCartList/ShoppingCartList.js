@@ -80,17 +80,17 @@ return parseInt(a) + parseInt(b)
        
         
 let total = 0;
-// if (this.props.cart.length >= 1){
+if (this.props.cart.length >= 1){
   
-//   console.log(this.props.cart)
+  console.log(this.props.cart)
   
-//   total = this.props.cart.map( (product) =>{
-//       return(
-//         product.quantity * product.price
-//       )
-//   })
-//   total = total.reduce(this.add)
-// }
+  total = this.props.cart.map( (product) =>{
+      return(
+        product.quantity * product.price
+      )
+  })
+  total = total.reduce(this.add)
+}
 
        
         let content = null;
