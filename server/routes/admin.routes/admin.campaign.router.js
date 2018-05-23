@@ -117,4 +117,22 @@ router.post('/', (req, res) => {
     };//end if/else for authentication
 });//end router.post
 
+router.delete('/:id', (req, res) => {
+    console.log('req.params campaign delete:', req.params);
+    console.log('req.body campaign delete:', req.body);
+    if(req.isAuthenticated()) {
+        let queryText = `DELETE FROM campaign WHERE campaign.id = $1`;
+        pool.query(queryText, [req.params.id])
+        .then( () => {
+            res.sendStatus(201);
+        })
+        .catch( (error) => {
+            console.log('error in campaignDelete:', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+})
+
 module.exports = router;

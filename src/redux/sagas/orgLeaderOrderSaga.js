@@ -8,7 +8,7 @@ function* orgLeaderOrderSaga() {
 function* getOrgLeaderOrder(action) {
     console.log('getOrgLeaderOrder triggered:', action);
     try{
-        const orgLeaderOrderResponse = yield call(axios.get, `/orgLeader/order`);
+        const orgLeaderOrderResponse = yield call(axios.get, `/orgleader/order`);
         console.log(orgLeaderOrderResponse);
         yield put({
             type: 'FETCH_ORGORDER',
