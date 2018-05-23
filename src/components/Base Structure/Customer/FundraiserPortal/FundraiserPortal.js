@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Nav from '../../components/Nav/Nav';
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 import { Button } from 'react-bootstrap';
@@ -11,6 +10,7 @@ import { Form } from 'react-bootstrap';
 import { Modal,Popover,Tooltip } from 'react-bootstrap';
 import StrudelList from '../StrudelList/StrudelList';
 import ShoppingCartList from '../ShoppingCartList/ShoppingCartList';
+import Nav from '../../../Nav/Nav';
 
 const mapStateToProps = state => ({
 
@@ -54,35 +54,18 @@ toggleShop = ()=> {
       }
 render() {
 
-  const popover = (
-    <Popover id="modal-popover" title="popover">
-      very popover. such engagement
-    </Popover>
-  );
-  const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
-        let content = null;
+        
 
-    if (this.props.user.userName) {
-      content = (
-        <div>
-          
-             
-      </div>
-      
-      )
-    }
     return (
       <div>
        
         <Nav />
-        { content }
+        <h2>Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
         <Grid>
   <Row className="show-grid">
     <Col xs={12} md={8}>
     <Button onClick={()=>this.toggleShop()}>Toggle View</Button>
-             
-               {this.props.view && <StrudelList />}
-               
+             <StrudelList />
                <div className="static-modal">
   
 </div>
