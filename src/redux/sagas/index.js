@@ -8,6 +8,7 @@ import addCampaign from './createCampaignSaga';
 import addProduct from './createProductSaga';
 import campaignSaga from './campaignSaga';
 import productSaga from './productSaga';
+import orgLeaderOrderSaga from './orgLeaderOrderSaga';
 
 
 export default function* rootSaga() {
@@ -20,6 +21,7 @@ export default function* rootSaga() {
     campaignSaga(),
     pipelineSaga(),
     organizationSaga(),
+    orgLeaderOrderSaga(),
     addOrganizationSaga(),
     // watchIncrementAsync()
   ]);
