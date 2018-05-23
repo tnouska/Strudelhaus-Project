@@ -68,8 +68,6 @@ let displayProducts = products.map( (product) => {
       <Button key={product.name} onClick={()=>this.addToOrder(product)}>
       <h2>{product.name} {product.price}</h2>
       </Button>
-   
-    
   )
 })
         let content = null;
@@ -83,9 +81,10 @@ let displayProducts = products.map( (product) => {
       
     //   )
     // }
+    
     return (
       <div>
-       <h2>Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
+       
        
         { displayProducts }
         </div>
