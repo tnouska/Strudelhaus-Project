@@ -9,6 +9,8 @@ import orgLeaderOrderSaga from './orgLeaderOrderSaga';
 import currentOrder from './currentOrder';
 
 
+
+
 export default function* rootSaga() {
   yield all([
     userSaga(),
@@ -18,7 +20,8 @@ export default function* rootSaga() {
     pipelineSaga(),
     organizationSaga(),
     orgLeaderOrderSaga(),
-    currentOrder()
+    currentOrder(),
+    customerProductsSaga()
     // watchIncrementAsync()
   ]);
 }

@@ -55,7 +55,6 @@ toggleShop = ()=> {
       }
 render() {
 
-        
 
     return (
       <div>
@@ -65,15 +64,12 @@ render() {
         <Grid>
   <Row className="show-grid">
     <Col xs={12} md={8}>
-    {/* <Button onClick={()=>this.toggleShop()}>Toggle View</Button> */}
-             <StrudelList />
-               <div className="static-modal">
-  
-</div>
+             <StrudelList campaignName={this.props.match.params.name} />
+             <SquareForm />
     </Col>
     <Col xs={6} md={4}>
    <ShoppingCartList />
-    <SquareForm/>
+    
     </Col>
   </Row>
   </Grid>

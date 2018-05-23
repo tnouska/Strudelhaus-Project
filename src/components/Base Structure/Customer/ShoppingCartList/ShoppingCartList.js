@@ -38,7 +38,7 @@ this.setState({
 }
 minusQuantity = (product)=>{
 if (product.quantity <= 1){
-  const evalProduct = (item => item.name === product.name);
+  const evalProduct = (item => item.product_name === product.product_name);
   const findItem = this.props.cart.findIndex(evalProduct);
   this.props.cart.splice(findItem, 1)
   product.quantity = 0;
@@ -73,7 +73,7 @@ return parseInt(a) + parseInt(b)
             <Button onClick={()=>this.addQuantity(product)}>+</Button>
             <span> {product.quantity} </span>
             <Button onClick={()=>this.minusQuantity(product)}>-</Button> 
-            <strong>{product.name} ${product.price}</strong>
+            <strong>{product.product_name} ${product.product_price}</strong>
             </div>
           )
         })
@@ -86,7 +86,7 @@ if (this.props.cart.length >= 1){
   
   total = this.props.cart.map( (product) =>{
       return(
-        product.quantity * product.price
+        product.quantity * product.product_price
       )
   })
   total = total.reduce(this.add)
