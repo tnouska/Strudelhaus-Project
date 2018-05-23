@@ -3,6 +3,14 @@ import { connect } from 'react-redux';
 
 class ProductItem extends Component {
 
+    deleteProduct = () => {
+        console.log('product:', this.props.product);
+        this.props.dispatch({
+            type: 'DELETE_PRODUCT',
+            payload: this.props.product
+        })
+    }
+
     render() {
 
         return(
@@ -11,7 +19,7 @@ class ProductItem extends Component {
                 <img className="smallProductImg" src={this.props.product.img_url_1} alt="strudel" />
                 <br/>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={this.deleteProduct}>Delete</button>
             </div>
         )
     }
