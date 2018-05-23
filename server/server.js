@@ -18,6 +18,8 @@ const adminProductRouter = require('./routes/admin.routes/admin.products.router'
 //orgLeader routes
 const orgLeaderOrderRouter = require('./routes/org.leader.routes/org.leader.order.router');
 
+//customer routes
+const customerStorefrontRouter = require('./routes/customer.routes/customer.storefront.router')
 // const orgLeaderRouter = require('./routes/org.leader.router');
 // const customerRouter = require('./routes/customer.router')
 
@@ -41,6 +43,8 @@ app.use('/admin/campaign', adminCampaignRouter);
 app.use('/admin/product', adminProductRouter);
 //org Leader routes
 app.use('/orgleader/order',orgLeaderOrderRouter);
+//customer routes
+app.use('/fundraiser',customerStorefrontRouter)
 // app.use('/api/orgleader', orgLeaderRouter);
 // app.use('/api/customer', customerRouter);
 
