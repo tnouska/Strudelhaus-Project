@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+// import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -95,9 +95,6 @@ if (this.props.cart.length >= 1){
        
         let content = null;
 
-
-
-    if (this.props.user.userName) {
       content = (
         <div>
              
@@ -105,16 +102,13 @@ if (this.props.cart.length >= 1){
              {displayOrder}
              
              <h1>Total ${total}</h1>
-     
-             
+      
       </div>
       
       )
-    }
+    
     return (
       <div>
-       
-       
         { content }
         </div>
     )
