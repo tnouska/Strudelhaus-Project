@@ -15,6 +15,9 @@ const adminPipelineRouter = require('./routes/admin.routes/admin.pipeline.router
 const adminOrganizationRouter = require('./routes/admin.routes/admin.organization.router');
 const adminCampaignRouter = require('./routes/admin.routes/admin.campaign.router');
 const adminProductRouter = require('./routes/admin.routes/admin.products.router');
+//orgLeader routes
+const orgLeaderOrderRouter = require('./routes/org.leader.routes/org.leader.order.router');
+
 // const orgLeaderRouter = require('./routes/org.leader.router');
 // const customerRouter = require('./routes/customer.router')
 
@@ -36,6 +39,8 @@ app.use('/admin/pipeline', adminPipelineRouter);
 app.use('/admin/organization', adminOrganizationRouter);
 app.use('/admin/campaign', adminCampaignRouter);
 app.use('/admin/product', adminProductRouter);
+//org Leader routes
+app.use('/orgleader/order',orgLeaderOrderRouter);
 // app.use('/api/orgleader', orgLeaderRouter);
 // app.use('/api/customer', customerRouter);
 
