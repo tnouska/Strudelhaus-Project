@@ -3,7 +3,7 @@ CREATE TABLE "person"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "username" varchar(80) NOT NULL UNIQUE,
-    "password" varchar(1000) NOT NULL,
+    "password" varchar(1000),
     "role" varchar(500) 
 );
 
@@ -79,6 +79,9 @@ CREATE TABLE "order"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "customer_id" INT REFERENCES "customer",
-    "available_item_id" INT REFERENCES "available_item",
+    "product_name" varchar(1000),
+    "product_price" varchar(200),
+    "product_sku" varchar(200),
+    "product_description" varchar(1000),
     "quantity" int NOT NULL DEFAULT '0'
 );
