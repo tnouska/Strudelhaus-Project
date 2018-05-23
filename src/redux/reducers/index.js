@@ -5,6 +5,7 @@ import pipeline from './pipelineReducer';
 import organization from './organizationReducer';
 import campaign from './campaignReducer';
 import product from './productReducer';
+import orgLeaderOrder from './orgLeaderOrderReducer';
 
 const store = combineReducers({
   user,
@@ -13,6 +14,7 @@ const store = combineReducers({
   campaign,
   pipeline,
   organization,
+  orgLeaderOrder,
 });
 
 export default store;
