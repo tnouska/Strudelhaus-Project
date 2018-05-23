@@ -1,6 +1,6 @@
-const orgLeaderOrder = ( state = [], action) => {
+const order = ( state = [], action) => {
     switch(action.type) {
-        case 'FETCH_EVENT':
+        case 'FETCH_ORDER':
         console.log('orgLeaderOrder:', action.payload);
         return action.payload
         default:
@@ -8,4 +8,4 @@ const orgLeaderOrder = ( state = [], action) => {
     }
 }
 
-export default orgLeaderOrder;
+export default order;
