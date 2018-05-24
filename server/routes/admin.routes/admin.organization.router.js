@@ -73,7 +73,7 @@ router.post('/', (req, res) => {
                         ($1,$2,$3,$4) 
                     RETURNING "id"`
 
-                const personResult = await client.query(queryText,[req.body.username,req.body.role],password,token);
+                const personResult = await client.query(queryText, [req.body.contact_email,'leader',password,token]);
 
                 const personId = personResult.rows[0].id;
                 let queryText2 = `INSERT INTO organization
