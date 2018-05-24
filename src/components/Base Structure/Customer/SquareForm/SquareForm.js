@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+const mapStateToProps = state => ({
+    
+  view: state.toggleShoppingView,
+  cart: state.orderView,
+  customer: state.customerInfo
+});
+
+
 let total = 0;
+
 let chargeCardWithNonce = (nonce)=> {
   // let product_id = document.getElementById('product_id').value;
   let name = document.getElementById('name').value;
@@ -15,6 +24,7 @@ let chargeCardWithNonce = (nonce)=> {
   let http = new XMLHttpRequest();
   let url = "/api/payment/charges/charge_card";
   let params = "location_id=" + 'CBASEGcVZgUKS8RbqdkU-YjiBxggAQ'
+  
   + "&total=" + parseInt(total) 
   + "&name=" + name 
   + "&email=" + email 
@@ -51,13 +61,7 @@ let chargeCardWithNonce = (nonce)=> {
   }
   http.send(params);
 }
-
-const mapStateToProps = state => ({
-    
-    view: state.toggleShoppingView,
-    cart: state.orderView
-  });
-      
+  
     class SquareForm extends Component {
       constructor(props) {
         super(props);
@@ -160,7 +164,13 @@ const mapStateToProps = state => ({
       document.getElementById('submit').disabled = true;
       this.paymentForm.requestCardNonce();
       // paymentForm.destroy();
-      
+      this.props.dispatch({
+        type: 'POST_CUSTINFO',
+        payload: {
+                products: this.props.cart,
+                customerInfo: this.props.customer
+        }
+      });
       return false;
     }
   
