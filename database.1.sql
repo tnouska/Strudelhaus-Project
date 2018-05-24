@@ -22,13 +22,13 @@ CREATE TABLE "product"
     "sku" varchar(200),
     "img_url_1" varchar(1000),
     "img_url_2" varchar(1000),
-    "product_type" INT REFERENCES "product_type"
+    "product_type" INT REFERENCES "product_type" ON DELETE CASCADE
 );
 
 CREATE TABLE "organization"
 (
     "id" serial NOT NULL PRIMARY KEY,
-    "person_id" INT REFERENCES "person",
+    "person_id" INT REFERENCES "person" ON DELETE CASCADE,
     "name" varchar(500) NOT NULL,
     "street_address" varchar(500) NOT NULL,
     "city" varchar(500) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE "organization"
 CREATE TABLE "campaign"
 (
     "id" serial NOT NULL PRIMARY KEY,
-    "organization_id" INT REFERENCES "organization",
+    "organization_id" INT REFERENCES "organization" ON DELETE CASCADE,
     "url" varchar(500) UNIQUE,
     "name" varchar(500) NOT NULL,
     "date_start" varchar(500) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE "campaign"
 CREATE TABLE "customer"
 (
     "id" serial NOT NULL PRIMARY KEY,
-    "campaign_id" int REFERENCES "campaign",
+    "campaign_id" int REFERENCES "campaign" ON DELETE CASCADE,
     "notes" varchar(1000),
     "street_address" varchar(500),
     "city" varchar(500),
@@ -71,17 +71,18 @@ CREATE TABLE "customer"
 CREATE TABLE "available_item"
 (
     "id" serial NOT NULL PRIMARY KEY,
-    "campaign_id" INT REFERENCES "campaign",
-    "product_id" int REFERENCES "product"
+    "campaign_id" INT REFERENCES "campaign" ON DELETE CASCADE,
+    "product_id" int REFERENCES "product" ON DELETE CASCADE
 );
 
 CREATE TABLE "order"
 (
     "id" serial NOT NULL PRIMARY KEY,
-    "customer_id" INT REFERENCES "customer",
+    "customer_id" INT REFERENCES "customer" ON DELETE CASCADE,
     "product_name" varchar(1000),
     "product_price" varchar(200),
     "product_sku" varchar(200),
     "product_description" varchar(1000),
+    "campaign_id" varchar(1000),
     "quantity" int NOT NULL DEFAULT '0'
 );

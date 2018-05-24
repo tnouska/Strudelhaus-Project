@@ -31,11 +31,9 @@ router.get('/', (req, res) => {
                 for (let i = 0; i < campaignResult.rows.length; i++) {
                     let queryText2 = `SELECT
                     SUM("order".quantity) as product_total,
-                    product.name as product_name
+                    "order".product_name
                     FROM "order" 
-                    JOIN available_item ON "order".available_item_id = available_item.id
-                    JOIN product ON available_item.product_id = product.id
-                    WHERE available_item.campaign_id = $1
+                    WHERE "order".campaign_id = $1
                     GROUP BY product.name
                     ORDER BY product.name asc;`
                     let campaignId = campaignResult.rows[i].campaign_id;
