@@ -92,4 +92,7 @@ console.log("square credit route", req.body)
 
 });
 
+router.post('/customerinfo', function(req,res){
+	console.log(req.body)
+});
 module.exports = router;

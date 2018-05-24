@@ -8,8 +8,8 @@ import productSaga from './productSaga';
 import orgLeaderOrderSaga from './orgLeaderOrderSaga';
 import currentOrder from './currentOrder';
 import customerProductsSaga from './customerProducts';
-import currentCustomerInfoSaga from './currentCustomerInfoSaga'
-
+import currentCustomerInfoSaga from './currentCustomerInfoSaga';
+import customerInfoPostSaga from './customerInfoPostSaga';
 
 export default function* rootSaga() {
   yield all([
@@ -22,7 +22,8 @@ export default function* rootSaga() {
     orgLeaderOrderSaga(),
     currentOrder(),
     customerProductsSaga(),
-    currentCustomerInfoSaga()
+    currentCustomerInfoSaga(),
+    customerInfoPostSaga()
     // watchIncrementAsync()
   ]);
 }
