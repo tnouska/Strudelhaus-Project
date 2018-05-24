@@ -25,12 +25,10 @@ router.get('/:id', (req, res) => {
                 for (let i = 0; i < campaignOrders.rows.length; i++) {
                     campaignOrders.rows[i].customer_id;
                     let queryText2 = `SELECT
-                        product.name,
-                        product.price,
+                        product_name as name,
+                        product_price as price,
                         "order".quantity
                         FROM "order"
-                        JOIN available_item ON "order".available_item_id = available_item.id
-                        JOIN product ON available_item.product_id = product.id
                         WHERE "order".customer_id = $1;`
                     const customerOrder = await client.query(queryText2, [campaignOrders.rows[i].customer_id]);
                     for (let i = 0; i < customerOrder.rows.length; i++) {
