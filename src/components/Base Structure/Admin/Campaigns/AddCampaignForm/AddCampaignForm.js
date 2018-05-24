@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, DropdownButton, MenuItem } from 'react-bootstrap';
 
 class AddCampaignForm extends Component {
     constructor(props){
         super(props);
         this.state = ({
             newCampaign: {
-                organization_id: 2,
+                organization_id: '',
                 name: '',
                 url: '',
                 info_url: '',
@@ -19,6 +20,12 @@ class AddCampaignForm extends Component {
         });
     };
 
+    componentDidMount(){
+        this.props.dispatch({
+            type: 'GET_ORGANIZATION',
+        })
+    }
+    
     addCampaign = (event) => {
         event.preventDefault();
         console.log(this.state.newCampaign);
@@ -30,6 +37,7 @@ class AddCampaignForm extends Component {
         // Clear input fields after dispatching
         this.setState({
             newCampaign: {
+                organization_id: '',
                 name: '',
                 url: '',
                 info_url: '',
@@ -55,10 +63,20 @@ class AddCampaignForm extends Component {
     }
 
     render(){
+        let orgOptions = this.props.reduxState.organization.map((orgOption) => {
+            return(<option key={orgOption.organization_id} value={orgOption.organization_id}
+                    >{orgOption.organization_name}
+                    </option>)
+        })
+
         return(
             <div>
                 <form id="addCampForm">
                     {/* <input value={this.state.newCampaign.organization_id} placeholder="Organization" onChange={this.handleInput("organization_id")}/> */}
+                    <select title="Organization" id="orgSelect" onChange={this.handleInput("organization_id")}
+                        value={this.state.newCampaign.organization_id}>
+                        {orgOptions}
+                    </select>
                     <input value={this.state.newCampaign.name} placeholder="Campaign Name" onChange={this.handleInput("name")}/>
                     <input value={this.state.newCampaign.url} placeholder="Campaign URL" onChange={this.handleInput("url")}/>
                     <input value={this.state.newCampaign.info_url} placeholder="Info URL" onChange={this.handleInput("info_url")}/>
