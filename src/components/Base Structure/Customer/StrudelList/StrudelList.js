@@ -6,12 +6,6 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 
 
-let products = [{name:'apple', price:15.00, quantity:0},
-                {name:'berry', price:15.00, quantity:0},
-                {name:'15 cheese', price:20.00, quantity:0},
-                {name:'30 cheese', price:50.00, quantity:0}]
-
-
 const mapStateToProps = state => ({
     // user: state.user,
     // login: state.login,

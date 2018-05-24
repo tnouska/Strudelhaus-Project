@@ -8,7 +8,7 @@ let unirest = require('unirest');
 let base_url = "https://connect.squareup.com/v2";
 
 // Data store for product cost
-let product_cost = {"001": 1500, "002": 2000, "003": 3000};
+// let product_cost = {"001": 1500, "002": 2000, "003": 3000};
 
 function findLocation(callback) {
 	unirest.get(base_url + '/locations')
@@ -58,7 +58,7 @@ console.log("square credit route", req.body)
 
 	// // Make sure amount is a valid integer
 	// var amount = product_cost[request_params.product_id]
-		var amount = 1500;
+		let amount = parseInt(req.body.total * 100);
 	// To learn more about splitting transactions with additional recipients,
 	// see the Transactions API documentation on our [developer site]
 	// (https://docs.connect.squareup.com/payments/transactions/overview#mpt-overview).
@@ -86,6 +86,7 @@ console.log("square credit route", req.body)
 		}else{
             console.log(response.body)
 			res.json({status: 200})
+			// res.send(response.body)
 		}
 	})
 

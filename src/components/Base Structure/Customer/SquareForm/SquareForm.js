@@ -1,10 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+let total = 0;
+let chargeCardWithNonce = (nonce)=> {
+  // let product_id = document.getElementById('product_id').value;
+  let name = document.getElementById('name').value;
+  let email = document.getElementById('email').value;
+  let street_address_1 = document.getElementById('street_address_1').value;
+  let street_address_2 = document.getElementById('street_address_2').value;
+  let city = document.getElementById('city').value;
+  let state = document.getElementById('state').value;
+  let zip = document.getElementById('zip').value;
+  
+  let http = new XMLHttpRequest();
+  let url = "/api/payment/charges/charge_card";
+  let params = "location_id=" + 'CBASEGcVZgUKS8RbqdkU-YjiBxggAQ'
+  + "&total=" + parseInt(total) 
+  + "&name=" + name 
+  + "&email=" + email 
+  + "&nonce=" + nonce
+  + "&street_address_1=" + street_address_1
+  + "&street_address_2=" + street_address_2
+  + "&city=" + city
+  + "&state=" + state
+  + "&zip=" + zip;
+
+  http.open("POST", url, true);
+
+  //Send the proper header information along with the request
+  http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  http.setRequestHeader("X-CSRF-Token", "<%= form_authenticity_token %>");
+
+  http.onreadystatechange = function() {//Call a function when the state changes.
+      if(http.readyState == 4 && http.status == 200) {
+        let data = JSON.parse(http.responseText)
+        if (data.status == 200) {
+          document.getElementById("successNotification").style.display = "block";
+          document.getElementById("payment-form").style.display = "none";
+          // document.getElementById("sq-walletbox").style.display = "none";
+          window.scrollTo(0, 0);
+        }else if (data.status == 400){
+          let error_html = ""
+          for (let i =0; i < data.errors.length; i++){
+            error_html += "<li> " + data.errors[i].detail + " </li>";
+          }
+          document.getElementById("card-errors").innerHTML = error_html;
+          document.getElementById('submit').disabled = false;
+        }
+      }
+  }
+  http.send(params);
+}
+
 const mapStateToProps = state => ({
     
     view: state.toggleShoppingView,
-    total: state.orderTotal
+    cart: state.orderView
   });
       
     class SquareForm extends Component {
@@ -45,35 +96,11 @@ const mapStateToProps = state => ({
           placeholder: '94110'
         },
   
-        // Initialize Apple Pay placeholder ID
-        applePay: {
-          elementId: 'sq-apple-pay'
-        },
-  
-        // Initialize Masterpass placeholder ID
-        masterpass: {
-          elementId: 'sq-masterpass'
-        },
-  
         callbacks: {
           methodsSupported: function (methods) {
-  
-            let applePayBtn = document.getElementById('sq-apple-pay');
-            let applePayLabel = document.getElementById('sq-apple-pay-label');
-            let masterpassBtn = document.getElementById('sq-masterpass');
-            let masterpassLabel = document.getElementById('sq-masterpass-label');
-  
-            
-            if (methods.applePay === true) {
-              applePayBtn.style.display = 'inline-block';
-              applePayLabel.style.display = 'none' ;
-            }
-            
-            if (methods.masterpass === true) {
-              masterpassBtn.style.display = 'inline-block';
-              masterpassLabel.style.display = 'none';
-            }
+
           },
+
           cardNonceResponseReceived: function(errors, nonce, cardData) {
             if (errors){
               let error_html = ""
@@ -84,11 +111,12 @@ const mapStateToProps = state => ({
               document.getElementById('submit').disabled = false;
             }else{
               document.getElementById("card-errors").innerHTML = "";
-              this.chargeCardWithNonce(nonce);
+              chargeCardWithNonce(nonce);
             }
             
             
           },
+
           unsupportedBrowserDetected: function() {
             
           },
@@ -99,7 +127,7 @@ const mapStateToProps = state => ({
               countryCode: "US",
   
               total: {
-                label: "daydreammsp",
+                label: "company",
                 amount: "1.01",
                 pending: false,
               },
@@ -121,13 +149,14 @@ const mapStateToProps = state => ({
         }
       });
   
-      renderForm =()=>{
-        this.paymentForm.build()
-      }
+      // renderForm =()=>{
+      //   this.paymentForm.build()
+      // }
     
   
-     paymentFormSubmit = function(){
-      console.log('submit clicked');
+     paymentFormSubmit = function(total){
+
+      console.log('total', total);
       document.getElementById('submit').disabled = true;
       this.paymentForm.requestCardNonce();
       // paymentForm.destroy();
@@ -135,68 +164,30 @@ const mapStateToProps = state => ({
       return false;
     }
   
-     chargeCardWithNonce = function(nonce) {
-      let product_id = document.getElementById('product_id').value;
-      let name = document.getElementById('name').value;
-      let email = document.getElementById('email').value;
-      let street_address_1 = document.getElementById('street_address_1').value;
-      let street_address_2 = document.getElementById('street_address_2').value;
-      let city = document.getElementById('city').value;
-      let state = document.getElementById('state').value;
-      let zip = document.getElementById('zip').value;
-      
-      let http = new XMLHttpRequest();
-      let url = "/api/payment/charges/charge_card";
-      let params = "location_id=" + 'CBASEGcVZgUKS8RbqdkU-YjiBxggAQ'
-      + "&product_id=" + product_id 
-      + "&name=" + name 
-      + "&email=" + email 
-      + "&nonce=" + nonce
-      + "&street_address_1=" + street_address_1
-      + "&street_address_2=" + street_address_2
-      + "&city=" + city
-      + "&state=" + state
-      + "&zip=" + zip;
-  
-      http.open("POST", url, true);
-  
-      //Send the proper header information along with the request
-      http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      http.setRequestHeader("X-CSRF-Token", "<%= form_authenticity_token %>");
-  
-      http.onreadystatechange = function() {//Call a function when the state changes.
-          if(http.readyState == 4 && http.status == 200) {
-            let data = JSON.parse(http.responseText)
-            if (data.status == 200) {
-              document.getElementById("successNotification").style.display = "block";
-              document.getElementById("payment-form").style.display = "none";
-              // document.getElementById("sq-walletbox").style.display = "none";
-              window.scrollTo(0, 0);
-            }else if (data.status == 400){
-              let error_html = ""
-              for (let i =0; i < data.errors.length; i++){
-                error_html += "<li> " + data.errors[i].detail + " </li>";
-              }
-              document.getElementById("card-errors").innerHTML = error_html;
-              document.getElementById('submit').disabled = false;
-            }
-          }
-      }
-      http.send(params);
-    }
-      componentDidMount() {
-        //   this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
+    
+
+componentDidMount() {
           
         }
       
-        componentDidUpdate() {
-        //   if (!this.props.user.isLoading && this.props.user.userName === null) {
-        //     this.props.history.push('home');      
-        //   }
+componentDidUpdate() {
   
         }
+
+add(a,b){
+          return parseInt(a) + parseInt(b)
+          }
+
       render() {
+  let totalArr = this.props.cart && this.props.cart.map( (product)=>{
+      return(
+        product.quantity * product.product_price
+      )
+  })
   
+  if (this.props.cart.length > 0){
+     total = totalArr.reduce(this.add);
+  }
 
       return (
         <div>
@@ -206,9 +197,9 @@ const mapStateToProps = state => ({
     Card Charged Succesfully!!
     </div>
   
-    <form id="payment-form" onSubmit={()=> this.paymentFormSubmit()}>
+    <form id="payment-form" action="#" onSubmit={()=> this.paymentFormSubmit(total)}>
   
-    <h1 value={this.props.total} id="product_id" name="product_id">{this.props.total}</h1>
+    <h1 id="product_id" name="product_id">{total}</h1>
     
    <h3>Customer Info  </h3>
    
