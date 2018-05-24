@@ -44,13 +44,13 @@ router.get('/logout', (req, res) => {
 });
 
 router.put('/newpassword', (req,res)=>{
+  const password = encryptLib.encryptPassword(req.body.password)
+  const token = req.body.token
   if (token.length === 40) {
     (async()=>{
       const client = await pool.connect();
       try {
         await client.query('BEGIN')
-        const password = encryptLib.encryptPassword(req.body.password)
-        const token = req.body.token
         const queryText = `UPDATE person SET password = $1 WHERE token = $2`
         await client.query(queryText,[password,token])
         const queryText2 = `UPDATE person SET token = $1`
@@ -70,7 +70,7 @@ router.put('/newpassword', (req,res)=>{
       res.sendStatus(500);
     });//end async function
   } else {
-    res.send({error: 'Token not long enough must be 40 characters'})
+    res.send(500)
   };//end if/else
 });//end router.put
 
