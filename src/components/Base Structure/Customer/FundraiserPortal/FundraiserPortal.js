@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
+import CustomerInforForm from '../CustomerInfoForm/CustomerInfoForm'
 
 import { Button } from 'react-bootstrap';
 import { Grid } from 'react-bootstrap';
@@ -23,7 +23,8 @@ class FundraiserPortal extends Component {
       super(props);
   
       this.state = {
-        show: false
+        show: false,
+        
       };
     }
     handleClose =()=> {
@@ -46,6 +47,7 @@ componentDidUpdate() {
         
       }
 
+
 toggleShop = ()=> {
         this.props.dispatch({
           type: 'SHOP_VIEW',
@@ -65,6 +67,7 @@ render() {
   <Row className="show-grid">
     <Col xs={12} md={8}>
              <StrudelList campaignName={this.props.match.params.name} />
+             <CustomerInforForm />
              <SquareForm />
     </Col>
     <Col xs={6} md={4}>

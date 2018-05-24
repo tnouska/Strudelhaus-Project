@@ -100,7 +100,7 @@ if (this.props.cart.length >= 1){
              {displayOrder}
              
              <h1>Total ${total}</h1>
-      
+             <Button>Submit Order</Button>
       </div>
     )
   }

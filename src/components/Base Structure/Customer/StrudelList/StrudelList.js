@@ -5,8 +5,7 @@ import StrudelListItem from './StrudelListItem/StrudelListItem';
 
 
 const mapStateToProps = state => ({
-    // user: state.user,
-    // login: state.login,
+    
     cart: state.orderView,
     products: state.customerProducts
   });

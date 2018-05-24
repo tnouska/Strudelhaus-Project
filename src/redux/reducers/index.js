@@ -9,6 +9,8 @@ import order from './orderReducer';
 import orderView from './orderViewReducer';
 import customerProducts from './customerProductReducer';
 import orgLeaderPerformance from './orgLeaderPerformanceReducer'
+import customerInfo from './currentCustomerReducer';
+
 
 
 const store = combineReducers({
@@ -22,6 +24,7 @@ const store = combineReducers({
   orderView,
   customerProducts,
   orgLeaderPerformance
+  customerInfo
 });
 
 export default store;
