@@ -39,13 +39,13 @@ router.get('/', (req, res) => {
                             campaignRowsResult[i].goal = Number(campaignRowsResult[i].goal.replace(',',''))
                             let queryText3 = `SELECT
                                 SUM("order".quantity) as item_total,
-                                product.name as product_name,
-                                product.price
+                                "order".product_name,
+                                "order".price
                                 FROM "order" 
                                 JOIN available_item ON "order".available_item_id = available_item.id
                                 JOIN product ON available_item.product_id = product.id
                                 WHERE available_item.campaign_id = $1
-                                GROUP BY product.name, product.price
+                                GROUP BY "order".product_name, "order".price
                                 ORDER BY product.name asc;`
                             let totalSales = 0
                             let orderResult = await client.query(queryText3, [campaignRowsResult[i].campaign_id]);

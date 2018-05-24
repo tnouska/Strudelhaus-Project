@@ -79,6 +79,7 @@ CREATE TABLE "order"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "customer_id" INT REFERENCES "customer",
+    "availible_item_id" INT REFERENCES "available_item",
     "product_name" varchar(1000),
     "product_price" varchar(200),
     "product_sku" varchar(200),
