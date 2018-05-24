@@ -8,6 +8,7 @@ import product from './productReducer';
 import order from './orderReducer';
 import orderView from './orderViewReducer';
 import customerProducts from './customerProductReducer';
+import customerInfo from './currentCustomerReducer';
 
 
 const store = combineReducers({
@@ -19,7 +20,8 @@ const store = combineReducers({
   organization,
   order,
   orderView,
-  customerProducts
+  customerProducts,
+  customerInfo
 });
 
 export default store;
