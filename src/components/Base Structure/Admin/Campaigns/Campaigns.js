@@ -30,7 +30,6 @@ class Campaigns extends Component {
         this.setState({
             selectedOrganization: event.target.value
         })
-        console.log(this.state);
     }
     
     componentDidMount() {
@@ -54,7 +53,7 @@ class Campaigns extends Component {
     }
     render(){
         let orgOptions = this.props.reduxState.organization.map((orgOption) => {
-            return(<option key={orgOption.organization_id} value={orgOption.organization_name}
+            return(<option key={orgOption.organization_id} value={orgOption.organization_id}
                     >{orgOption.organization_name}
                     </option>)
         })
