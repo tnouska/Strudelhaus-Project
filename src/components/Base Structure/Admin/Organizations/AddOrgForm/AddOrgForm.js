@@ -56,7 +56,6 @@ class AddOrgForm extends Component {
     render(){
         return(
             <div>
-                <h4>Add Organization</h4>
                 <form id="addOrgForm">
                     <input value={this.state.newOrg.name} placeholder="Name" onChange={this.handleInput("name")}/>
                     <input value={this.state.newOrg.street_address} placeholder="Mailing Address" onChange={this.handleInput("street_address")}/>
