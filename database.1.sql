@@ -3,7 +3,8 @@ CREATE TABLE "person"
 (
     "id" serial NOT NULL PRIMARY KEY,
     "username" varchar(80) NOT NULL UNIQUE,
-    "password" varchar(1000),
+    "password" varchar(1000) NOT NULL,
+    "token" varchar(100),
     "role" varchar(500) 
 );
 

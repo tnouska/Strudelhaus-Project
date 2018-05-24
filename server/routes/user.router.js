@@ -43,4 +43,20 @@ router.get('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.put('/newpassword', (req,res)=>{
+  const password = encryptLib.encryptPassword(req.body.password)
+  const token = req.body.token
+  const queryText = `UPDATE person SET password = $1 WHERE token = $2`
+  if (token.length === 40) {
+    pool.query(queryText, [password, token])
+    .then((result)=>{
+      res.sendStatus(200);
+    })
+    .catch((error)=>{
+      console.log('error in /newpassword .put: ', error);
+      res.sendStatus(500);
+    })
+  }
+})
+
 module.exports = router;
