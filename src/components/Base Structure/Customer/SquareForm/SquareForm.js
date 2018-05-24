@@ -201,9 +201,9 @@ add(a,b){
   
     <h1 id="product_id" name="product_id">{total}</h1>
     
-   <h3>Customer Info  </h3>
+   <h3>Billing Info  </h3>
    
-    <label>Customer Name</label>
+    <label>Billing Name</label>
     <input type="text" id="name" name="name"  placeholder="Name"/>
   
     <label>Email</label>
@@ -224,7 +224,6 @@ add(a,b){
     <option value=""></option>
     <option value="AL">Alabama</option>
     <option value="MN">Alaska</option>
-    
     </select>
   
     <label>Zip</label>
