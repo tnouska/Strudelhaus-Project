@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar, Button, Panel } from 'react-bootstrap';
 import CampaignItemProduct from './CampaignItemProduct/CampaignItemProduct';
 
 
 class CampaignItem extends Component {
+    constructor(props){
+        super(props);
+        this.state = ({
+            panelOpen: false
+        })
+    }
 
     deleteCampaign = () => {
         this.props.dispatch({
@@ -26,17 +32,27 @@ class CampaignItem extends Component {
 
 
         return(
-            <div className="campaignItemDiv">
-                <p>{this.props.campaign.campaign_name}</p>
-                <p>Start Date: {this.props.campaign.date_start}</p>
-                <p>End Date: {this.props.campaign.date_end}</p>
-                <p>Sales Goal: ${this.props.campaign.goal}</p>
-                <p>Total Sales: ${totalSales}</p>
-                <ProgressBar now={goalPercentage} />
-                <p>Products:</p>
-                {campaignProducts}
-                <button>Edit</button>
-                <button onClick={this.deleteCampaign}>Delete</button>
+            <div>
+                <Panel id="collapsible-panel-example-2">
+                    <Panel.Heading>
+                        <Panel.Title toggle>
+                        {this.props.campaign.campaign_name}
+                        </Panel.Title>
+                    </Panel.Heading>
+                    <Panel.Collapse>
+                        <Panel.Body>
+                            <p>Start Date: {this.props.campaign.date_start}</p>
+                            <p>End Date: {this.props.campaign.date_end}</p>
+                            <p>Sales Goal: ${this.props.campaign.goal}</p>
+                            <p>Total Sales: ${totalSales}</p>
+                            <ProgressBar now={goalPercentage} />
+                            <p>Products:</p>
+                            {campaignProducts}
+                            <button>Edit</button>
+                            <button onClick={this.deleteCampaign}>Delete</button>
+                        </Panel.Body>
+                    </Panel.Collapse>
+                </Panel>
             </div>
         )
     };

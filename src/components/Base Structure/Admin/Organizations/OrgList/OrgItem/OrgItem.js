@@ -43,12 +43,6 @@ class OrgItem extends Component {
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>
-                {/* // <p>{this.props.org.organization_name}</p>
-                // <p>Contact: {this.props.org.contact_name}</p>
-                // <p>Campaigns</p>
-                // {campaignList}
-                // <button>Edit</button>
-                // <button onClick={this.deleteOrg}>Delete</button> */}
             </div>
         )
     }
