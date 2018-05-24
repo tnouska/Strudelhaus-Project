@@ -2,12 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
+import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap';
 import AdminNav from '../../../Nav/AdminNav';
 import AddOrgForm from '../Organizations/AddOrgForm/AddOrgForm';
 import OrgList from './OrgList/OrgList';
 import './Organizations.css';
 
 class Organizations extends Component {
+    constructor(props) {
+        super(props);
+        this.state = ({
+            showModal: false
+        })
+    }
+
+    handleClose = () => {
+        this.setState({ showModal: false });
+      }
+    
+    handleShow = () => {
+        this.setState({ showModal: true });
+        // console.log('showing!');
+    }
+
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.props.dispatch({ type: 'GET_ORGANIZATION'});
@@ -30,7 +47,18 @@ class Organizations extends Component {
         return(
             <div>
                 <AdminNav/>
-                <AddOrgForm/>
+                <Button onClick={this.handleShow}>Create Organization</Button>
+                <Modal show={this.state.showModal} onHide={this.handleClose}>
+                    <ModalHeader>
+                        <Modal.Title>Enter Organization Details</Modal.Title>
+                    </ModalHeader>
+                    <ModalBody>
+                        <AddOrgForm/>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={this.handleClose}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
                 <OrgList/>
             </div>
         )
