@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ProgressBar } from 'react-bootstrap';
 import CampaignItemProduct from './CampaignItemProduct/CampaignItemProduct';
+
 
 class CampaignItem extends Component {
 
@@ -16,12 +18,15 @@ class CampaignItem extends Component {
         let campaignProducts = this.props.campaign.productList.map((product) => {
             return (<CampaignItemProduct key={product.product_name} product={product}/>)
         });
-        
         let totalSales = 0;
+        let goalPercentage = 0;
         for (let i = 0; i < this.props.campaign.productList.length; i++){
             totalSales = totalSales + this.props.campaign.productList[i].productSales;
-        }
-        console.log('TOTAL', totalSales);
+            goalPercentage = totalSales/this.props.campaign.goal * 100;
+            console.log(totalSales, goalPercentage);
+            
+        };
+
 
         return(
             <div className="campaignItemDiv">
@@ -30,6 +35,7 @@ class CampaignItem extends Component {
                 <p>End Date: {this.props.campaign.date_end}</p>
                 <p>Sales Goal: ${this.props.campaign.goal}</p>
                 <p>Total Sales: ${totalSales}</p>
+                <ProgressBar now={goalPercentage} />
                 <p>Products:</p>
                 {campaignProducts}
                 <button>Edit</button>
