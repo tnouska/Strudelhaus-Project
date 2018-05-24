@@ -7,7 +7,6 @@ import CampaignItemProduct from './CampaignItemProduct/CampaignItemProduct';
 class CampaignItem extends Component {
 
     deleteCampaign = () => {
-        console.log('org:', this.props.campaign);
         this.props.dispatch({
             type: 'DELETE_CAMPAIGN',
             payload: this.props.campaign
@@ -23,8 +22,6 @@ class CampaignItem extends Component {
         for (let i = 0; i < this.props.campaign.productList.length; i++){
             totalSales = totalSales + this.props.campaign.productList[i].productSales;
             goalPercentage = totalSales/this.props.campaign.goal * 100;
-            console.log(totalSales, goalPercentage);
-            
         };
 
 

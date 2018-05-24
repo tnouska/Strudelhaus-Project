@@ -4,7 +4,6 @@ import OrderItem from './OrderItem/OrderItem';
 
 class OrderList extends Component {
 
-
     componentDidMount(){
         this.props.dispatch({
             type: 'GET_ORDER',
