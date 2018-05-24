@@ -30,8 +30,10 @@ router.get('/', (req, res) => {
                             campaign.id as campaign_id,
                             campaign.date_start,
                             campaign.date_end,
-                            campaign.goal
+                            campaign.goal,
+                            organization.id
                             FROM campaign
+                            JOIN organization ON campaign.organization_id = organization.id
                             WHERE organization_id = $1;`
                         let campaignResult = await client.query(queryText2, [organizationRowsResult[i].organization_id]);
                         let campaignRowsResult = campaignResult.rows;
