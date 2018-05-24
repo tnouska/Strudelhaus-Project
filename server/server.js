@@ -17,7 +17,7 @@ const adminCampaignRouter = require('./routes/admin.routes/admin.campaign.router
 const adminProductRouter = require('./routes/admin.routes/admin.products.router');
 //orgLeader routes
 const orgLeaderOrderRouter = require('./routes/org.leader.routes/org.leader.order.router');
-
+const orgLeaderPerformanceRouter = require('./routes/org.leader.routes/org.leader.performance.router')
 //customer routes
 const customerStorefrontRouter = require('./routes/customer.routes/customer.storefront.router')
 // const orgLeaderRouter = require('./routes/org.leader.router');
@@ -46,6 +46,7 @@ app.use('/admin/campaign', adminCampaignRouter);
 app.use('/admin/product', adminProductRouter);
 //org Leader routes
 app.use('/orgleader/order',orgLeaderOrderRouter);
+app.use('/orgleader/performance', orgLeaderPerformanceRouter);
 //customer routes
 app.use('/fundraiser',customerStorefrontRouter)
 // app.use('/api/orgleader', orgLeaderRouter);
