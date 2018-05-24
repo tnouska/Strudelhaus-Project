@@ -5,7 +5,6 @@ import pipeline from './pipelineReducer';
 import organization from './organizationReducer';
 import campaign from './campaignReducer';
 import product from './productReducer';
-
 import order from './orderReducer';
 import orderView from './orderViewReducer';
 import customerProducts from './customerProductReducer';
