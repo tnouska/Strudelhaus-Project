@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Nav from '../../components/Nav/Nav';
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
-
 import { Button } from 'react-bootstrap';
+import StrudelListItem from './StrudelListItem/StrudelListItem';
 
 
 const mapStateToProps = state => ({
@@ -63,9 +61,10 @@ render() {
 let displayProducts = this.props.products && this.props.products.map( (product) => {
   return(
     
-      <Button key={product.product_name} onClick={()=>this.addToOrder(product)}>
-      <h2>{product.product_name} {product.product_price}</h2> 
-      </Button>
+      <StrudelListItem key={product.product_name} 
+      addToOrder={this.addToOrder}
+      product={product}/>
+      
   )
 })
 
