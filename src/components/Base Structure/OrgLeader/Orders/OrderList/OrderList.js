@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Table } from 'react-bootstrap';
 import OrderItem from './OrderItem/OrderItem';
 
 class OrderList extends Component {
@@ -19,7 +20,7 @@ class OrderList extends Component {
 
         return (
             <div>
-                <table>
+                <Table striped bordered condensed hover>
                     <thead>
                         <tr><th>Customer Name</th>
                             <th>Referral Name</th>
@@ -30,7 +31,7 @@ class OrderList extends Component {
                     <tbody>
                         {orderRows}
                     </tbody>
-                </table>
+                </Table>
             </div>
         )
     }

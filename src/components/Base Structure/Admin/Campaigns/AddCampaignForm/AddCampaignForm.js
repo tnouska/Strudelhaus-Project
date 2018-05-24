@@ -49,10 +49,6 @@ class AddCampaignForm extends Component {
         })
     };
 
-    selectOrg = (event) => {
-        console.log('selected', this.state.newCampaign);
-        
-    }
     // Capture user inputs so we can store in our local state
     handleInput = (propertyName) => {
         return (event) => {          
