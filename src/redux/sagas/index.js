@@ -8,6 +8,7 @@ import productSaga from './productSaga';
 import orgLeaderOrderSaga from './orgLeaderOrderSaga';
 import currentOrder from './currentOrder';
 import customerProductsSaga from './customerProducts';
+import orgLeaderPerformanceSaga from './orgLeaderPerformanceSaga'
 
 
 export default function* rootSaga() {
@@ -21,6 +22,7 @@ export default function* rootSaga() {
     orgLeaderOrderSaga(),
     currentOrder(),
     customerProductsSaga(),
+    orgLeaderPerformanceSaga(),
     // watchIncrementAsync()
   ]);
 }
