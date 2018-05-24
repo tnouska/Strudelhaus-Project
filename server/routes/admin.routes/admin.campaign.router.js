@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
                                 "order".product_price as price
                                 FROM "order" 
                                 WHERE "order".campaign_id = $1
-                                GROUP BY "order".product_name, "order".price
+                                GROUP BY "order".product_name, "order".product_price
                                 ORDER BY "order".product_name asc;`
                             let totalSales = 0
                             let orderResult = await client.query(queryText3, [campaignRowsResult[i].campaign_id]);
