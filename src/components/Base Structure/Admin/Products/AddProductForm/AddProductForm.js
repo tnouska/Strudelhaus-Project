@@ -53,7 +53,6 @@ class AddProductForm extends Component {
     render(){
         return(
             <div>
-                <h4>Add Product</h4>
                 <form id="addProductForm">
                     <input value={this.state.newProduct.name} placeholder="Name" onChange={this.handleInput("name")}/>
                     <input value={this.state.newProduct.sku} placeholder="SKU #" onChange={this.handleInput("sku")}/>

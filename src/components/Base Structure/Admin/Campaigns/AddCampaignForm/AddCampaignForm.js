@@ -57,7 +57,6 @@ class AddCampaignForm extends Component {
     render(){
         return(
             <div>
-                <h4>Add Campaign</h4>
                 <form id="addCampForm">
                     {/* <input value={this.state.newCampaign.organization_id} placeholder="Organization" onChange={this.handleInput("organization_id")}/> */}
                     <input value={this.state.newCampaign.name} placeholder="Campaign Name" onChange={this.handleInput("name")}/>

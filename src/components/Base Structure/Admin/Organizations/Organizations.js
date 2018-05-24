@@ -23,7 +23,6 @@ class Organizations extends Component {
     handleShow = () => {
         this.setState({ showModal: true });
         // console.log('showing!');
-        
     }
 
     componentDidMount() {

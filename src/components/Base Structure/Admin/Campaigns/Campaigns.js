@@ -2,12 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
+import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap';
 import AdminNav from '../../../Nav/AdminNav';
 import AddCampaignForm from '../Campaigns/AddCampaignForm/AddCampaignForm';
 import CampaignList from './CampaignList/CampaignList';
 import './Campaigns.css'
 
 class Campaigns extends Component {
+    constructor(props) {
+        super(props);
+        this.state = ({
+            showModal: false
+        })
+    }
+
+    handleClose = () => {
+        this.setState({ showModal: false });
+      }
+    
+    handleShow = () => {
+        this.setState({ showModal: true });
+        // console.log('showing!');
+    }
+    
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.props.dispatch({ type: 'GET_CAMPAIGN'});
@@ -30,7 +47,18 @@ class Campaigns extends Component {
         return(
             <div>
                 <AdminNav/>
-                <AddCampaignForm/>
+                <Button onClick={this.handleShow}>Create Campaign</Button>
+                <Modal show={this.state.showModal} onHide={this.handleClose}>
+                    <ModalHeader>
+                        <Modal.Title>Enter Campaign Details</Modal.Title>
+                    </ModalHeader>
+                    <ModalBody>
+                        <AddCampaignForm/>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={this.handleClose}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
                 <CampaignList/>
             </div>
         )
