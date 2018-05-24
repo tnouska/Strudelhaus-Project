@@ -1,0 +1,61 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Button,Modal,OverlayTrigger } from 'react-bootstrap';
+
+const mapStateToProps = state => ({
+    // user: state.user,
+    // login: state.login,
+    cart: state.orderView,
+    products: state.customerProducts
+  });
+
+class StrudelListItem extends React.Component {
+    constructor(props, context) {
+      super(props, context);
+  
+      
+  
+      this.state = {
+        show: false
+      };
+    }
+  
+    handleClose=()=> {
+      this.setState({ show: false });
+    }
+  
+    handleShow=()=> {
+      this.setState({ show: true });
+    }
+    handleAdd = (product)=>{
+        this.props.addToOrder(product)
+        this.handleClose()
+    }
+    render() {
+      
+  
+      return (
+        <div>
+          {/* <p>Click to get the full Modal experience!</p> */}
+  
+          <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
+            {this.props.product.product_name}
+          </Button>
+  
+          <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>{this.props.product.product_name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {this.props.product.product_description}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={()=>this.handleAdd(this.props.product)}>Add to Cart</Button>
+              <Button onClick={this.handleClose}>Close</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+      );
+    }
+  }
+  export default connect(mapStateToProps)(StrudelListItem);
