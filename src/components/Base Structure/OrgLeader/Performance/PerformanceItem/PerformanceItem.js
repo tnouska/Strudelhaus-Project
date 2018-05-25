@@ -7,27 +7,28 @@ class PerformanceItem extends Component {
         super(props);
         this.state = {}
     }
-    componentDidUpdate(){
-        console.log(this.props.selectedCampaign);
-        
-    }
+
 
     render(){
-        let selectedCampaignArray = this.props.reduxState.orgLeaderPerformance.filter(
+        let selectedCampaign = this.props.reduxState.orgLeaderPerformance.find(
             campaign => campaign.campaign_id === parseInt(this.props.selectedCampaign));
-        let selectedCampaign = {...selectedCampaignArray[0]}
-        console.log(selectedCampaign);
-        console.log(selectedCampaign.orderList);
-    
         let totalSales = 0;
         let goalPercentage = 0;
-        // for (let i = 0; i < selectedCampaign.orderList.length; i++){
-        //     totalSales = totalSales + selectedCampaign.orderList[i].productSales
-        // }
-        
+        let goal = 0;
+        if (selectedCampaign === undefined) {
+        } else {
+            for (let i = 0; i < selectedCampaign.orderList.length; i++){
+                totalSales = totalSales + selectedCampaign.orderList[i].productSales;
+                goal = selectedCampaign.goal;
+                goalPercentage = Math.round((totalSales/selectedCampaign.goal * 100));
+            };
+        }
         return(
             <div>
-                <h2>{selectedCampaign.campaign_name}</h2>
+                <h2>Current Sales: ${totalSales}</h2>
+                <h2>Campaign Goal: ${goal}</h2>
+                <h2>{goalPercentage}%</h2>
+                <ProgressBar now={goalPercentage} />
             </div>
         )
     }
