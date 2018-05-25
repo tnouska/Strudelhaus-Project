@@ -26,7 +26,7 @@ class Campaigns extends Component {
         // console.log('showing!');
     }
 
-    handleCampaignSelect = (event) => {
+    handleOrgSelect = (event) => {
         this.setState({
             selectedOrganization: event.target.value
         })
@@ -74,7 +74,7 @@ class Campaigns extends Component {
                     </ModalFooter>
                 </Modal>
                 <select title="Organization"
-                        value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
+                        value={this.state.selectedOrganization} onChange={this.handleOrgSelect}>
                         {orgOptions}
                 </select>
                 <CampaignList selectedOrganization={this.state.selectedOrganization}/>
