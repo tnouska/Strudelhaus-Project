@@ -7,6 +7,7 @@ import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 class Performance extends Component {
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: 5}})
       }
     
     componentDidUpdate() {

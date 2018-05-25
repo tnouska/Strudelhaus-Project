@@ -12,7 +12,8 @@ class Campaigns extends Component {
     constructor(props) {
         super(props);
         this.state = ({
-            showModal: false
+            showModal: false,
+            selectedOrganization: undefined
         })
     }
 
@@ -24,10 +25,17 @@ class Campaigns extends Component {
         this.setState({ showModal: true });
         // console.log('showing!');
     }
+
+    handleCampaignSelect = (event) => {
+        this.setState({
+            selectedOrganization: event.target.value
+        })
+    }
     
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.props.dispatch({ type: 'GET_CAMPAIGN'});
+        this.props.dispatch({ type: 'GET_ORGANIZATION'});
       }
     
     componentDidUpdate() {
@@ -44,6 +52,12 @@ class Campaigns extends Component {
         // this.props.history.push('home');
     }
     render(){
+        let orgOptions = this.props.reduxState.organization.map((orgOption) => {
+            return(<option key={orgOption.organization_id} value={orgOption.organization_id}
+                    >{orgOption.organization_name}
+                    </option>)
+        })
+
         return(
             <div>
                 <AdminNav/>
@@ -59,7 +73,11 @@ class Campaigns extends Component {
                         <Button onClick={this.handleClose}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
-                <CampaignList/>
+                <select title="Organization"
+                        value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
+                        {orgOptions}
+                </select>
+                <CampaignList selectedOrganization={this.state.selectedOrganization}/>
             </div>
         )
     }
