@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// This component displays more info related to each unique Order for the selected Campaign
+
 class OrderItem extends Component {
 
     render() {
@@ -12,8 +14,7 @@ class OrderItem extends Component {
             </tr>
         )
     }
-}
-
+};
 
 const mapReduxStateToProps = reduxState => ({
     user: reduxState.user,
