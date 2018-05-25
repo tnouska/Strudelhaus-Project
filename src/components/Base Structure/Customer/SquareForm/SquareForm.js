@@ -116,6 +116,7 @@ let chargeCardWithNonce = (nonce)=> {
             }else{
               document.getElementById("card-errors").innerHTML = "";
               chargeCardWithNonce(nonce);
+              
             }
             
             
@@ -153,9 +154,7 @@ let chargeCardWithNonce = (nonce)=> {
         }
       });
   
-      // renderForm =()=>{
-      //   this.paymentForm.build()
-      // }
+     
     
   
      paymentFormSubmit = function(total){
@@ -164,16 +163,18 @@ let chargeCardWithNonce = (nonce)=> {
       document.getElementById('submit').disabled = true;
       this.paymentForm.requestCardNonce();
       // paymentForm.destroy();
+      this.postLocal();
+      return false;
+    }
+    postLocal=()=>{
       this.props.dispatch({
         type: 'POST_CUSTINFO',
         payload: {
-                products: this.props.cart,
-                customerInfo: this.props.customer
+                customerInfo: this.props.customer.customerInfo,
+                campaignName: this.props.campaignName
         }
       });
-      return false;
-    }
-  
+     }
     
 
 componentDidMount() {
