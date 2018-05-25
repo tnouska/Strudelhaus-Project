@@ -4,11 +4,11 @@ const { rejectUnauthenticated } = require('../../modules/authentication-middlewa
 const router = express.Router();
 
 
-router.get('/:id', (req, res) => {    
+router.get('/:id', (req, res) => {
     if (req.isAuthenticated()) {
-    //checking if user is authenticated
-        (async()=>{
-        //creates async function
+        //checking if user is authenticated
+        (async () => {
+            //creates async function
             const client = await pool.connect();
             //await will wait for a return on the given function and then do something
             try {
@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
                     customer.id as customer_id
                     FROM customer
                     WHERE campaign_id = $1;`
-                const campaignOrders = await client.query(queryText,[req.params.id])                
+                const campaignOrders = await client.query(queryText, [req.params.id])
                 for (let i = 0; i < campaignOrders.rows.length; i++) {
                     campaignOrders.rows[i].customer_id;
                     let queryText2 = `SELECT
@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
                     for (let i = 0; i < customerOrder.rows.length; i++) {
                         customerOrder.rows[i].price = Number(customerOrder.rows[i].price);
                     };//end for loop
-                    campaignOrders.rows[i].customer_order = customerOrder.rows                    
+                    campaignOrders.rows[i].customer_order = customerOrder.rows
                 };//end for loop
                 await client.query('COMMIT');
                 res.send(campaignOrders.rows)
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
                 client.release();
                 //will release/end query('BEGIN')
             };//end try/catch
-        })().catch((error)=>{
+        })().catch((error) => {
             console.log('CATCH', error);
             res.sendStatus(500);
         })//end async
