@@ -68,7 +68,7 @@ render() {
     <Col xs={12} md={8}>
              <StrudelList campaignName={this.props.match.params.name} />
              <CustomerInforForm />
-             <SquareForm />
+             <SquareForm campaignName={this.props.match.params.name}/>
     </Col>
     <Col xs={6} md={4}>
    <ShoppingCartList />

@@ -6,9 +6,19 @@ let config = require('../../config.json')[app.get('env')];
 
 let unirest = require('unirest');
 let base_url = "https://connect.squareup.com/v2";
-
+//campaign_id,notes,street_address,city,state,zip_code,name,email_address,name_of_reference,total
 // Data store for product cost
 // let product_cost = {"001": 1500, "002": 2000, "003": 3000};
+let amount = 0;
+let billingName;
+let notes;
+let street_address;
+let city;
+let state;
+let zip_code;
+let referenceName;
+let email_address;
+let name_of_reference;
 
 function findLocation(callback) {
 	unirest.get(base_url + '/locations')
@@ -51,17 +61,10 @@ router.post('/charges/charge_card', function(req,res,next){
 
 	var token = require('crypto').randomBytes(64).toString('hex');
 console.log("square credit route", req.body)
-	// Check if product exists
-	// if (!product_cost.hasOwnProperty(request_params.product_id)) {
-	// 	return res.json({status: 400, errors: [{"detail": "Product Unavailable"}] })
-	// }
-
-	// // Make sure amount is a valid integer
-	// var amount = product_cost[request_params.product_id]
-		let amount = parseInt(req.body.total * 100);
-	// To learn more about splitting transactions with additional recipients,
-	// see the Transactions API documentation on our [developer site]
-	// (https://docs.connect.squareup.com/payments/transactions/overview#mpt-overview).
+	
+		 amount = parseInt(req.body.total * 100);
+		 billingName = req.body.name
+	
 	request_body = {
 		card_nonce: request_params.nonce,
 		amount_money: {
@@ -93,6 +96,15 @@ console.log("square credit route", req.body)
 });
 
 router.post('/customerinfo', function(req,res){
-	console.log(req.body)
+	
+	notes = req.body.customerInfo.info
+	street_address = req.body.customerInfo.address
+	city = req.body.customerInfo.city
+	state = req.body.customerInfo.state
+	zip_code = req.body.customerInfo.zip
+	name = req.body.customerInfo.name
+	email_address = req.body.customerInfo.email
+	name_of_reference = req.body.customerInfo.name
+	console.log(city)
 });
 module.exports = router;
