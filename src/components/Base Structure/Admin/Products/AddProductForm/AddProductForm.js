@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// This component is a form which the Admin uses to create a new product/strudel that can be sold in a Campaign
+
 class AddProductForm extends Component {
     constructor(props){
         super(props);
@@ -16,10 +18,9 @@ class AddProductForm extends Component {
         });
     };
 
+    // dispatch action to saga to create new Product and display on DOM
     addProduct = (event) => {
         event.preventDefault();
-        console.log(this.state.newProduct);
-        
         this.props.dispatch({
             type: 'ADD_PRODUCT',
             payload: this.state.newProduct

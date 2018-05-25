@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// Basic, "dumb" component that displays a specific product name being offered by a Campaign
+
 class PipelineItemProduct extends Component {
 
     render(){

@@ -1,5 +1,4 @@
-const orgLeaderPerformance = (state = [{campaign_id: '', campaign_name: '',
-                                date_end:'', date_start: '', goal: '', id: '', orderList: []}],action) => {
+const orgLeaderPerformance = (state = [],action) => {
     switch (action.type) {
         case 'FETCH_ORDER':
             return action.payload;
