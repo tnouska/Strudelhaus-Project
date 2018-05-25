@@ -12,7 +12,11 @@ class CampaignList extends Component {
                 return(<CampaignItem key={campaign.campaign_id} campaign={campaign}/>)
             })
         } else {
-            // let selectedOrgItems = this.props.reduxState.campaign.filter(org => org.organi.location === 'Freezer');
+            let selectedOrgItems = this.props.reduxState.campaign.filter(
+                campaign => campaign.id === parseInt(this.props.selectedOrganization));
+            campaignList = selectedOrgItems.map((campaign) => {
+                return(<CampaignItem key={campaign.campaign_id} campaign={campaign}/>)
+            })
         }
 
         return(
