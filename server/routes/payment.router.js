@@ -54,11 +54,11 @@ router.post('/customerinfo', function(req,res){
         request(options, function (error, response, body) {
           if (error) throw new Error(error);
         
-          
-          
         // res.send(body.checkout.checkout_page_url)
-        console.log(body);
+        
         res.send(body.checkout.checkout_page_url)
+        console.log(body);
+        
        
         });
 	
