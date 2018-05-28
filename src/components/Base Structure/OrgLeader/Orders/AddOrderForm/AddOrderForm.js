@@ -47,6 +47,24 @@ class AddOrderForm extends Component {
             })
         }
     }
+    // Capture user inputs so we can store in our local state
+    handleSelectCampaign = (propertyName) => {
+        return (event) => {          
+            // Set state as the previous state + the updated given property added by the user
+            this.setState({
+                newOrder: {
+                    ...this.state.newOrder,
+                    [propertyName]: event.target.value,
+                    item1Name: '',
+                    item1Qty: '',
+                    item2Name: '',
+                    item2Qty: '',
+                    item3Name: '',
+                    item3Qty: '',
+                }
+            })
+        }
+    }
 
     addOrder = (event) => {
         event.preventDefault();
@@ -77,7 +95,7 @@ class AddOrderForm extends Component {
             <div>
                 <form>
                     <select title="Campaign"
-                            value={this.state.newOrder.campaign_id} onChange={this.handleInput("campaign_id")}>
+                            value={this.state.newOrder.campaign_id} onChange={this.handleSelectCampaign("campaign_id")}>
                             <option>Select Campaign</option>
                             {campaignOptions}
                     </select>
