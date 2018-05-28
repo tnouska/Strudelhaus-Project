@@ -13,14 +13,9 @@ body {
     color: #ece7e7;
 }
 
-/* form {
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
-} */
+.mainDiv {
+  padding-left: 150px;
+}
 
 input {
     margin: 5px;
@@ -48,9 +43,21 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
-  width: 100%;
+  background-color: #880F1B;
+  position: fixed;
+  height: 100%;
+  width: 150px;
   border-radius: 0px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.navImage {
+  width: 136px;
+  height: 88.5px;
+  padding: 5px;
+  margin: 5px;
 }
 
 ul {

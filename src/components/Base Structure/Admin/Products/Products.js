@@ -66,19 +66,21 @@ class Products extends Component {
         return(
             <div>
                 <AdminNav/>
-                <Button onClick={this.handleShow}>Add Product</Button>
-                <Modal show={this.state.showModal} onHide={this.handleClose}>
-                    <ModalHeader>
-                        <Modal.Title>Enter Product Details</Modal.Title>
-                    </ModalHeader>
-                    <ModalBody>
-                        <AddProductForm addProduct={this.addProduct}/>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button onClick={this.handleClose}>Cancel</Button>
-                    </ModalFooter>
-                </Modal>
-                <ProductList/>
+                <div className="mainDiv">
+                    <Button onClick={this.handleShow}>Add Product</Button>
+                    <Modal show={this.state.showModal} onHide={this.handleClose}>
+                        <ModalHeader>
+                            <Modal.Title>Enter Product Details</Modal.Title>
+                        </ModalHeader>
+                        <ModalBody>
+                            <AddProductForm addProduct={this.addProduct}/>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button onClick={this.handleClose}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+                    <ProductList/>
+                </div>
             </div>
         )
     }

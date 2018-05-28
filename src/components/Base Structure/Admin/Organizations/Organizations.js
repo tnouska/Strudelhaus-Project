@@ -65,19 +65,21 @@ class Organizations extends Component {
         return(
             <div>
                 <AdminNav/>
-                <Button onClick={this.handleShow}>Create Organization</Button>
-                <Modal show={this.state.showModal} onHide={this.handleClose}>
-                    <ModalHeader>
-                        <Modal.Title>Enter Organization Details</Modal.Title>
-                    </ModalHeader>
-                    <ModalBody>
-                        <AddOrgForm addOrganization={this.addOrganization}/>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button onClick={this.handleClose}>Cancel</Button>
-                    </ModalFooter>
-                </Modal>
-                <OrgList/>
+                <div className="mainDiv">
+                    <Button onClick={this.handleShow}>Create Organization</Button>
+                    <Modal show={this.state.showModal} onHide={this.handleClose}>
+                        <ModalHeader>
+                            <Modal.Title>Enter Organization Details</Modal.Title>
+                        </ModalHeader>
+                        <ModalBody>
+                            <AddOrgForm addOrganization={this.addOrganization}/>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button onClick={this.handleClose}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+                    <OrgList/>
+                </div>
             </div>
         )
     }
