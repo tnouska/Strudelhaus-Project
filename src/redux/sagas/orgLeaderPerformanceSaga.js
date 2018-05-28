@@ -7,7 +7,7 @@ function* getOrgLeaderPerformance(action){
         console.log('action.payload.id');
         
         yield put({
-            type: 'FETCH_ORDER',
+            type: 'FETCH_PERFORMANCE',
             payload: performanceResult.data
         })
     } catch (error) {
