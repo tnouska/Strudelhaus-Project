@@ -17,7 +17,13 @@ class AddOrderForm extends Component {
                 email_address: '',
                 name_of_reference: '',
                 date_of_order: '',
-                notes: ''
+                notes: '',
+                item1Name: '',
+                item1Qty: '',
+                item2Name: '',
+                item2Qty: '',
+                item3Name: '',
+                item3Qty: '',
             }
         });
     };
@@ -42,15 +48,10 @@ class AddOrderForm extends Component {
         }
     }
 
-    test = () => {
-        let selectedCampaign = 'test';
-        if (this.state.newOrder.campaign_id !== undefined){
-            selectedCampaign = this.props.reduxState.orgLeaderPerformance.find(
-                campaign => campaign.campaign_id == this.state.newOrder.campaign_id);
-        }
-        console.log('campaign object:', selectedCampaign);
-        
-    }
+    addOrder = (event) => {
+        event.preventDefault();
+        console.log(this.state.newOrder);  
+    };
 
     render(){
         // map over array of all Campaigns tied to the user's Organization, make unique dropdown select options for each
@@ -60,6 +61,16 @@ class AddOrderForm extends Component {
                 </option>)
         });
         let selectedCampaign = 'test';
+        let selectedCampaignProducts = 'test';
+        if (this.state.newOrder.campaign_id !== undefined){
+            selectedCampaign = this.props.reduxState.orgLeaderPerformance.find(
+                campaign => campaign.campaign_id == this.state.newOrder.campaign_id);
+            selectedCampaignProducts = selectedCampaign.orderList.map((product) => {
+                return(<option key={product.product_name} value={product.product_name}
+                    >{product.product_name}
+                    </option>)
+            });
+        }
 
 
         return(
@@ -78,10 +89,27 @@ class AddOrderForm extends Component {
                     <input value={this.state.newOrder.email_address} placeholder="Customer Email" onChange={this.handleInput("email_address")}/>
                     <input value={this.state.newOrder.name_of_reference} placeholder="Name of Reference" onChange={this.handleInput("name_of_reference")}/>
                     <input value={this.state.newOrder.notes} placeholder="Notes" onChange={this.handleInput("notes")}/>
-                    <pre>{JSON.stringify(selectedCampaign)}</pre>
+                    <br/>
+                    <select 
+                            value={this.state.newOrder.item1Name} onChange={this.handleInput("item1Name")}>
+                            <option>Strudel 1</option>
+                            {selectedCampaignProducts}
+                    </select>
+                    <input value={this.state.newOrder.item1Qty} placeholder="Qty" onChange={this.handleInput("item1Qty")}/>
+                    <select 
+                            value={this.state.newOrder.item2Name} onChange={this.handleInput("item2Name")}>
+                            <option>Strudel 2</option>
+                            {selectedCampaignProducts}
+                    </select>
+                    <input value={this.state.newOrder.item2Qty} placeholder="Qty" onChange={this.handleInput("item2Qty")}/>
+                    <select 
+                            value={this.state.newOrder.item3Name} onChange={this.handleInput("item3Name")}>
+                            <option>Strudel 3</option>
+                            {selectedCampaignProducts}
+                    </select>
+                    <input value={this.state.newOrder.item3Qty} placeholder="Qty" onChange={this.handleInput("item3Qty")}/>
                     <button type="submit" onClick={this.addOrder}>Create!</button>
                 </form>
-                <button onClick={this.test}>Test!</button>
             </div>
         )
     }
