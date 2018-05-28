@@ -10,6 +10,7 @@ class AddProductForm extends Component {
             newProduct: {
                 name: '',
                 sku: '',
+                product_price: '',
                 product_type: '',
                 image_url_1: '',
                 image_url_2:'',
@@ -27,6 +28,7 @@ class AddProductForm extends Component {
             newProduct: {
                 name: '',
                 sku: '',
+                product_price: '',
                 product_type: '',
                 image_url_1: '',
                 image_url_2:'',
@@ -54,7 +56,11 @@ class AddProductForm extends Component {
                 <form id="addProductForm">
                     <input value={this.state.newProduct.name} placeholder="Name" onChange={this.handleInput("name")}/>
                     <input value={this.state.newProduct.sku} placeholder="SKU #" onChange={this.handleInput("sku")}/>
-                    <input value={this.state.newProduct.product_type} placeholder="1=sweet, 2=savory" onChange={this.handleInput("product_type")}/>
+                    <input value={this.state.newProduct.product_price} placeholder="Price $" onChange={this.handleInput("product_price")}/>
+                    <select value={this.state.newProduct.product_type} onChange={this.handleInput("product_type")}>
+                        <option value="1">Sweet</option>
+                        <option value="2">Savory</option>
+                    </select>
                     <input value={this.state.newProduct.image_url_1} placeholder="Image URL" onChange={this.handleInput("image_url_1")}/>
                     <input value={this.state.newProduct.description} placeholder="description" onChange={this.handleInput("description")}/>
                     <button type="submit" onClick={this.addProduct}>Create!</button>

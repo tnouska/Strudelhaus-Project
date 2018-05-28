@@ -20,8 +20,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     if (req.isAuthenticated()) {
         const product = req.body;
-        let queryText = `INSERT INTO product (name, description, sku, img_url_1, img_url_2, product_type) VALUES ($1, $2, $3, $4, $5, $6)`;
-        pool.query(queryText, [product.name, product.description, product.sku, product.img_url_1, product.img_url_2, product.product_type])
+        let queryText = `INSERT INTO product (name, description, sku, img_url_1, img_url_2, price, product_type) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+        pool.query(queryText, [product.name, product.description, product.sku, product.img_url_1, product.img_url_2, product.product_price, product.product_type])
             .then(() => {
                 res.sendStatus(201);
             })
