@@ -73,7 +73,7 @@ render() {
             Checkout
           </Link>
              </Button>
-             {/* <SquareForm campaignName={this.props.match.params.name}/> */}
+             <SquareForm campaignName={this.props.match.params.name}/>
     </Col>
     <Col xs={6} md={4}>
    <ShoppingCartList />
