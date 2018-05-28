@@ -81,23 +81,25 @@ class Campaigns extends Component {
         return(
             <div>
                 <AdminNav/>
-                <Button onClick={this.handleShow}>Create Campaign</Button>
-                <Modal show={this.state.showModal} onHide={this.handleClose}>
-                    <ModalHeader>
-                        <Modal.Title>Enter Campaign Details</Modal.Title>
-                    </ModalHeader>
-                    <ModalBody>
-                        <AddCampaignForm addCampaign={this.addCampaign}/>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button onClick={this.handleClose}>Cancel</Button>
-                    </ModalFooter>
-                </Modal>
-                <select title="Organization"
-                        value={this.state.selectedOrganization} onChange={this.handleOrgSelect}>
-                        {orgOptions}
-                </select>
-                <CampaignList selectedOrganization={this.state.selectedOrganization}/>
+                <div className="mainDiv">
+                    <Button onClick={this.handleShow}>Create Campaign</Button>
+                    <Modal show={this.state.showModal} onHide={this.handleClose}>
+                        <ModalHeader>
+                            <Modal.Title>Enter Campaign Details</Modal.Title>
+                        </ModalHeader>
+                        <ModalBody>
+                            <AddCampaignForm addCampaign={this.addCampaign}/>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button onClick={this.handleClose}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+                    <select title="Organization"
+                            value={this.state.selectedOrganization} onChange={this.handleOrgSelect}>
+                            {orgOptions}
+                    </select>
+                    <CampaignList selectedOrganization={this.state.selectedOrganization}/>
+                </div>
             </div>
         )
     }

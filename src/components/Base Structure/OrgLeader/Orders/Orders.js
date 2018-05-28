@@ -38,7 +38,9 @@ class Orders extends Component {
         return(
             <div>
                 <OrgLeaderNav/>
-                <OrderList/>
+                <div className="mainDiv">
+                    <OrderList/>
+                </div>
             </div>
         )
     }
