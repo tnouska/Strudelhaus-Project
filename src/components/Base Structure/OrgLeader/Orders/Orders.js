@@ -2,13 +2,32 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
+import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap';
 import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 import OrderList from '../Orders/OrderList/OrderList';
+import AddOrderForm from '../Orders/AddOrderForm/AddOrderForm';
 
 // This is the parent component and main view for the Org Leader Order management feature of the app
 // The Org Leader can view, create, edit, and delete orders from this view
 
 class Orders extends Component {
+    constructor(props) {
+        super(props);
+        this.state = ({
+        // ensure modal does not show on page load
+            showModal: false
+        })
+    };
+
+    // close modal by re-setting state
+    handleClose = () => {
+        this.setState({ showModal: false });
+    };
+    
+    // open modal by re-setting state
+    handleShow = () => {
+        this.setState({ showModal: true });
+    };
 
     // on mount get user data (based on user Organization) and order data via sagas/redux
     componentDidMount() {
@@ -39,6 +58,18 @@ class Orders extends Component {
             <div>
                 <OrgLeaderNav/>
                 <div className="mainDiv">
+                    <Button onClick={this.handleShow}>Add Order</Button>
+                    <Modal show={this.state.showModal} onHide={this.handleClose}>
+                        <ModalHeader>
+                            <Modal.Title>Enter Order Details</Modal.Title>
+                        </ModalHeader>
+                        <ModalBody>
+                            <AddOrderForm/>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button onClick={this.handleClose}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
                     <OrderList/>
                 </div>
             </div>
