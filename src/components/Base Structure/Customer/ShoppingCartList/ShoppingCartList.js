@@ -28,26 +28,33 @@ componentDidUpdate() {
       }
 
 addQuantity = (product)=>{
-
+  // parseInt(product.quantity)
 console.log("product quantity", product)
 product.quantity++
+product.quantity = product.quantity.toString()
 this.setState({
   currentCart: this.props.cart
 })
 
 }
 minusQuantity = (product)=>{
+  parseInt(product.quantity)
 if (product.quantity <= 1){
   const evalProduct = (item => item.product_name === product.product_name);
   const findItem = this.props.cart.findIndex(evalProduct);
   this.props.cart.splice(findItem, 1)
   product.quantity = 0;
+  
   this.setState({
     currentCart: this.props.cart
   })
 }else{
   console.log("product quantity", product)
+  // parseInt(product.quantity)
+  
   product.quantity--
+  product.quantity = product.quantity.toString()
+  console.log(product.quantity)
   this.setState({
     currentCart: this.props.cart
   })
@@ -69,11 +76,11 @@ return parseInt(a) + parseInt(b)
       render() {
         let displayOrder = this.props.cart && this.props.cart.map( (product) => {
           return(
-            <div key={product.product_name}>
+            <div key={product.name}>
             <Button onClick={()=>this.addQuantity(product)}>+</Button>
             <span> {product.quantity} </span>
             <Button onClick={()=>this.minusQuantity(product)}>-</Button> 
-            <strong>{product.product_name} ${product.product_price}</strong>
+            <strong>{product.name} ${product.base_price_money.amount/100}</strong>
             </div>
           )
         })
@@ -86,7 +93,7 @@ if (this.props.cart.length >= 1){
   
   total = this.props.cart.map( (product) =>{
       return(
-        product.quantity * product.product_price
+        parseInt(product.quantity) * (product.base_price_money.amount/100)
       )
   })
   total = total.reduce(this.add)
@@ -100,7 +107,7 @@ if (this.props.cart.length >= 1){
              {displayOrder}
              
              <h1>Total ${total}</h1>
-             <Button>Submit Order</Button>
+             {/* <Button>Submit Order</Button> */}
       </div>
     )
   }

@@ -16,9 +16,6 @@ let email_address;
 let name_of_reference;
 let campaignName;
 
-
-
-
 router.post('/customerinfo', function(req,res){
   amount = parseInt(req.body.total) * 100
 	notes = req.body.customerInfo.info
@@ -28,8 +25,9 @@ router.post('/customerinfo', function(req,res){
 	zip_code = req.body.customerInfo.zip
 	campaignName = req.body.campaignName
 	email_address = req.body.customerInfo.email
-	name_of_reference = req.body.customerInfo.name
-	
+  name_of_reference = req.body.customerInfo.name
+  billingName = req.body.billingName
+	console.log(req.body.products)
 	let randomNum = Math.floor(Math.random() * 1000);
         console.log(req.body.campaignName)
         // let totalAmount = parseInt(req.body * 100)
@@ -46,9 +44,7 @@ router.post('/customerinfo', function(req,res){
              order: 
               { reference_id: 'reference_id',
                 line_items: 
-                 [ { name: 'Total',
-                     quantity: '1',
-                     base_price_money: { amount: amount, currency: 'USD' } } ],
+                  req.body.products ,
                 
              },
             
@@ -58,10 +54,12 @@ router.post('/customerinfo', function(req,res){
         request(options, function (error, response, body) {
           if (error) throw new Error(error);
         
-          console.log(body.checkout.checkout_page_url);
+          
           
         // res.send(body.checkout.checkout_page_url)
+        console.log(body);
         res.send(body.checkout.checkout_page_url)
+       
         });
 	
 	

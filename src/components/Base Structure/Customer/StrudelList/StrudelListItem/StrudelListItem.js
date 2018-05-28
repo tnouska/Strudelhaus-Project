@@ -27,10 +27,12 @@ class StrudelListItem extends React.Component {
     handleShow=()=> {
       this.setState({ show: true });
     }
+
     handleAdd = (product)=>{
         this.props.addToOrder(product)
         this.handleClose()
     }
+    
     render() {
       
   
