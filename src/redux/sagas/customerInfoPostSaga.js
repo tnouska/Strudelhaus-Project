@@ -9,10 +9,12 @@ function* customerInfoPostSaga() {
 function* customerInfoPost(action) {
     console.log('post customer info', action);
     try{
-        yield call(axios.post, `/api/payment/customerinfo`, action.payload);
-        // yield put({
-        //     type: 'GET_ORGANIZATION'
-        // })
+        const postTransaction = yield call(axios.post, `/api/payment/customerinfo`, action.payload);
+        console.log(postTransaction.data)
+        yield put({
+            type: 'PAYMENT_VIEW',
+            payload: postTransaction.data
+        })
     } catch (error) {
         console.log('error ing POST customerinfo:', error);
     }

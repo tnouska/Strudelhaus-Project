@@ -14,10 +14,12 @@ import Nav from '../../../Nav/Nav';
 import SquareForm from '../SquareForm/SquareForm';
 
 const mapStateToProps = state => ({
-
-    view: state.toggleShoppingView
+  view: state.toggleShoppingView,
+  cart: state.orderView,
+  customer: state.customerInfo,
+  url: state.paymentView
   });
-  
+  let total = 0;
 class FundraiserPortal extends Component {
     constructor(props) {
       super(props);
@@ -36,27 +38,41 @@ class FundraiserPortal extends Component {
     }
   
 componentDidMount() {
-        // this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
-        
-      }
+}
     
 componentDidUpdate() {
-        // if (!this.props.user.isLoading && this.props.user.userName === null) {
-        //   this.props.history.push('home');
-        // }
         
+        if (this.props.url != this.props.url || this.props.url.length > 3){
+          window.location = this.props.url;
+        }
+      
       }
-
-
-toggleShop = ()=> {
+      postTransaction=()=>{
         this.props.dispatch({
-          type: 'SHOP_VIEW',
-          payload: this.props.view
+          type: 'POST_CUSTINFO',
+          payload: {
+                  products: this.props.cart,
+                  customerInfo: this.props.customer.customerInfo,
+                  campaignName: this.props.match.params.name,
+                  total: total
+          }
         });
-        
-      }
-render() {
+       }
 
+
+add(a,b){
+  return parseInt(a) + parseInt(b)
+  }
+render() {
+  let totalArr = this.props.cart && this.props.cart.map( (product)=>{
+    return(
+      product.quantity * product.product_price
+    )
+})
+
+if (this.props.cart.length > 0){
+   total = totalArr.reduce(this.add);
+}
 
     return (
       <div>
@@ -68,12 +84,11 @@ render() {
     <Col xs={12} md={8}>
              <StrudelList campaignName={this.props.match.params.name} />
              <CustomerInforForm />
-             <Button>
-             <Link to="/squareform">
-            Checkout
-          </Link>
+             <Button onClick={this.postTransaction}>
+             Checkout 
              </Button>
-             <SquareForm campaignName={this.props.match.params.name}/>
+             {total}
+             {/* <SquareForm campaignName={this.props.match.params.name}/> */}
     </Col>
     <Col xs={6} md={4}>
    <ShoppingCartList />
