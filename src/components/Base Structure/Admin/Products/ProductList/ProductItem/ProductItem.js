@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Panel } from 'react-bootstrap';
 
+// This component displays more info related to each unique Strudel
+
 class ProductItem extends Component {
     constructor(props){
         super(props);
+        // ensure the expansion panel is set to closed upon load
         this.state = ({
             panelOpen: false
         })
-    }
+    };
 
+    // delete a specific Org by dispatching to saga
     deleteProduct = () => {
-        console.log('product:', this.props.product);
         this.props.dispatch({
             type: 'DELETE_PRODUCT',
             payload: this.props.product
         })
-    }
+    };
 
     render() {
-
         return(
             <div>
                 <Panel id="collapsible-panel-example-2">
@@ -37,11 +39,6 @@ class ProductItem extends Component {
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>
-                {/* <p>{this.props.product.name}</p>
-                <img className="smallProductImg" src={this.props.product.img_url_1} alt="strudel" />
-                <br/>
-                <button>Edit</button>
-                <button onClick={this.deleteProduct}>Delete</button> */}
             </div>
         )
     }

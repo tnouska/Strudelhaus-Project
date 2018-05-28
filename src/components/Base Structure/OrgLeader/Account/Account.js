@@ -4,24 +4,31 @@ import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 
+// This is the parent component and main view for the Org Leader Account management
+// The Org Leader can view and edit their account info from this page
+
 class Account extends Component {
+
+    // on mount get user data via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-      }
+    };
     
     componentDidUpdate() {
+        // if a user is not logged in, redirect to login page
         if (!this.props.user.isLoading && this.props.user.userName === null ) {
             this.props.history.push('home');
         }
+        // if a user is logged in but is not an Org Leader, redirect to login page
         if (!this.props.user.isLoading && this.props.user.userRole !== "leader"){
             this.props.history.push('home');
         }
-    }
+    };
     
+    // log out user
     logout = () => {
         this.props.dispatch(triggerLogout());
-        // this.props.history.push('home');
-    }
+    };
 
 
     render(){

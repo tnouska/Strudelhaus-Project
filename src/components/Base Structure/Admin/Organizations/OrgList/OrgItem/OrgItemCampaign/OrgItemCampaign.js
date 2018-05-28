@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// Basic, "dumb" component that displays a specific Campaign name tied to a specific Organization
+
 class OrgItemCampaign extends Component {
 
     render(){

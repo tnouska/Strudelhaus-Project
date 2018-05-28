@@ -7,13 +7,13 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    if (req.isAuthenticated()) {        
+    if (req.isAuthenticated()) {
         //checking if user is authenticated
-        (async()=>{            
+        (async () => {
             //creates async function
-            const client = await pool.connect();            
+            const client = await pool.connect();
             //await will wait for a return on the given function and then do something
-            try {                
+            try {
                 await client.query('BEGIN') // tells DB to be ready for multiple lines of queries
                 let campaignArray = []
                 let queryText = `SELECT
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
                 JOIN organization ON campaign.organization_id = organization.id
                 GROUP BY organization.name, campaign.name, campaign.date_end, campaign.id;`
 
-                let campaignResult = await client.query(queryText)                
+                let campaignResult = await client.query(queryText)
                 for (let i = 0; i < campaignResult.rows.length; i++) {
                     let queryText2 = `SELECT
                     SUM("order".quantity) as product_total,
@@ -49,13 +49,13 @@ router.get('/', (req, res) => {
                 console.log('ROLLBACK', error);
                 await client.query('ROLLBACK');
                 //if error is presesnt this will revert all changes done since the 'BEGIN' query was sent 
-                throw error; 
+                throw error;
             } finally {
-                client.release();   
+                client.release();
                 //will end connection to database
             };//end try/catch/finally
-        })().catch((error)=>{
-            console.log('error in CATCH: ',error);
+        })().catch((error) => {
+            console.log('error in CATCH: ', error);
             res.sendStatus(500);
         });//end async/await
     } else {

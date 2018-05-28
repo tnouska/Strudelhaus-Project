@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// This component is a form which the Admin uses to create a new Organization
+
 class AddOrgForm extends Component {
     constructor(props){
         super(props);
@@ -18,9 +20,9 @@ class AddOrgForm extends Component {
         });
     };
 
+    // dispatch action to saga to create new Org and display on DOM
     addOrganization = (event) => {
         event.preventDefault();
-        console.log(this.state.newOrg);
         this.props.dispatch({
             type: 'ADD_ORGANIZATION',
             payload: this.state.newOrg
