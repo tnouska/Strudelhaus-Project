@@ -8,7 +8,7 @@ class AddOrderForm extends Component {
         super(props);
         this.state = ({
             newOrder: {
-                campaign_id: '',
+                campaign_id: undefined,
                 name: '',
                 street_address: '',
                 city: '',
@@ -42,6 +42,16 @@ class AddOrderForm extends Component {
         }
     }
 
+    test = () => {
+        let selectedCampaign = 'test';
+        if (this.state.newOrder.campaign_id !== undefined){
+            selectedCampaign = this.props.reduxState.orgLeaderPerformance.find(
+                campaign => campaign.campaign_id == this.state.newOrder.campaign_id);
+        }
+        console.log('campaign object:', selectedCampaign);
+        
+    }
+
     render(){
         // map over array of all Campaigns tied to the user's Organization, make unique dropdown select options for each
         let campaignOptions = this.props.reduxState.orgLeaderPerformance.map((campaignOption) => {
@@ -49,6 +59,8 @@ class AddOrderForm extends Component {
                 >{campaignOption.campaign_name}
                 </option>)
         });
+        let selectedCampaign = 'test';
+
 
         return(
             <div>
@@ -66,9 +78,10 @@ class AddOrderForm extends Component {
                     <input value={this.state.newOrder.email_address} placeholder="Customer Email" onChange={this.handleInput("email_address")}/>
                     <input value={this.state.newOrder.name_of_reference} placeholder="Name of Reference" onChange={this.handleInput("name_of_reference")}/>
                     <input value={this.state.newOrder.notes} placeholder="Notes" onChange={this.handleInput("notes")}/>
-
+                    <pre>{JSON.stringify(selectedCampaign)}</pre>
                     <button type="submit" onClick={this.addOrder}>Create!</button>
                 </form>
+                <button onClick={this.test}>Test!</button>
             </div>
         )
     }
