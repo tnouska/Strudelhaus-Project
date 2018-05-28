@@ -2,9 +2,22 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* organizationSaga() {
+    yield takeEvery('GET_ALL_PRODUCTS', getAllProducts)
     yield takeEvery('GET_ORGANIZATION', getOrganization),
     yield takeEvery('ADD_ORGANIZATION', createOrganization),
     yield takeEvery('DELETE_ORGANIZATION', deleteOrganization)
+}
+
+function* getAllProducts(action) {
+    try {
+        const allProductsResponse = yield call(axios.get, `/admin/campaign/allproducts`)
+        yield put({
+            type: 'FETCH_ALL_PRODUCTS',
+            payload: allProductsResponse.data
+        })
+    } catch (error) {
+        console.log('error in getAllProducts: ',error);
+    }
 }
 
 function* getOrganization(action) {

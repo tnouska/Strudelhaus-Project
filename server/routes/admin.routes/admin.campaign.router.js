@@ -133,6 +133,22 @@ router.delete('/:id', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-})
+});
+
+router.get('/allproducts', (req,res) => {
+    if (req.isAuthenticated()) {
+        let queryText = `SELECT id as value,name as label FROM product`;
+        pool.query(queryText)
+            .then((result)=>{
+                res.send(result.rows)
+            })
+            .catch((error)=>{
+                console.log('error in admin.campaign.router.get: ', error);
+                res.sendStatus(500);
+            })
+    } else {
+        res.sendStatus(403);
+    };//end if/else
+});//end admin.campaign.router.get
 
 module.exports = router;

@@ -30,6 +30,16 @@ class Products extends Component {
         this.setState({ showModal: true });
     };
 
+
+    // dispatch action to saga to create new Product and display on DOM
+    addProduct = (newProduct) => {
+        this.props.dispatch({
+            type: 'ADD_PRODUCT',
+            payload: newProduct
+        });
+        this.setState({ showModal: false });
+    };
+
     // on mount get user and organization data via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -56,19 +66,21 @@ class Products extends Component {
         return(
             <div>
                 <AdminNav/>
-                <Button onClick={this.handleShow}>Add Product</Button>
-                <Modal show={this.state.showModal} onHide={this.handleClose}>
-                    <ModalHeader>
-                        <Modal.Title>Enter Product Details</Modal.Title>
-                    </ModalHeader>
-                    <ModalBody>
-                        <AddProductForm/>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button onClick={this.handleClose}>Cancel</Button>
-                    </ModalFooter>
-                </Modal>
-                <ProductList/>
+                <div className="mainDiv">
+                    <Button onClick={this.handleShow}>Add Product</Button>
+                    <Modal show={this.state.showModal} onHide={this.handleClose}>
+                        <ModalHeader>
+                            <Modal.Title>Enter Product Details</Modal.Title>
+                        </ModalHeader>
+                        <ModalBody>
+                            <AddProductForm addProduct={this.addProduct}/>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button onClick={this.handleClose}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+                    <ProductList/>
+                </div>
             </div>
         )
     }

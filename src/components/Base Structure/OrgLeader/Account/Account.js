@@ -35,7 +35,9 @@ class Account extends Component {
         return(
             <div>
                 <OrgLeaderNav/>
-                <h1>ACCOUNT PAGE</h1>
+                <div className="mainDiv">
+                    <h1>ACCOUNT PAGE</h1>
+                </div>
             </div>
         )
     }

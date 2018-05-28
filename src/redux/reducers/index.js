@@ -11,6 +11,7 @@ import customerProducts from './customerProductReducer';
 import orgLeaderPerformance from './orgLeaderPerformanceReducer';
 import customerInfo from './currentCustomerReducer';
 import paymentView from './paymentView';
+import allProducts from './allProductsReducer';
 
 
 
@@ -26,7 +27,8 @@ const store = combineReducers({
   customerProducts,
   orgLeaderPerformance,
   customerInfo,
-  paymentView
+  paymentView,
+  allProducts
 });
 
 export default store;

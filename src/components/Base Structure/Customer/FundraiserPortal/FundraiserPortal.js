@@ -77,7 +77,6 @@ if (this.props.cart.length > 0){
     return (
       <div>
        
-        <Nav />
         <h2>Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
         <Grid>
   <Row className="show-grid">

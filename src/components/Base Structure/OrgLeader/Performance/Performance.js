@@ -56,14 +56,16 @@ class Performance extends Component {
         return(
             <div>
                 <OrgLeaderNav/>
-                <button onClick={this.logout}>Log Out</button>
-                <h3>Campaign Performance</h3>
-                <select title="Campaign"
-                        value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
-                        <option>Campaign</option>
-                        {campaignOptions}
-                </select>
-                <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
+                <div className="mainDiv">
+                    <button onClick={this.logout}>Log Out</button>
+                    <h3>Campaign Performance</h3>
+                    <select title="Campaign"
+                            value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
+                            <option>Campaign</option>
+                            {campaignOptions}
+                    </select>
+                    <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
+                </div>
             </div>
         )
     }
