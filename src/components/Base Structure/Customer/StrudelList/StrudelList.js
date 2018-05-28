@@ -30,6 +30,11 @@ componentDidMount() {
 componentDidUpdate() {
         
       }
+
+      // { name: 'Total',
+      // quantity: '1',
+      // base_price_money: { amount: amount, currency: 'USD' } }
+
 addToOrder = (product)=>{
 
   const evalProduct = (item => item.product_name === product.product_name);
@@ -40,7 +45,9 @@ addToOrder = (product)=>{
     product.quantity = 1
     this.props.dispatch({
       type: 'CURRENT_ORDER',
-      payload: product
+      payload: { name: product.product_name,
+      quantity: "1",
+      base_price_money: { amount: (parseInt(product.product_price)* 100), currency: 'USD' } }
     });
   }
   

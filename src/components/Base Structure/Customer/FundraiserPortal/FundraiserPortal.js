@@ -86,7 +86,7 @@ if (this.props.cart.length > 0){
              <Button onClick={this.postTransaction}>
              Checkout 
              </Button>
-             {total}
+            
              {/* <SquareForm campaignName={this.props.match.params.name}/> */}
     </Col>
     <Col xs={6} md={4}>

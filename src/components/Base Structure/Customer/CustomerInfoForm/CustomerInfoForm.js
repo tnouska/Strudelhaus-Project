@@ -14,13 +14,14 @@ class CustomerInfoForm extends Component {
       super(props);
       this.state = {
         //   customerInfo:{
-        name: '',
+        refname: '',
         email: '',
         address: '',
         city: '',
         state: '',
         zip: '',
-        notes: ''
+        notes: '',
+        billingName: ''
         //   }
       };
     }
@@ -61,12 +62,20 @@ render() {
           controlId="formBasicText"
         // validationState={this.getValidationState()}
         > 
-          <ControlLabel>Reference Name</ControlLabel>
+        <ControlLabel>Reference Name</ControlLabel>
           <FormControl
             value={this.state.name}
             type="text"
             placeholder="Enter Name"
-            onChange={this.handleChange("name")}
+            onChange={this.handleChange("refName")}
+            required
+          />
+          <ControlLabel>Billing Name</ControlLabel>
+          <FormControl
+            value={this.state.name}
+            type="text"
+            placeholder="Enter Name"
+            onChange={this.handleChange("billingName")}
           />
           <ControlLabel>Email</ControlLabel>
           <FormControl
