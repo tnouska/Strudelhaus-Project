@@ -31,9 +31,7 @@ componentDidUpdate() {
         
       }
 
-      // { name: 'Total',
-      // quantity: '1',
-      // base_price_money: { amount: amount, currency: 'USD' } }
+      
 
 addToOrder = (product)=>{
 
