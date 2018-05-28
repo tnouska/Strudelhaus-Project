@@ -268,7 +268,7 @@ add(a,b){
     </div>
   
     <div>
-   <input type="submit" id="submit" value="Buy Now" className="btn btn-primary" onClick={this.props.toggleShop}/>
+   <input type="submit" id="submit" value="Buy Now" className="btn btn-primary" />
     </div>
     </form>
      </div> 
