@@ -21,10 +21,7 @@ class AddProductForm extends Component {
     // dispatch action to saga to create new Product and display on DOM
     addProduct = (event) => {
         event.preventDefault();
-        this.props.dispatch({
-            type: 'ADD_PRODUCT',
-            payload: this.state.newProduct
-        })
+        this.props.addProduct(this.state.newProduct)
         // Clear input fields after dispatching
         this.setState({
             newProduct: {

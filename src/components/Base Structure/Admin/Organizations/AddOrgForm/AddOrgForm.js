@@ -23,11 +23,7 @@ class AddOrgForm extends Component {
     // dispatch action to saga to create new Org and display on DOM
     addOrganization = (event) => {
         event.preventDefault();
-        this.props.dispatch({
-            type: 'ADD_ORGANIZATION',
-            payload: this.state.newOrg
-        })
-        // Clear input fields after dispatching
+        this.props.addOrganization(this.state.newOrg);
         this.setState({
             newOrg: {
                 name: '',
