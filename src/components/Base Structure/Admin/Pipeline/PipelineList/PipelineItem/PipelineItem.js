@@ -9,9 +9,7 @@ let moment = require('moment');
 
 class PipelineItem extends Component {
 
-    printPipeline = () => {
-        console.log('inside printPipeline', this.props.pipelineItem);
-        
+    printPipeline = () => {        
         printJS({ 
             printable: this.props.pipelineItem.orderData, 
             documentTitle: this.props.pipelineItem.campaign_name,

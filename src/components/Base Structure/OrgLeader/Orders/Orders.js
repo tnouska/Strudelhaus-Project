@@ -5,7 +5,9 @@ import { triggerLogout } from '../../../../redux/actions/loginActions';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap';
 import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 import OrderList from '../Orders/OrderList/OrderList';
+import printJS from 'print-js'
 import AddOrderForm from '../Orders/AddOrderForm/AddOrderForm';
+
 
 // This is the parent component and main view for the Org Leader Order management feature of the app
 // The Org Leader can view, create, edit, and delete orders from this view
@@ -52,6 +54,16 @@ class Orders extends Component {
         this.props.dispatch(triggerLogout());
     };
 
+    printOrder = () =>{
+        printJS({
+            printable: this.props.reduxState.order,
+            documentTitle: 'Current Orders',
+            header: 'Current Orders',
+            properties: ['name', 'name_of_reference','notes', 'date_of_order' ],
+            type: 'json'
+        })
+    }
+
 
     render(){
         return(
@@ -71,6 +83,7 @@ class Orders extends Component {
                         </ModalFooter>
                     </Modal>
                     <OrderList/>
+                    <button type="button" onClick={this.printOrder}>Print</button>
                 </div>
             </div>
         )
