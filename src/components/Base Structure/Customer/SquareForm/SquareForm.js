@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
 const mapStateToProps = state => ({
     
   view: state.toggleShoppingView,
@@ -170,6 +171,7 @@ let chargeCardWithNonce = (nonce)=> {
       this.props.dispatch({
         type: 'POST_CUSTINFO',
         payload: {
+                products: this.props.cart,
                 customerInfo: this.props.customer.customerInfo,
                 campaignName: this.props.campaignName
         }
@@ -235,6 +237,7 @@ add(a,b){
     <option value=""></option>
     <option value="AL">Alabama</option>
     <option value="MN">Alaska</option>
+    <option value="MN">Minnesota</option>
     </select>
   
     <label>Zip</label>
