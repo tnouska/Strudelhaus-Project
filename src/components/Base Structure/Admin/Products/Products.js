@@ -30,6 +30,16 @@ class Products extends Component {
         this.setState({ showModal: true });
     };
 
+
+    // dispatch action to saga to create new Product and display on DOM
+    addProduct = (newProduct) => {
+        this.props.dispatch({
+            type: 'ADD_PRODUCT',
+            payload: newProduct
+        });
+        this.setState({ showModal: false });
+    };
+
     // on mount get user and organization data via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -62,7 +72,7 @@ class Products extends Component {
                         <Modal.Title>Enter Product Details</Modal.Title>
                     </ModalHeader>
                     <ModalBody>
-                        <AddProductForm/>
+                        <AddProductForm addProduct={this.addProduct}/>
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={this.handleClose}>Cancel</Button>

@@ -32,14 +32,10 @@ class AddCampaignForm extends Component {
         })
     }
 
+    // create campaign by calling addCampaign function on parent component
     addCampaign = (event) => {
         event.preventDefault();
-        console.log(this.state.newCampaign);
-
-        this.props.dispatch({
-            type: 'ADD_CAMPAIGN',
-            payload: this.state.newCampaign
-        })
+        this.props.addCampaign(this.state.newCampaign)
         // Clear input fields after dispatching
         this.setState({
             newCampaign: {

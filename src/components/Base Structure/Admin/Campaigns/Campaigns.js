@@ -37,7 +37,16 @@ class Campaigns extends Component {
             selectedOrganization: event.target.value
         })
     }
-    
+
+    // create campaign via dispatch to saga, payload coming from child component
+    addCampaign = (newCampaign) => {
+        this.props.dispatch({
+            type: 'ADD_CAMPAIGN',
+            payload: newCampaign
+        });
+        this.setState({ showModal: false });
+    };
+
     // on mount get user, organizations and campaign data via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -78,7 +87,7 @@ class Campaigns extends Component {
                         <Modal.Title>Enter Campaign Details</Modal.Title>
                     </ModalHeader>
                     <ModalBody>
-                        <AddCampaignForm/>
+                        <AddCampaignForm addCampaign={this.addCampaign}/>
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={this.handleClose}>Cancel</Button>
