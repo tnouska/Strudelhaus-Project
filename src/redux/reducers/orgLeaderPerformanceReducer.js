@@ -1,6 +1,6 @@
 const orgLeaderPerformance = (state = [],action) => {
     switch (action.type) {
-        case 'FETCH_ORDER':
+        case 'FETCH_PERFORMANCE':
             return action.payload;
         default:
             return state;
