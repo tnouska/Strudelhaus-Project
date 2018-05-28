@@ -11,9 +11,10 @@ import Performance from './components/Base Structure/OrgLeader/Performance/Perfo
 import Orders from './components/Base Structure/OrgLeader/Orders/Orders';
 import Account from './components/Base Structure/OrgLeader/Account/Account';
 import FundraiserPortal from './components/Base Structure/Customer/FundraiserPortal/FundraiserPortal';
-
+import SquareForm from './components/Base Structure/Customer/SquareForm/SquareForm';
 
 import './styles/main.css';
+
 
 const App = () => (
   <div>
@@ -31,6 +32,7 @@ const App = () => (
         <Route path="/orders" component={Orders}/>
         <Route path="/account" component={Account}/>
         <Route path="/fundraiser/:name" component={FundraiserPortal}/>
+        <Route path="/squreform" component={SquareForm}/>
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

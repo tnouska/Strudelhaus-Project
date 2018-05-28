@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CustomerInforForm from '../CustomerInfoForm/CustomerInfoForm'
-
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Grid } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
@@ -68,7 +68,12 @@ render() {
     <Col xs={12} md={8}>
              <StrudelList campaignName={this.props.match.params.name} />
              <CustomerInforForm />
-             <SquareForm campaignName={this.props.match.params.name}/>
+             <Button>
+             <Link to="/squareform">
+            Checkout
+          </Link>
+             </Button>
+             {/* <SquareForm campaignName={this.props.match.params.name}/> */}
     </Col>
     <Col xs={6} md={4}>
    <ShoppingCartList />
