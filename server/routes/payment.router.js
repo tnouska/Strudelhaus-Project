@@ -1,14 +1,18 @@
 let express = require('express');
 let router = express.Router();
-
+let SquareConnect = require('square-connect');
 let app = express();
+
 let config = require('../../config.json')[app.get('env')];
 
 let unirest = require('unirest');
 let base_url = "https://connect.squareup.com/v2";
 //campaign_id,notes,street_address,city,state,zip_code,name,email_address,name_of_reference,total
-// Data store for product cost
-// let product_cost = {"001": 1500, "002": 2000, "003": 3000};
+
+let square_application_id = "sandbox-sq0idp-YldqxOSfurHmr3XsFZ59jg";
+let square_access_token = "sandbox-sq0atb-ffNvoCsEpPIf8cJyXHELlw";
+let locationId = 'CBASEGcVZgUKS8RbqdkU-YjiBxggAQ';
+
 let amount = 0;
 let billingName;
 let notes;
@@ -19,6 +23,7 @@ let zip_code;
 let referenceName;
 let email_address;
 let name_of_reference;
+let campaignName;
 
 function findLocation(callback) {
 	unirest.get(base_url + '/locations')
@@ -57,6 +62,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/charges/charge_card', function(req,res,next){
+
 	var request_params = req.body;
 
 	var token = require('crypto').randomBytes(64).toString('hex');
@@ -89,9 +95,11 @@ console.log("square credit route", req.body)
 		}else{
             console.log(response.body)
 			res.json({status: 200})
-			// res.send(response.body)
+			
+
+			
 		}
-	})
+	 })
 
 });
 
@@ -102,9 +110,9 @@ router.post('/customerinfo', function(req,res){
 	city = req.body.customerInfo.city
 	state = req.body.customerInfo.state
 	zip_code = req.body.customerInfo.zip
-	name = req.body.customerInfo.name
+	campaignName = req.body.campaignName
 	email_address = req.body.customerInfo.email
 	name_of_reference = req.body.customerInfo.name
-	console.log(city)
+	console.log(cam)
 });
 module.exports = router;
