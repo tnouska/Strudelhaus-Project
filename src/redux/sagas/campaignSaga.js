@@ -5,8 +5,8 @@ import axios from 'axios';
 function* campaignSaga() {
     yield takeEvery('GET_CAMPAIGN', getCampaign),
     yield takeEvery('DELETE_CAMPAIGN', deleteCampaign),
-    yield takeEvery('ADD_CAMPAIGN', createCampaign)
-
+    yield takeEvery('ADD_CAMPAIGN', createCampaign),
+    yield takeEvery('EDIT_CAMPAIGN', editCampaign)
 }
 
 function* createCampaign(action) {
@@ -52,6 +52,22 @@ function* getCampaign(action) {
         })
     } catch (error) {
         console.log('error in getCampaign:', error);
+    }
+}
+
+function* editCampaign(action) {
+    console.log('editCampaign triggered:', action);
+    const config = {
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+    } 
+    try{
+        yield call(axios.put, `/admin/campaign`, action.payload, config);
+        yield put({
+            type: 'GET_CAMPAIGN',
+        })
+    } catch (error) {
+        console.log('error in editCampaign', error);
     }
 }
 

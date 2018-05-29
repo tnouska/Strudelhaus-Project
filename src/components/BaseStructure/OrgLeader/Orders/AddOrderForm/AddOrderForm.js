@@ -26,13 +26,14 @@ class AddOrderForm extends Component {
                 item2Qty: '',
                 item3Name: '',
                 item3Qty: '',
-            }]
+            }],
+            id: 1
         });
     };
 
     
     
-    handleCsvUpload = (event) => {
+    addCsvOrder = (event) => {
         event.preventDefault();
         let selectedFile = document.getElementById('csv').files[0];
         Papa.parse(selectedFile, {
@@ -62,14 +63,15 @@ class AddOrderForm extends Component {
                         csvOrders: [...this.state.csvOrders, csvOrder]
                     });
                 }
+                this.props.addOrder(this.state)
             }
         });
     };
 
-    testState = () => {
-        console.log(this.state.csvOrders);
-        
-    }
+    addSingleOrder = (event) => {
+        event.preventDefault();
+        this.props.addOrder(this.state);
+    };
 
     // Capture user inputs so we can store in our local state
     handleInput = (propertyName) => {
@@ -102,7 +104,6 @@ class AddOrderForm extends Component {
         }
     }
 
-
     render(){
         // map over array of all Campaigns tied to the user's Organization, make unique dropdown select options for each
         let campaignOptions = this.props.reduxState.orgLeaderPerformance.map((campaignOption) => {
@@ -116,9 +117,7 @@ class AddOrderForm extends Component {
             selectedCampaign = this.props.reduxState.orgLeaderPerformance.find(
                 campaign => campaign.campaign_id == this.state.newOrder.campaign_id);
             selectedCampaignProducts = selectedCampaign.orderList.map((product) => {
-                return(<option key={product.product_name} value={product.product_name}
-                    >{product.product_name}
-                    </option>)
+                return(<option key={product.product_name} value={product.product_name}>{product.product_name}</option>)
             });
         }
 
@@ -127,8 +126,7 @@ class AddOrderForm extends Component {
             <div>
                 <h4>Select local CSV File:</h4>
                 <input id="csv" type="file"/>
-                <button type="submit" onClick={this.handleCsvUpload}>Upload!</button>
-                <button onClick={this.testState}>Test State!</button>
+                <button type="submit" onClick={this.addCsvOrder}>Upload!</button>
                 <hr/>
                 <h4>OR</h4>
                 <form>
@@ -164,7 +162,7 @@ class AddOrderForm extends Component {
                             {selectedCampaignProducts}
                     </select>
                     <input value={this.state.newOrder.item3Qty} placeholder="Qty" onChange={this.handleInput("item3Qty")}/>
-                    <button type="submit" onClick={this.addOrder}>Create!</button>
+                    <button type="submit" onClick={this.addSingleOrder}>Create!</button>
                 </form>
             </div>
         )

@@ -3,19 +3,34 @@ import axios from 'axios';
 
 function* orgLeaderOrderSaga() {
     yield takeEvery('GET_ORDER', getOrgLeaderOrder)
+    yield takeEvery('CREATE_ORDER', createOrder)
 }
 
-function* getOrgLeaderOrder(action) {
-    console.log('getOrgLeaderOrder triggered:', action);
+function * getOrgLeaderOrder(action) {
     try{
         const orgLeaderOrderResponse = yield call(axios.get, `/orgleader/order/${action.payload.id}`);
-        console.log(orgLeaderOrderResponse);
         yield put({
             type: 'FETCH_ORDER',
             payload: orgLeaderOrderResponse.data,
         })
     } catch (error) {
         console.log('error in getOrgLeaderOrder', error);
+    }
+}
+
+function * createOrder(action) {
+    const config = {
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+    }
+    try{
+        yield call(axios.post, `/orgleader/order`, action.payload.csvOrders, config);
+        yield put({
+            type: 'GET_ORDER',
+            payload: action.payload
+        })
+    } catch (error) {
+        console.log('error ing POST createOrder:', error);
     }
 }
 
