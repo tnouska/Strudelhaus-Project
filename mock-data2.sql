@@ -54,21 +54,21 @@ VALUES
 INSERT INTO campaign
     (organization_id,url,name,date_start,date_end,notes,info_url,goal)
 VALUES
-    (1,'EHS-Boys-Hockey-Spring-2018','EHS Boys Hockey Spring 2018','3-7-2018','6-1-2018','For new hockey arena','http://www.eaganhs.portal.rschooltoday.com/','8,000.00'),
+    (1,'EHS-Boys-Hockey-Spring-2018','EHS Boys Hockey Spring 2018','3-7-2018','6-1-2018','For new hockey arena','http://www.eaganhs.portal.rschooltoday.com/','3,000.00'),
     (1,'EHS-Choir-May-2018','EHS Choir May 2018','5-1-2018','5-28-2018','For new robes','http://www.eaganhs.portal.rschooltoday.com/','2,000.00'),
-    (1,'EHS-Girls-Swimming-Summer-2018','EHS Girls Swimming Summer 2018','6-5-2018','8-5-2018','For pool expansion','http://www.eaganhs.portal.rschooltoday.com/','15,000.00'),
+    (1,'EHS-Girls-Swimming-Summer-2018','EHS Girls Swimming Summer 2018','6-5-2018','8-5-2018','For pool expansion','http://www.eaganhs.portal.rschooltoday.com/','10,000.00'),
     (2,'RHS-Girls-Softball-April-2018','RHS Girls Softball April 2018','4-1-2018','5-1-2018','For new fields','http://public.district196.org/rhs/','1,000.00'),
-    (2,'RHS-Theater-Spring-2018','RHS Theater Spring 2018','2-1-2018','5-1-2018','For new costumes','http://public.district196.org/rhs/','7,500.00'),
+    (2,'RHS-Theater-Spring-2018','RHS Theater Spring 2018','2-1-2018','5-1-2018','For new costumes','http://public.district196.org/rhs/','3,500.00'),
     (2,'RHS-Speech-2018','RHS Speech 2018','3-1-2018','6-1-2018','For new costumes','http://public.district196.org/rhs/','1,500.00'),
-    (3,'OMS-Dance-Winter-2018','OMS Dance Winter 2018','1-7-2018','4-7-2018','For new stage','https://www.westonka.k12.mn.us/','3,500.00'),
-    (3,'OMS-Baseball-May-2018','OMS Baseball May 2018','5-7-2018','6-7-2018','For new field','https://www.westonka.k12.mn.us/','4,000.00'),
-    (3,'OMS-Band-Summer-2018','OMS Band Summer 2018','5-7-2018','8-7-2018','For new stage','https://www.westonka.k12.mn.us/','10,000.00'),
-    (4,'TCGIS-Winter-2018','TCGIS Winter 2018','1-1-18','2-15-18','For new addition','https://www.tcgis.org/','3,000.00'),
-    (4,'TCGIS-Spring-2018','TCGIS Spring 2018','3-1-18','5-1-18','For new addition','https://www.tcgis.org/','3,000.00'),
-    (4,'TCGIS-Summer-2018','TCGIS Summer 2018','6-1-18','8-1-18','For new addition','https://www.tcgis.org/','3,000.00'),
-    (5,'Sixth-Grade-Spring-2018','Sixth Grade Spring 2018','3-1-18','6-1-18','For new statue','http://www.stmarysoca.org/','2,000.00'),
-    (5,'Seventh-Grade-Spring-2018','Seventh Grade Spring 2018','3-1-18','6-1-18','For new statue','http://www.stmarysoca.org/','2,000.00'),
-    (5,'Eighth-Grade-Spring-2018','Eighth Grade Spring 2018','3-1-18','6-1-18','For new statue','http://www.stmarysoca.org/','2,000.00'),
+    (3,'OMS-Dance-Winter-2018','OMS Dance Winter 2018','1-7-2018','4-7-2018','For new stage','https://www.westonka.k12.mn.us/','1,500.00'),
+    (3,'OMS-Baseball-May-2018','OMS Baseball May 2018','5-7-2018','6-7-2018','For new field','https://www.westonka.k12.mn.us/','1,000.00'),
+    (3,'OMS-Band-Summer-2018','OMS Band Summer 2018','5-7-2018','8-7-2018','For new stage','https://www.westonka.k12.mn.us/','6,000.00'),
+    (4,'TCGIS-Winter-2018','TCGIS Winter 2018','1-1-18','2-15-18','For new addition','https://www.tcgis.org/','1,000.00'),
+    (4,'TCGIS-Spring-2018','TCGIS Spring 2018','3-1-18','5-1-18','For new addition','https://www.tcgis.org/','1,000.00'),
+    (4,'TCGIS-Summer-2018','TCGIS Summer 2018','6-1-18','8-1-18','For new addition','https://www.tcgis.org/','1,000.00'),
+    (5,'Sixth-Grade-Spring-2018','Sixth Grade Spring 2018','3-1-18','6-1-18','For new statue','http://www.stmarysoca.org/','1,000.00'),
+    (5,'Seventh-Grade-Spring-2018','Seventh Grade Spring 2018','3-1-18','6-1-18','For new statue','http://www.stmarysoca.org/','1,000.00'),
+    (5,'Eighth-Grade-Spring-2018','Eighth Grade Spring 2018','3-1-18','6-1-18','For new statue','http://www.stmarysoca.org/','1,000.00'),
 
 
 INSERT INTO available_item
@@ -91,23 +91,55 @@ VALUES
     (15, 104),(15, 111),(15, 112),(15, 113),(15, 114),(15, 117),(15, 125),(15, 126),(15, 131),(15, 132);
 
 
-
 INSERT INTO customer
     (campaign_id,notes,street_address,city,state,zip_code,name,email_address,name_of_reference)
 VALUES
-    (4,'will pick up at school','123 fake street','Eagan','MN','55123','Lou V Strudel','LouS@email.com','billy west'),
-    (4,'I love strudel','124 fake street','Eagan','MN','55123','Janite FFace','JFF@email.com','timmothy FF'),
-    (4,'will pick up at school','125 fake street','Eagan','MN','55123','Greg B','GB@email.com','Luke B'),
-    (4,'will pick up at school','125 fake street','Eagan','MN','55123','Greg B','GB@email.com','Luke B'),
-    (4,'will pick up at school','126 fake street','Eagan','MN','55123','Biron Rundel','BiRun@email.com','billy west'),
-    (7,'deliver to my summer home please','1010 sunny Drive','Phoenix','AZ','85001','tom Zut', 'TZ@email.com','no contact'),
-    (7,'will pickup at school','111 great plains blvd','Eagan','MN','55123','Buyer 1', 'B1@email.com','Frankie M'),
-    (7,'I like strudel','124 fake street','Eagan','MN','55123','Janite FFace', 'JFF@email.com','Timmothy FF'),
-    (7,'Timmy FF will deliver','123 super old way','Eagan','MN','55123','Andy FF', 'AFF@email.com','Timmothy FF'),
-    (11,'pick up','','','','','Joe T','JT@email.com','jake L'),
-    (11,'pick up','','','','','Jill T','JillT@email.com','jake L'),
-    (11,'pick up','','','','','Frank T','FT@email.com','jake L'),
-    (11,'pick up','','','','','Zoe T','ZT@email.com','jake L');
+    (1,'School pickup','123 A Street','Eagan','MN','55123','Kevin Hogan','KH@email.com','Steve Hogan'),
+    (1,'School pickup','123 B Street','Eagan','MN','55123','Nancy Brown','NB@email.com','Matt Brown'),
+    (1,'School pickup','123 C Street','Eagan','MN','55122','Kim Manikowski','KM@email.com','Kyle Manikowski'),
+    (1,'Brennan will deliver','123 D Street','Eagan','MN','55121','Danny Squires','DS@email.com','Brennan Squires'),
+    (1,'Mitch will deliver','123 E Street','Eagan','MN','55121','Linda Towle','LT@email.com','Mitch Lay'),
+    (2,'School pickup','234 A Street','Eagan','MN','55123','Adam Adams','AA@email.com','Andy Adams'),
+    (2,'School pickup','234 B Street','Eagan','MN','55123','Barry Bonds','BB@email.com','Bobby Bonds'),
+    (2,'School pickup','234 C Street','Eagan','MN','55123','Charlie Cheese','CC@email.com','Chucky Cheese'),
+    (2,'School pickup','234 D Street','Eagan','MN','55123','Donald Driver','DD@email.com','Daren Driver'),
+    (2,'Eddie will deliver','234 E Street','Eagan','MN','55123','Edgar Evans','EE@email.com','Eddie Evans'),
+    (3,'School pickup','345 A Street','Eagan','MN','55123','Abby Jones','AJ@email.com','Kim Jones'),
+    (3,'School pickup','345 B Street','Eagan','MN','55123','Barb Hoffman','BH@email.com','Kate Hoffman'),
+    (3,'School pickup','345 C Street','Eagan','MN','55123','Gail Myers','GM@email.com','Sally Struthers'),
+    (3,'School pickup','345 D Street','Eagan','MN','55123','Danny Baker','DB@email.com','Abby Adams'),
+    (3,'Liz will deliver','345 E Street','Eagan','MN','55122','Chet Owens','CO@email.com','Danica Peter'),
+    (4,'School pickup','456 A Street','Rosemount','MN','55068','Bob Evans','BE@email.com','Delilah Jones'),
+    (4,'School pickup','456 B Street','Rosemount','MN','55068','Jim Stevens','JS@email.com','Cathy Stevens'),
+    (4,'School pickup','456 C Street','Rosemount','MN','55068','Mary Winters','MW@email.com','Martha Winters'),
+    (4,'School pickup','456 D Street','Rosemount','MN','55068','Brady Bowers','BB@email.com','Liz Owen'),
+    (4,'Student will deliver','456 E Street','Rosemount','MN','55068','Al Roberts','AR@email.com','Alice Roberts'),
+    (5,'School pickup','567 A Street','Rosemount','MN','55068','Roy Schmidt','RS@email.com','Steve Bailey'),
+    (5,'School pickup','567 B Street','Rosemount','MN','55068','Gary Brown','GB@email.com','Matt Brown'),
+    (5,'School pickup','567 C Street','Rosemount','MN','55068','Chelsea Beach','CB@email.com','Paul Beach'),
+    (5,'School pickup','567 D Street','Rosemount','MN','55068','Bob Schedin','BS@email.com','Emily Schedin'),
+    (5,'Student delivery','567 E Street','Rosemount','MN','55068','Paul Eggen','PE@email.com','Ryan Eggen'),
+    (6,'School pickup','678 A Street','Rosemount','MN','55068','Joe Roberts','JR@email.com','Tom Roberts'),
+    (6,'School pickup','678 B Street','Rosemount','MN','55068','Mike Redfield','MR@email.com','Joe Redfield'),
+    (6,'School pickup','678 C Street','Rosemount','MN','55068','Paul Clements','DC@email.com','Dave Clements'),
+    (6,'School pickup','678 D Street','Rosemount','MN','55068','Marcia Myers','MM@email.com','Susie Myers'),
+    (6,'Paul will deliver','678 E Street','Rosemount','MN','55068','Mike Green','KG@email.com','Kyle Green'),
+    (7,'School pickup','789 A Street','Mound','MN','55356','Steve Jobs','SG@email.com','Mark Jobs'),
+    (7,'School pickup','789 B Street','Mound','MN','55356','Logan Morris','LM@email.com','Sarah Morris'),
+    (7,'School pickup','789 C Street','Mound','MN','55356','Mitch Morgan','MM@email.com','Lisa Peter'),
+    (7,'School pickup','789 D Street','Mound','MN','55356','Kelly Harden','KH@email.com','Joey Bosa'),
+    (7,'Maggie will deliver','789 E Street','Mound','MN','55356','Bruce Boss','BB@email.com','Maggie Howard'),
+    (8,'School pickup','891 A Street','Mound','MN','55356','Danny Lee','DL@email.com','Lars Lee'),
+    (8,'School pickup','891 B Street','Mound','MN','55356','Sarah Suther','SS@email.com','Brad Lu'),
+    (8,'School pickup','891 C Street','Mound','MN','55356','Howard Tut','HT@email.com','Steve Tut'),
+    (8,'Student Delivery','891 D Street','Mound','MN','55356','Brad Crowder','HT@email.com','Nate Crowder'),
+    (8,'Student Delivery','891 E Street','Mound','MN','55356','Mary Williams','MW@email.com','Joe Williams'),
+    (9,'School pickup','901 A Street','Mound','MN','55356','Susan Bee','SB@email.com','Kate Bee'),
+    (9,'School pickup','901 B Street','Mound','MN','55356','Dan Wilson','DW@email.com','Steve Myers'),
+    (9,'School pickup','901 C Street','Mound','MN','55356','Cathy Withers','CW@email.com','Chuck Withers'),
+    (9,'Student Delivery','901 D Street','Mound','MN','55356','Bill Bower','BB@email.com','Cam Bower'),
+    (9,'Student Delivery','901 E Street','Mound','MN','55356','Audrey Smith','AS@email.com','Katrina Smith'),
+
 
 
 INSERT INTO "order"
