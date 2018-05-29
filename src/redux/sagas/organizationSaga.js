@@ -5,7 +5,8 @@ function* organizationSaga() {
     yield takeEvery('GET_ALL_PRODUCTS', getAllProducts)
     yield takeEvery('GET_ORGANIZATION', getOrganization),
     yield takeEvery('ADD_ORGANIZATION', createOrganization),
-    yield takeEvery('DELETE_ORGANIZATION', deleteOrganization)
+    yield takeEvery('DELETE_ORGANIZATION', deleteOrganization),
+    yield takeEvery('EDIT_ORGANIZATION', editOrganzation)
 }
 
 function* getAllProducts(action) {
@@ -64,6 +65,22 @@ function* deleteOrganization(action) {
     } catch (error) {
         console.log('error in deleteOrganization:', error);
 
+    }
+}
+
+function* editOrganzation(action) {
+    console.log('editOrganzation triggered:', action);
+    const config = {
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+    }
+    try{
+        yield call(axios.put, `/admin/organization`, action.payload, config);
+        yield put({
+            type: 'GET_ORGANIZATION',
+        })
+    } catch (error) {
+        console.log('error in editOrganization', error);
     }
 }
 

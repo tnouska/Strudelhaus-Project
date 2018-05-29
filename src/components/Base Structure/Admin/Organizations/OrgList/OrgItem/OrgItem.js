@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Panel } from 'react-bootstrap';
 import OrgItemCampaign from './OrgItemCampaign/OrgItemCampaign';
+import { Button, Modal, ModalHeader, ModalFooter, ModalBody, Panel } from 'react-bootstrap';
+import EditOrgForm from '../../EditOrgForm/EditOrgForm';
+
 
 // This component displays more info related to each unique Organization
 
@@ -10,8 +12,25 @@ class OrgItem extends Component {
         super(props);
         // ensure the expansion panel is set to closed upon load
         this.state = ({
-            panelOpen: false
+            panelOpen: false,
+            showModal: false
         })
+    }
+
+    handleClose = () => {
+        this.setState({ showModal: false });
+    }
+
+    handleShow = () => {
+        this.setState({ showModal: true });
+    }
+
+    editOrg = (updateOrg) => {
+        this.props.dispatch({
+            type: 'EDIT_ORGANIZATION',
+            payload: updateOrg
+        })
+        this.setState({ showModal: false });
     }
 
     // delete a specific Org by dispatching to saga
@@ -42,11 +61,22 @@ class OrgItem extends Component {
                         Contact: {this.props.org.contact_name}
                         <p>Campaigns</p>
                         {campaignList}
-                        <Button>Edit</Button>
+                        <Button onClick={this.handleShow}>Edit</Button>
                         <Button onClick={this.deleteOrg}>Delete</Button> 
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>
+                <Modal show={this.state.showModal} onHide={this.handleClose}>
+                    <ModalHeader>
+                        <Modal.Title>Update Organization Details</Modal.Title>
+                    </ModalHeader>
+                    <ModalBody>
+                        <EditOrgForm org={this.props.org} editOrg={this.editOrg}/>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={this.handleClose}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
             </div>
         )
     }
