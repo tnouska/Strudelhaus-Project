@@ -26,7 +26,8 @@ class AddOrderForm extends Component {
                 item2Qty: '',
                 item3Name: '',
                 item3Qty: '',
-            }]
+            }],
+            id: 4
         });
     };
 
@@ -62,14 +63,14 @@ class AddOrderForm extends Component {
                         csvOrders: [...this.state.csvOrders, csvOrder]
                     });
                 }
-                this.props.addOrder(this.state.csvOrders)
+                this.props.addOrder(this.state)
             }
         });
     };
 
     addSingleOrder = (event) => {
         event.preventDefault();
-        this.props.addOrder(this.state.newOrder);
+        this.props.addOrder(this.state);
     };
 
     // Capture user inputs so we can store in our local state
