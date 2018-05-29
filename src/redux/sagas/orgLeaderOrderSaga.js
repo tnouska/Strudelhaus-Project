@@ -19,7 +19,6 @@ function * getOrgLeaderOrder(action) {
 }
 
 function * createOrder(action) {
-    console.log('createOrder:', action.payload.csvOrders);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
@@ -28,7 +27,7 @@ function * createOrder(action) {
         yield call(axios.post, `/orgleader/order`, action.payload.csvOrders, config);
         yield put({
             type: 'GET_ORDER',
-            payload: action.payload.id
+            payload: action.payload
         })
     } catch (error) {
         console.log('error ing POST createOrder:', error);

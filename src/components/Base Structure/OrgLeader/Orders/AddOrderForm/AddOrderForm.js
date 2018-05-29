@@ -27,7 +27,7 @@ class AddOrderForm extends Component {
                 item3Name: '',
                 item3Qty: '',
             }],
-            id: 4
+            id: 1
         });
     };
 
