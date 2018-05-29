@@ -128,4 +128,11 @@ router.delete('/:id', (req, res) => {
     }
 });
 
+router.put('/', (req, res) => {
+    console.log('req.body:', req.body);
+    if(req.isAuthenticated()){
+        const newInfo = req.body;
+        let queryText = `UPDATE organization SET `
+    }
+})
 module.exports = router;
