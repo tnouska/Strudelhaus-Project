@@ -5,8 +5,8 @@ import axios from 'axios';
 function* campaignSaga() {
     yield takeEvery('GET_CAMPAIGN', getCampaign),
     yield takeEvery('DELETE_CAMPAIGN', deleteCampaign),
-    yield takeEvery('ADD_CAMPAIGN', createCampaign)
-
+    yield takeEvery('ADD_CAMPAIGN', createCampaign),
+    yield takeEvery('EDIT_CAMPAIGN', editCampaign)
 }
 
 function* createCampaign(action) {
