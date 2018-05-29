@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as Papa from 'papaparse';
 
 // This component is a form which the Admin uses to create a new product/strudel that can be sold in a Campaign
 
@@ -28,11 +29,17 @@ class AddOrderForm extends Component {
         });
     };
 
+
+
     addOrder = (event) => {
         event.preventDefault();
-        console.log(this.state.newOrder);
-        
-    }
+        let selectedFile = document.getElementById('csv').files[0];
+        Papa.parse(selectedFile, {
+            complete: (results) => {
+                console.log("Finished:", results.data);
+            }
+        });
+    };
 
 
     // Capture user inputs so we can store in our local state
@@ -66,10 +73,6 @@ class AddOrderForm extends Component {
         }
     }
 
-    addOrder = (event) => {
-        event.preventDefault();
-        console.log(this.state.newOrder);  
-    };
 
     render(){
         // map over array of all Campaigns tied to the user's Organization, make unique dropdown select options for each
@@ -93,6 +96,8 @@ class AddOrderForm extends Component {
 
         return(
             <div>
+                <p>Select local CSV File:</p>
+                <input id="csv" type="file"/>
                 <form>
                     <select title="Campaign"
                             value={this.state.newOrder.campaign_id} onChange={this.handleSelectCampaign("campaign_id")}>
