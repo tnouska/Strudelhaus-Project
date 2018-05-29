@@ -26,7 +26,7 @@ class Performance extends Component {
     // on mount get user, campaign performance data (based on user Organization) via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: 5}})
+        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: 2}})
     };
 
     componentDidUpdate() {

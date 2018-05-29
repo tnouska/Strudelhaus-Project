@@ -21,6 +21,15 @@ class Orders extends Component {
         })
     };
 
+    addOrder = (order) => {
+        console.log(order);
+        this.props.dispatch({
+            type: 'CREATE_ORDER',
+            payload: order
+        })
+        this.setState({ showModal: false });
+    };
+
     // close modal by re-setting state
     handleClose = () => {
         this.setState({ showModal: false });
@@ -34,7 +43,7 @@ class Orders extends Component {
     // on mount get user data (based on user Organization) and order data via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.props.dispatch({ type: 'GET_ORDER', payload: {id: 4}})
+        this.props.dispatch({ type: 'GET_ORDER', payload: {id: 7}})
     };
     
 
@@ -76,7 +85,7 @@ class Orders extends Component {
                             <Modal.Title>Enter Order Details</Modal.Title>
                         </ModalHeader>
                         <ModalBody>
-                            <AddOrderForm/>
+                            <AddOrderForm addOrder={this.addOrder}/>
                         </ModalBody>
                         <ModalFooter>
                             <Button onClick={this.handleClose}>Cancel</Button>
