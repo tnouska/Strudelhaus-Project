@@ -43,7 +43,7 @@ class Orders extends Component {
     // on mount get user data (based on user Organization) and order data via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.props.dispatch({ type: 'GET_ORDER', payload: {id: 7}})
+        this.props.dispatch({ type: 'GET_ORDER', payload: {id: 4}})
     };
     
 

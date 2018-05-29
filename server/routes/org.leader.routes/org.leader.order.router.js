@@ -77,6 +77,8 @@ router.post('/', (req, res) => {
                         req.body[i].email_address, 
                         req.body[i].name_of_reference];                    
                     customerId = await client.query(queryText, customerValues)
+                    console.log(customerId.rows[0]);
+                    
                     strudelItems = []
                     strudelItems.push({ product_name: req.body[i].item1Name, quantity: req.body[i].item1Qty })
                     if (req.body[i].item2Name && req.body[i].item2Qty) {
