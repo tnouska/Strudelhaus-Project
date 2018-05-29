@@ -3,7 +3,9 @@ let router = express.Router();
 let SquareConnect = require('square-connect');
 let app = express();
 let request = require("request");
-const pool = require('../modules/pool')
+const pool = require('../modules/pool');
+let nodemailer = require('nodemailer');
+
 
 let customerData = {
   amount: 0,
@@ -21,8 +23,8 @@ let customerData = {
 
 
 router.post('/customerinfo', function (req, res) {
-  console.log('req.body', req.body);
-
+  
+console.log(req.body)
   customerData.amount = parseInt(req.body.total) * 100
   customerData.notes = req.body.customerInfo.info
   customerData.street_address = req.body.customerInfo.address
@@ -34,6 +36,11 @@ router.post('/customerinfo', function (req, res) {
   customerData.name_of_reference = req.body.customerInfo.refName
   customerData.billingName = req.body.customerInfo.billingName
   customerData.products = req.body.products
+
+  let emailProducts = customerData.products.map( (product) =>{
+    return '<h3>' + product.name + '</h3>' + '<h3>' + 'Quantity ' + product.quantity + ' $'+(product.base_price_money.amount/100).toFixed(2) + 'ea' + '</h3>'
+  })
+
   let randomNum = Math.floor(Math.random() * 1000);
   // let totalAmount = parseInt(req.body * 100)
   let options = {
@@ -65,6 +72,73 @@ router.post('/customerinfo', function (req, res) {
   request(options, function (error, response, body) {
     if (error) throw new Error(error)
     res.send(body.checkout.checkout_page_url)
+
+    console.log('TEST!!!!!');
+    const user_name     = 'strudelhausproxy@gmail.com';
+    const refresh_token = process.env.REFRESH_TOKEN;
+    const access_token  = process.env.ACCESS_TOKEN;
+    const client_id     = process.env.CLIENT_ID;
+    const client_secret = process.env.CLIENT_SECRET;
+ 
+    const email_to = customerData.email_address;
+ 
+    
+ // login
+    var transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            type: 'OAuth2',
+            user: user_name,
+            clientId: client_id,
+            clientSecret: client_secret,
+            refreshToken: refresh_token,
+            accessToken: access_token,
+            expires: 1527200298318 + 3600      
+        }
+    });
+ 
+  console.log(emailProducts)
+    // setup e-mail data with unicode symbols
+    let mailOptions = {
+        from    : user_name, // sender address
+        to      : email_to, // list of receivers
+        subject : 'Thank You ' + customerData.billingName, // Subject line
+        html    : '<img src="cid:unique@kreata.ee"/>'+
+        '<div style="margin:0 auto;max-width:600px;text-align:center;">'+
+        '<h2>'+ customerData.billingName +'</h2>' +
+    '<h1>Thank You For Your Order</h1>' +
+    emailProducts  +
+    '<h1>' + 'Please Visit  ' + '<a href="http://www.thestrudelhaus.com/">Ruhlands Strudel Haus</a>'+
+ ' </div>',
+        attachments: [{
+            filename: 'appleTopBoard.jpg',
+            path: 'http://www.thestrudelhaus.com/storage/images2/rsh_banner960.png',
+            cid: 'unique@kreata.ee' //same cid value as in the html img src
+        }]
+
+      //   '<body>'+
+      //   '<div style="margin:0 auto; width:600px; height:00px">'+
+      //   '<div style="background-color:#880F1B;">'+
+      //   '<h2>' +'Thank You'+ '</h2>' + '<h1>'+ customerData.billingName + '</h1>' +
+      //   '<div>' + emailProducts + '</div>'+
+      //   '</br></br>'+
+      //  '<p>' + 'Thanks' + '</p>'+
+      
+      //   '</div>'+'</div>'+
+      // '</body>' , // html body,
+        
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+    });
+
   });//end request
 });
 
@@ -99,7 +173,7 @@ router.post('/postcustomer', (req, res) => {
         let orderResult = await client.query(queryText4, orderValues)
 
         await client.query('COMMIT')
-        res.sendStatus(200);
+         res.sendStatus(200);
       }
     } catch (error) {
       console.log('ROLLBACK in payment.router', error);
