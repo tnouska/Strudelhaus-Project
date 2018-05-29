@@ -12,7 +12,7 @@ import Orders from './components/BaseStructure/OrgLeader/Orders/Orders';
 import Account from './components/BaseStructure/OrgLeader/Account/Account';
 import FundraiserPortal from './components/BaseStructure/Customer/FundraiserPortal/FundraiserPortal';
 import SquareForm from './components/BaseStructure/Customer/SquareForm/SquareForm';
-import ThankYou from './components/Base"Structure/Customer/ThankYou/ThankYou'
+import ThankYou from './components/BaseStructure/Customer/ThankYou/ThankYou'
 import './styles/main.css';
 
 
