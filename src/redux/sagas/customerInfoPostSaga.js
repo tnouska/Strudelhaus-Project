@@ -10,6 +10,7 @@ function* customerInfoPost(action) {
     console.log('post customer info', action);
     try{
         const postTransaction = yield call(axios.post, `/api/payment/customerinfo`, action.payload);
+        yield call(axios.post, `/api/payment/postcustomer`)
         console.log(postTransaction.data)
         yield put({
             type: 'PAYMENT_VIEW',
