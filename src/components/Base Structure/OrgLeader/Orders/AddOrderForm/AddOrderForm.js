@@ -8,7 +8,7 @@ class AddOrderForm extends Component {
     constructor(props){
         super(props);
         this.state = ({
-            csvOrder: [],
+            csvOrders: [],
             newOrder: {
                 campaign_id: undefined,
                 name: '',
@@ -38,36 +38,38 @@ class AddOrderForm extends Component {
         Papa.parse(selectedFile, {
             complete: (results) => {
                 let parsedResult = results.data;
-                console.log(parsedResult);
                 for(let i=1; i < parsedResult.length; i++) {
                     let order = parsedResult[i]
-                    for(let x=0; x < order.length; x++) {
-                        let csvOrder = {
-                            campaign_id: order[0],
-                            name: order[1],
-                            street_address: order[2],
-                            city: order[3],
-                            state: order[4],
-                            zip_code: order[5],
-                            email_address: order[6],
-                            name_of_reference: order[7],
-                            date_of_order: order[8],
-                            notes: order[9],
-                            item1Name: order[10],
-                            item1Qty: order[11],
-                            item2Name: order[12],
-                            item2Qty: order[13],
-                            item3Name: order[14],
-                            item3Qty: order[15],
-                        };
-                        console.log(csvOrder);  
-                    }
+                    let csvOrder = {
+                        campaign_id: order[0],
+                        name: order[1],
+                        street_address: order[2],
+                        city: order[3],
+                        state: order[4],
+                        zip_code: order[5],
+                        email_address: order[6],
+                        name_of_reference: order[7],
+                        date_of_order: order[8],
+                        notes: order[9],
+                        item1Name: order[10],
+                        item1Qty: order[11],
+                        item2Name: order[12],
+                        item2Qty: order[13],
+                        item3Name: order[14],
+                        item3Qty: order[15],
+                    };
+                    this.setState({
+                        csvOrders: [...this.state.csvOrders, csvOrder]
+                    })
                 }
             }
         });
     };
 
-
+    testState = () => {
+        console.log(this.state.csvOrders);
+        
+    }
 
     // Capture user inputs so we can store in our local state
     handleInput = (propertyName) => {
@@ -126,6 +128,7 @@ class AddOrderForm extends Component {
                 <h4>Select local CSV File:</h4>
                 <input id="csv" type="file"/>
                 <button type="submit" onClick={this.handleCsvUpload}>Upload!</button>
+                <button onClick={this.testState}>Test State!</button>
                 <hr/>
                 <h4>OR</h4>
                 <form>
