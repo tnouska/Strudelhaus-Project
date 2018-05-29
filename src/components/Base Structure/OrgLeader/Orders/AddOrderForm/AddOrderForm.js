@@ -8,6 +8,7 @@ class AddOrderForm extends Component {
     constructor(props){
         super(props);
         this.state = ({
+            csvOrder: [],
             newOrder: {
                 campaign_id: undefined,
                 name: '',
@@ -29,17 +30,43 @@ class AddOrderForm extends Component {
         });
     };
 
-
-
-    addOrder = (event) => {
+    
+    
+    handleCsvUpload = (event) => {
         event.preventDefault();
         let selectedFile = document.getElementById('csv').files[0];
         Papa.parse(selectedFile, {
             complete: (results) => {
-                console.log("Finished:", results.data);
+                let parsedResult = results.data;
+                console.log(parsedResult);
+                for(let i=1; i < parsedResult.length; i++) {
+                    let order = parsedResult[i]
+                    for(let x=0; x < order.length; x++) {
+                        let csvOrder = {
+                            campaign_id: order[0],
+                            name: order[1],
+                            street_address: order[2],
+                            city: order[3],
+                            state: order[4],
+                            zip_code: order[5],
+                            email_address: order[6],
+                            name_of_reference: order[7],
+                            date_of_order: order[8],
+                            notes: order[9],
+                            item1Name: order[10],
+                            item1Qty: order[11],
+                            item2Name: order[12],
+                            item2Qty: order[13],
+                            item3Name: order[14],
+                            item3Qty: order[15],
+                        };
+                        console.log(csvOrder);  
+                    }
+                }
             }
         });
     };
+
 
 
     // Capture user inputs so we can store in our local state
@@ -96,8 +123,11 @@ class AddOrderForm extends Component {
 
         return(
             <div>
-                <p>Select local CSV File:</p>
+                <h4>Select local CSV File:</h4>
                 <input id="csv" type="file"/>
+                <button type="submit" onClick={this.handleCsvUpload}>Upload!</button>
+                <hr/>
+                <h4>OR</h4>
                 <form>
                     <select title="Campaign"
                             value={this.state.newOrder.campaign_id} onChange={this.handleSelectCampaign("campaign_id")}>
