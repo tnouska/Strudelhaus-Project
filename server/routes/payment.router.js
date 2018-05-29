@@ -63,7 +63,7 @@ router.post('/customerinfo', function (req, res) {
 
           },
 
-        redirect_url: 'http://localhost:3000/fundraiser/' + customerData.campaignName
+        redirect_url: 'http://localhost:3000/thankyou'
       },
     json: true
   };
