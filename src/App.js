@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import Organizations from './components/Base Structure/Admin/Organizations/Organizations';
-import Campaigns from './components/Base Structure/Admin/Campaigns/Campaigns';
-import Products from './components/Base Structure/Admin/Products/Products';
-import Pipeline from './components/Base Structure/Admin/Pipeline/Pipeline';
-import Performance from './components/Base Structure/OrgLeader/Performance/Performance';
-import Orders from './components/Base Structure/OrgLeader/Orders/Orders';
-import Account from './components/Base Structure/OrgLeader/Account/Account';
-import FundraiserPortal from './components/Base Structure/Customer/FundraiserPortal/FundraiserPortal';
-import SquareForm from './components/Base Structure/Customer/SquareForm/SquareForm';
-import ThankYou from './components/Base Structure/Customer/ThankYou/ThankYou'
+import Organizations from './components/BaseStructure/Admin/Organizations/Organizations';
+import Campaigns from './components/BaseStructure/Admin/Campaigns/Campaigns';
+import Products from './components/BaseStructure/Admin/Products/Products';
+import Pipeline from './components/BaseStructure/Admin/Pipeline/Pipeline';
+import Performance from './components/BaseStructure/OrgLeader/Performance/Performance';
+import Orders from './components/BaseStructure/OrgLeader/Orders/Orders';
+import Account from './components/BaseStructure/OrgLeader/Account/Account';
+import FundraiserPortal from './components/BaseStructure/Customer/FundraiserPortal/FundraiserPortal';
+import SquareForm from './components/BaseStructure/Customer/SquareForm/SquareForm';
+import ThankYou from './components/Base"Structure/Customer/ThankYou/ThankYou'
 import './styles/main.css';
 
 
