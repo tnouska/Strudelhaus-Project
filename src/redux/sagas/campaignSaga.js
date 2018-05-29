@@ -55,5 +55,21 @@ function* getCampaign(action) {
     }
 }
 
+function* editCampaign(action) {
+    console.log('editCampaign triggered:', action);
+    const config = {
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+    } 
+    try{
+        yield call(axios.put, `/admin/campaign`, action.payload, config);
+        yield put({
+            type: 'GET_CAMPAIGN',
+        })
+    } catch (error) {
+        console.log('error in editCampaign', error);
+    }
+}
+
 export default campaignSaga;
 

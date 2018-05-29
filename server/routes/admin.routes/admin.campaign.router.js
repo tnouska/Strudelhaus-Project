@@ -151,4 +151,23 @@ router.get('/allproducts', (req,res) => {
     };//end if/else
 });//end admin.campaign.router.get
 
+router.put('/', (req, res) => {
+    console.log('req.body:', req.body);
+    if(req.isAuthenticated()) {
+        const newInfo = req.body;
+        let queryText = `UPDATE campaign SET url = $1, name = $2 date_start = $3, date_end = $4, notes = $5, goal = $6 WHERE id = $6`;
+        pool.query(queryText, [newInfo.url, newInfo.name, newInfo.date_start, newInfo.date_end, newInfo.notes, newInfo.goal, newInfo.campaign_id])
+        .then( (result) => {
+            console.log('successful UPdate:', result);
+            res.sendStatus(201);
+        })
+        .catch( (error) => {
+            console.log('error in UPdate:', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 module.exports = router;
