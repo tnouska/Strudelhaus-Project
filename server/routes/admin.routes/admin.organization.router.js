@@ -132,7 +132,19 @@ router.put('/', (req, res) => {
     console.log('req.body:', req.body);
     if(req.isAuthenticated()){
         const newInfo = req.body;
-        let queryText = `UPDATE organization SET `
+        let queryText = `UPDATE organization SET name = $1, street_address = $2, contact_name = $3, contact_phone = $4, contact_email = $5 WHERE id = $6`;
+        pool.query(queryText, [newInfo.name, newInfo.street_address, newInfo.contact_name, newInfo.contact_phone, newInfo.contact_email, newInfo.id])
+        .then( (result) => {
+            console.log('successfull Update:', result);
+            res.sendStatus(201);
+        })
+        .catch( (error) => {
+            console.log('error in UPDATE:', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
     }
-})
+});
+
 module.exports = router;
