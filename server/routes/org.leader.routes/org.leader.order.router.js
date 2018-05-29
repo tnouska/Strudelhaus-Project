@@ -83,7 +83,7 @@ router.post('/', (req, res) => {
                         strudelItems.push({ product_name: req.body[i].item2Name, quantity: req.body[i].item2Qty })
                     }
                     if (req.body[i].item3Name && req.body[i].item3Qty) {
-                        strudelItems.push({ product_name: req.body[i].item3Name, quantity: req.body[i].item4Qty })
+                        strudelItems.push({ product_name: req.body[i].item3Name, quantity: req.body[i].item3Qty })
                     }
                     for (let z = 0; z < strudelItems.length; z++) {
                         let queryText2 = `SELECT id,price,sku,description FROM product WHERE "name" = $1`
