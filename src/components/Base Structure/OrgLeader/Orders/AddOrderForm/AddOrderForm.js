@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as Papa from 'papaparse';
 
 // This component is a form which the Admin uses to create a new product/strudel that can be sold in a Campaign
 
@@ -7,7 +8,8 @@ class AddOrderForm extends Component {
     constructor(props){
         super(props);
         this.state = ({
-            newOrder: {
+            csvOrders: [],
+            newOrder: [{
                 campaign_id: undefined,
                 name: '',
                 street_address: '',
@@ -24,16 +26,50 @@ class AddOrderForm extends Component {
                 item2Qty: '',
                 item3Name: '',
                 item3Qty: '',
+            }]
+        });
+    };
+
+    
+    
+    handleCsvUpload = (event) => {
+        event.preventDefault();
+        let selectedFile = document.getElementById('csv').files[0];
+        Papa.parse(selectedFile, {
+            complete: (results) => {
+                let parsedResult = results.data;
+                for(let i=1; i < parsedResult.length; i++) {
+                    let order = parsedResult[i]
+                    let csvOrder = {
+                        campaign_id: order[0],
+                        name: order[1],
+                        street_address: order[2],
+                        city: order[3],
+                        state: order[4],
+                        zip_code: order[5],
+                        email_address: order[6],
+                        name_of_reference: order[7],
+                        date_of_order: order[8],
+                        notes: order[9],
+                        item1Name: order[10],
+                        item1Qty: order[11],
+                        item2Name: order[12],
+                        item2Qty: order[13],
+                        item3Name: order[14],
+                        item3Qty: order[15],
+                    };
+                    this.setState({
+                        csvOrders: [...this.state.csvOrders, csvOrder]
+                    });
+                }
             }
         });
     };
 
-    addOrder = (event) => {
-        event.preventDefault();
-        console.log(this.state.newOrder);
+    testState = () => {
+        console.log(this.state.csvOrders);
         
     }
-
 
     // Capture user inputs so we can store in our local state
     handleInput = (propertyName) => {
@@ -66,10 +102,6 @@ class AddOrderForm extends Component {
         }
     }
 
-    addOrder = (event) => {
-        event.preventDefault();
-        console.log(this.state.newOrder);  
-    };
 
     render(){
         // map over array of all Campaigns tied to the user's Organization, make unique dropdown select options for each
@@ -93,6 +125,12 @@ class AddOrderForm extends Component {
 
         return(
             <div>
+                <h4>Select local CSV File:</h4>
+                <input id="csv" type="file"/>
+                <button type="submit" onClick={this.handleCsvUpload}>Upload!</button>
+                <button onClick={this.testState}>Test State!</button>
+                <hr/>
+                <h4>OR</h4>
                 <form>
                     <select title="Campaign"
                             value={this.state.newOrder.campaign_id} onChange={this.handleSelectCampaign("campaign_id")}>

@@ -23,10 +23,9 @@ let customerData = {
 
 
 router.post('/customerinfo', function (req, res) {
-  
-console.log(req.body)
+
   customerData.amount = parseInt(req.body.total) * 100
-  customerData.notes = req.body.customerInfo.info
+  customerData.notes = req.body.customerInfo.notes
   customerData.street_address = req.body.customerInfo.address
   customerData.city = req.body.customerInfo.city
   customerData.state = req.body.customerInfo.state
