@@ -9,7 +9,7 @@ class AddOrderForm extends Component {
         super(props);
         this.state = ({
             csvOrders: [],
-            newOrder: {
+            newOrder: [{
                 campaign_id: undefined,
                 name: '',
                 street_address: '',
@@ -26,7 +26,7 @@ class AddOrderForm extends Component {
                 item2Qty: '',
                 item3Name: '',
                 item3Qty: '',
-            }
+            }]
         });
     };
 
