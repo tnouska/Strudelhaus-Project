@@ -83,7 +83,6 @@ CREATE TABLE "order"
     "product_name" varchar(1000),
     "product_price" varchar(200),
     "product_sku" varchar(200),
-    "product_description" varchar(1000),
     "campaign_id" integer,
     "quantity" int NOT NULL DEFAULT '0'
 );
