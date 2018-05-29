@@ -245,4 +245,16 @@ li a:hover {
     vertical-align: top;
     font-weight: bold;
   }
+
+  .thankYouHeader{
+    min-height: 100px;
+    background-color: #880F1B;
+
+  }
+  /* .imgBackgroud{
+    background-image: url(../components/BaseStructure/Customer/ThankYou/appleStrudelBoard.jpg);
+    background-size: 70%;
+    
+  } */
+  
   

@@ -12,7 +12,7 @@ import Orders from './components/Base Structure/OrgLeader/Orders/Orders';
 import Account from './components/Base Structure/OrgLeader/Account/Account';
 import FundraiserPortal from './components/Base Structure/Customer/FundraiserPortal/FundraiserPortal';
 import SquareForm from './components/Base Structure/Customer/SquareForm/SquareForm';
-
+import ThankYou from './components/Base Structure/Customer/ThankYou/ThankYou'
 import './styles/main.css';
 
 
@@ -31,7 +31,7 @@ const App = () => (
         <Route path="/orders" component={Orders}/>
         <Route path="/account" component={Account}/>
         <Route path="/fundraiser/:name" component={FundraiserPortal}/>
-        <Route path="/squreform" component={SquareForm}/>
+        <Route path="/thankyou" component={ThankYou}/>
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 
