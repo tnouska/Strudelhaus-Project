@@ -14,7 +14,7 @@ class CustomerInfoForm extends Component {
       super(props);
       this.state = {
         //   customerInfo:{
-        refname: '',
+        refName: '',
         email: '',
         address: '',
         city: '',
@@ -64,7 +64,7 @@ render() {
         > 
         <ControlLabel>Reference Name</ControlLabel>
           <FormControl
-            value={this.state.name}
+            value={this.state.refName}
             type="text"
             placeholder="Enter Name"
             onChange={this.handleChange("refName")}
@@ -72,7 +72,7 @@ render() {
           />
           <ControlLabel>Billing Name</ControlLabel>
           <FormControl
-            value={this.state.name}
+            value={this.state.billingName}
             type="text"
             placeholder="Enter Name"
             onChange={this.handleChange("billingName")}
