@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ProgressBar, Button, Panel } from 'react-bootstrap';
+import { Button, Modal, ModalHeader, ModalFooter, ModalBody, Panel, ProgressBar } from 'react-bootstrap';
 import CampaignItemProduct from './CampaignItemProduct/CampaignItemProduct';
+import EditCampForm from '../../EditCampForm/EditCampForm';
 
 // This component displays more info related to each unique Campaign
 
@@ -10,8 +11,25 @@ class CampaignItem extends Component {
         super(props);
         // ensure the expansion panel is set to closed upon load
         this.state = ({
-            panelOpen: false
+            panelOpen: false,
+            showModal: false
         })
+    }
+
+    handleClose = () => {
+        this.setState({ showModal: false });
+    }
+
+    handleShow = () => {
+        this.setState({ showModal: true });
+    }
+
+    editCamp = (updateCamp) => {
+        this.props.dispatch({
+            type: 'EDIT_CAMPAIGN',
+            payload: updateCamp
+        })
+        this.setState({ showModal: false });
     }
 
     // delete a specific Campaign by dispatching to saga
@@ -52,11 +70,22 @@ class CampaignItem extends Component {
                             <ProgressBar now={goalPercentage} />
                             <p>Products:</p>
                             {campaignProducts}
-                            <button>Edit</button>
+                            <button onClick={this.handleShow}>Edit</button>
                             <button onClick={this.deleteCampaign}>Delete</button>
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>
+                <Modal show={this.state.showModal} onHide={this.handleClose}>
+                    <ModalHeader>
+                        <Modal.Title>Update Campaign Details</Modal.Title>
+                    </ModalHeader>
+                    <ModalBody>
+                        <EditCampForm campaign={this.props.campaign} editCamp={this.editCamp} />
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={this.handleClose}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
             </div>
         )
     };
