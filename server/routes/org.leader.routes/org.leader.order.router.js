@@ -86,19 +86,18 @@ router.post('/', (req, res) => {
                         strudelItems.push({ product_name: req.body[i].item3Name, quantity: req.body[i].item3Qty })
                     }
                     for (let z = 0; z < strudelItems.length; z++) {
-                        let queryText2 = `SELECT id,price,sku,description FROM product WHERE "name" = $1`
+                        let queryText2 = `SELECT id,price,sku FROM product WHERE "name" = $1`
                         console.log('strudel Name: ', strudelItems[z]);
                         
                         productInfo = await client.query(queryText2, [strudelItems[z].product_name]);                        
                         let queryText3 = `INSERT INTO "order" 
-                        (customer_id, product_name,product_price,product_sku,product_description,campaign_id,quantity)
-                        VALUES ($1,$2,$3,$4,$5,$6,$7)`
+                        (customer_id, product_name,product_price,product_sku,campaign_id,quantity)
+                        VALUES ($1,$2,$3,$4,$5,$6)`
                         await client.query(queryText3, [
                             customerId.rows[0].id,
                             strudelItems[z].product_name,
                             productInfo.rows[0].price,
                             productInfo.rows[0].sku,
-                            productInfo.rows[0].description,
                             req.body[i].campaign_id,
                             strudelItems[z].quantity
                         ]);//end client.query
