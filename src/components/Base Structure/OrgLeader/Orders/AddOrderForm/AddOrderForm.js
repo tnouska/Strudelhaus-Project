@@ -27,7 +27,6 @@ class AddOrderForm extends Component {
                 item3Name: '',
                 item3Qty: '',
             }]
-            
         });
     };
 
@@ -61,7 +60,7 @@ class AddOrderForm extends Component {
                     };
                     this.setState({
                         csvOrders: [...this.state.csvOrders, csvOrder]
-                    })
+                    });
                 }
             }
         });
