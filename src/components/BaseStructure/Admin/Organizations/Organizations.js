@@ -78,7 +78,9 @@ class Organizations extends Component {
                             <Button onClick={this.handleClose}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
-                    <OrgList/>
+                    <div id="orgListDiv">
+                        <OrgList/>
+                    </div>
                 </div>
             </div>
         )
