@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import printJS from 'print-js'
 import PipelineItemProduct from './PipelineItemProduct/PipelineItemProduct';
 let moment = require('moment');
@@ -36,7 +37,7 @@ class PipelineItem extends Component {
                     - Ends {this.props.pipelineItem.campaign_date_end} - Due {dueDate}</p>
                 <hr/>
                 {pipelineItemProducts}
-                <button type='button' onClick={this.printPipeline}>Print</button>
+                <Button type='button' onClick={this.printPipeline}>Print</Button>
             </div>
         )
     }

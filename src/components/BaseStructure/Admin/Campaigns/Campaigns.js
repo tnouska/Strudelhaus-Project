@@ -83,6 +83,7 @@ class Campaigns extends Component {
                 <AdminNav/>
                 <div className="mainDiv">
                     <Button onClick={this.handleShow}>Create Campaign</Button>
+                    <br/>
                     <Modal show={this.state.showModal} onHide={this.handleClose}>
                         <ModalHeader>
                             <Modal.Title>Enter Campaign Details</Modal.Title>
