@@ -107,7 +107,7 @@ router.post('/', (req, res) => {
                 let mailOptions = {
                     from    : user_name, // sender address
                     to      : email_to, // list of receivers
-                    subject : 'Welcome' + req.body.name, // Subject line
+                    subject : 'Welcome ' + req.body.name, // Subject line
                     text    : 'Please follow the link provided to create your password', // plaintext body
                     html    : '<a href="http://localhost:3000/newpassword/' + token + '/' + req.body.contact_email + '">Create Password</a>', // html body
                 };
