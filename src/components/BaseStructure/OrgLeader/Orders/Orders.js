@@ -92,7 +92,7 @@ class Orders extends Component {
                         </ModalFooter>
                     </Modal>
                     <OrderList/>
-                    <button type="button" onClick={this.printOrder}>Print</button>
+                    <Button type="button" onClick={this.printOrder}>Print</Button>
                 </div>
             </div>
         )

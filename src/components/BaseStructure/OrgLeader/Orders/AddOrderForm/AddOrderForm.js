@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, FormControl, FormGroup, ControlLabel}  from 'react-bootstrap';
 import * as Papa from 'papaparse';
+
 
 // This component is a form which the Admin uses to create a new product/strudel that can be sold in a Campaign
 
@@ -125,44 +127,46 @@ class AddOrderForm extends Component {
         return(
             <div>
                 <h4>Select local CSV File:</h4>
-                <input id="csv" type="file"/>
-                <button type="submit" onClick={this.addCsvOrder}>Upload!</button>
+                <FormControl id="csv" type="file"/>
+                <Button type="submit" onClick={this.addCsvOrder}>Upload!</Button>
                 <hr/>
                 <h4>OR</h4>
                 <form>
-                    <select title="Campaign"
-                            value={this.state.newOrder.campaign_id} onChange={this.handleSelectCampaign("campaign_id")}>
-                            <option>Select Campaign</option>
-                            {campaignOptions}
-                    </select>
-                    <input value={this.state.newOrder.name} placeholder="Customer Name" onChange={this.handleInput("name")}/>
-                    <input value={this.state.newOrder.street_address} placeholder="Customer Address" onChange={this.handleInput("street_address")}/>
-                    <input value={this.state.newOrder.city} placeholder="City" onChange={this.handleInput("city")}/>
-                    <input value={this.state.newOrder.state} placeholder="State" onChange={this.handleInput("state")}/>
-                    <input value={this.state.newOrder.zip_code} placeholder="Zip" onChange={this.handleInput("zip_code")}/>
-                    <input value={this.state.newOrder.email_address} placeholder="Customer Email" onChange={this.handleInput("email_address")}/>
-                    <input value={this.state.newOrder.name_of_reference} placeholder="Name of Reference" onChange={this.handleInput("name_of_reference")}/>
-                    <input value={this.state.newOrder.notes} placeholder="Notes" onChange={this.handleInput("notes")}/>
-                    <br/>
-                    <select 
-                            value={this.state.newOrder.item1Name} onChange={this.handleInput("item1Name")}>
-                            <option>Strudel 1</option>
-                            {selectedCampaignProducts}
-                    </select>
-                    <input value={this.state.newOrder.item1Qty} placeholder="Qty" onChange={this.handleInput("item1Qty")}/>
-                    <select 
-                            value={this.state.newOrder.item2Name} onChange={this.handleInput("item2Name")}>
-                            <option>Strudel 2</option>
-                            {selectedCampaignProducts}
-                    </select>
-                    <input value={this.state.newOrder.item2Qty} placeholder="Qty" onChange={this.handleInput("item2Qty")}/>
-                    <select 
-                            value={this.state.newOrder.item3Name} onChange={this.handleInput("item3Name")}>
-                            <option>Strudel 3</option>
-                            {selectedCampaignProducts}
-                    </select>
-                    <input value={this.state.newOrder.item3Qty} placeholder="Qty" onChange={this.handleInput("item3Qty")}/>
-                    <button type="submit" onClick={this.addSingleOrder}>Create!</button>
+                    <FormGroup>
+                        <select title="Campaign"
+                                value={this.state.newOrder.campaign_id} onChange={this.handleSelectCampaign("campaign_id")}>
+                                <option>Select Campaign</option>
+                                {campaignOptions}
+                        </select>
+                        <FormControl value={this.state.newOrder.name} placeholder="Customer Name" onChange={this.handleInput("name")}/>
+                        <FormControl value={this.state.newOrder.street_address} placeholder="Customer Address" onChange={this.handleInput("street_address")}/>
+                        <FormControl value={this.state.newOrder.city} placeholder="City" onChange={this.handleInput("city")}/>
+                        <FormControl value={this.state.newOrder.state} placeholder="State" onChange={this.handleInput("state")}/>
+                        <FormControl value={this.state.newOrder.zip_code} placeholder="Zip" onChange={this.handleInput("zip_code")}/>
+                        <FormControl value={this.state.newOrder.email_address} placeholder="Customer Email" onChange={this.handleInput("email_address")}/>
+                        <FormControl value={this.state.newOrder.name_of_reference} placeholder="Name of Reference" onChange={this.handleInput("name_of_reference")}/>
+                        <FormControl value={this.state.newOrder.notes} placeholder="Notes" onChange={this.handleInput("notes")}/>
+                        <br/>
+                        <select 
+                                value={this.state.newOrder.item1Name} onChange={this.handleInput("item1Name")}>
+                                <option>Strudel 1</option>
+                                {selectedCampaignProducts}
+                        </select>
+                        <FormControl value={this.state.newOrder.item1Qty} placeholder="Qty" onChange={this.handleInput("item1Qty")}/>
+                        <select 
+                                value={this.state.newOrder.item2Name} onChange={this.handleInput("item2Name")}>
+                                <option>Strudel 2</option>
+                                {selectedCampaignProducts}
+                        </select>
+                        <FormControl value={this.state.newOrder.item2Qty} placeholder="Qty" onChange={this.handleInput("item2Qty")}/>
+                        <select 
+                                value={this.state.newOrder.item3Name} onChange={this.handleInput("item3Name")}>
+                                <option>Strudel 3</option>
+                                {selectedCampaignProducts}
+                        </select>
+                        <FormControl value={this.state.newOrder.item3Qty} placeholder="Qty" onChange={this.handleInput("item3Qty")}/>
+                        <Button type="submit" onClick={this.addSingleOrder}>Create Order</Button>
+                    </FormGroup>
                 </form>
             </div>
         )

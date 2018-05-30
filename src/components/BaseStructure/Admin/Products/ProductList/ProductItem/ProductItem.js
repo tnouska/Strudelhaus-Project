@@ -34,8 +34,8 @@ class ProductItem extends Component {
                         <Panel.Body>
                             <img className="smallProductImg" src={this.props.product.img_url_1} alt="strudel" />
                             <br/>
-                            <button>Edit</button>
-                            <button onClick={this.deleteProduct}>Delete</button>
+                            <Button>Edit</Button>
+                            <Button onClick={this.deleteProduct}>Delete</Button>
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>

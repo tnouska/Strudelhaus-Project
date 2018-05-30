@@ -70,8 +70,8 @@ class CampaignItem extends Component {
                             <ProgressBar now={goalPercentage} />
                             <p>Products:</p>
                             {campaignProducts}
-                            <button onClick={this.handleShow}>Edit</button>
-                            <button onClick={this.deleteCampaign}>Delete</button>
+                            <Button onClick={this.handleShow}>Edit</Button>
+                            <Button onClick={this.deleteCampaign}>Delete</Button>
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>

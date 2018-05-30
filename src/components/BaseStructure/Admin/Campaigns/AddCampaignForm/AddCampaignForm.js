@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Button, DropdownButton, MenuItem , FormControl, FormGroup, ControlLabel}  from 'react-bootstrap';
 import Select from 'react-select';
 import * as Animated from 'react-select/lib/animated';
 
@@ -63,6 +63,8 @@ class AddCampaignForm extends Component {
             })
         }
     }
+
+
     onChange = (value) => {
         let valueArray = [];
         for (let i = 0; i < value.length; i++) {
@@ -87,26 +89,29 @@ class AddCampaignForm extends Component {
         return (
             <div>
                 <form id="addCampForm">
-                    {/* <input value={this.state.newCampaign.organization_id} placeholder="Organization" onChange={this.handleInput("organization_id")}/> */}
-                    <select title="Organization" id="orgSelect" onChange={this.handleInput("organization_id")}
-                        value={this.state.newCampaign.organization_id}>
-                        {orgOptions}
-                    </select>
-                    <input value={this.state.newCampaign.name} placeholder="Campaign Name" onChange={this.handleInput("name")} />
-                    <input value={this.state.newCampaign.url} placeholder="Campaign URL" onChange={this.handleInput("url")} />
-                    <input value={this.state.newCampaign.info_url} placeholder="Info URL" onChange={this.handleInput("info_url")} />
-                    <input value={this.state.newCampaign.notes} placeholder="Notes" onChange={this.handleInput("notes")} />
-                    <input value={this.state.newCampaign.date_start} placeholder="Start Date" onChange={this.handleInput("date_start")} />
-                    <input value={this.state.newCampaign.date_end} placeholder="End Date" onChange={this.handleInput("date_end")} />
-                    <input value={this.state.newCampaign.goal} placeholder="Sales Goal ($)" onChange={this.handleInput("goal")} />
-                    <Select
-                        options={productOption}
-                        className="basic-multi-select"
-                        isMulti
-                        components={Animated}
-                        onChange={this.onChange}
-                    />
-                    <button type="submit" onClick={this.addCampaign}>Create!</button>
+                    <FormGroup>
+                        <select title="Organization" id="orgSelect" onChange={this.handleInput("organization_id")}
+                            value={this.state.newCampaign.organization_id}>
+                            <option>Select Organization</option>
+                            {orgOptions}
+                        </select>
+                        <FormControl value={this.state.newCampaign.name} placeholder="Campaign Name" onChange={this.handleInput("name")} />
+                        <FormControl value={this.state.newCampaign.url} placeholder="Campaign URL" onChange={this.handleInput("url")} />
+                        <FormControl value={this.state.newCampaign.info_url} placeholder="Info URL" onChange={this.handleInput("info_url")} />
+                        <FormControl value={this.state.newCampaign.notes} placeholder="Notes" onChange={this.handleInput("notes")} />
+                        <FormControl value={this.state.newCampaign.date_start} placeholder="Start Date" onChange={this.handleInput("date_start")} />
+                        <FormControl value={this.state.newCampaign.date_end} placeholder="End Date" onChange={this.handleInput("date_end")} />
+                        <FormControl value={this.state.newCampaign.goal} placeholder="Sales Goal ($)" onChange={this.handleInput("goal")} />
+                        <Select
+                            options={productOption}
+                            placeholder="Select Products"
+                            className="basic-multi-select"
+                            isMulti
+                            components={Animated}
+                            onChange={this.onChange}
+                        />
+                        <Button type="submit" onClick={this.addCampaign}>Create!</Button>
+                    </FormGroup>
                 </form>
             </div>
         )
