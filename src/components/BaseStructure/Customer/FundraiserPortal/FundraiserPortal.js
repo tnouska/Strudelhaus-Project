@@ -12,6 +12,7 @@ import StrudelList from '../StrudelList/StrudelList';
 import ShoppingCartList from '../ShoppingCartList/ShoppingCartList';
 import Nav from '../../../Nav/Nav';
 import SquareForm from '../SquareForm/SquareForm';
+import SweetAlert from 'sweetalert2-react';
 
 const mapStateToProps = state => ({
   view: state.toggleShoppingView,
@@ -48,8 +49,18 @@ componentDidUpdate() {
         window.location = this.props.url;
         
         }
+
+        if(this.props.url === false){
+          // alert('please fill out every item on the form and choose strudels')
+          this.state.show = true
+          this.props.dispatch({
+            type:'PAYMENT_VIEW',
+            payload: []
+          })
+        }
       }
       postTransaction=()=>{
+
         this.props.dispatch({
           type: 'POST_CUSTINFO',
           payload: {
@@ -59,6 +70,7 @@ componentDidUpdate() {
                   total: total
           }
         });
+        
        }
 
 
@@ -66,13 +78,7 @@ add(a,b){
   return parseInt(a) + parseInt(b)
   }
 render() {
-  if(this.props.url === false){
-    alert('please fill out every item on the form and choose strudels')
-    this.props.dispatch({
-      type:'PAYMENT_VIEW',
-      payload: []
-    })
-  }
+  
   let totalArr = this.props.cart && this.props.cart.map( (product)=>{
     return(
       product.quantity * product.product_price
@@ -85,7 +91,12 @@ if (this.props.cart.length > 0){
 
     return (
       <div>
-       
+       <SweetAlert
+        show={this.state.show}
+        title="Choose Your Strudels"
+        text="Please complete the form and choose your strudels."
+        onConfirm={() => this.setState({ show: false })}
+      />
         <h2>Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
         <Grid>
   <Row className="show-grid">

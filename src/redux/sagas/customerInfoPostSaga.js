@@ -22,6 +22,11 @@ function* customerInfoPost(action) {
         yield call(axios.post, `/api/payment/postcustomer`)
     } catch (error) {
         console.log('error ing POST customerinfo:', error);
+        let catchError = false
+        yield put({
+            type: 'PAYMENT_VIEW',
+            payload: catchError
+        })
     } 
 }
 

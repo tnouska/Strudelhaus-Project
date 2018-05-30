@@ -76,7 +76,7 @@ router.post('/customerinfo', function (req, res) {
     }else{
       
       res.send(body.checkout.checkout_page_url)
-    }
+    
     
 
     console.log('TEST!!!!!');
@@ -144,8 +144,9 @@ router.post('/customerinfo', function (req, res) {
         }
         console.log('Message sent: ' + info.response);
     });
-
+  }
   });//end request
+
 });
 
 router.post('/postcustomer', (req, res) => {
