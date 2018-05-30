@@ -12,7 +12,8 @@ import Orders from './components/BaseStructure/OrgLeader/Orders/Orders';
 import Account from './components/BaseStructure/OrgLeader/Account/Account';
 import FundraiserPortal from './components/BaseStructure/Customer/FundraiserPortal/FundraiserPortal';
 import SquareForm from './components/BaseStructure/Customer/SquareForm/SquareForm';
-import ThankYou from './components/BaseStructure/Customer/ThankYou/ThankYou'
+import ThankYou from './components/BaseStructure/Customer/ThankYou/ThankYou';
+import OrgLeaderPassword from './components/BaseStructure/OrgLeader/OrgLeaderPassword/OrgLeaderPassword';
 import './styles/main.css';
 
 
@@ -32,6 +33,7 @@ const App = () => (
         <Route path="/account" component={Account}/>
         <Route path="/fundraiser/:name" component={FundraiserPortal}/>
         <Route path="/thankyou" component={ThankYou}/>
+        <Route path="/newpassword/:token/:username" component={OrgLeaderPassword}/>
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 
