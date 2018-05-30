@@ -41,11 +41,13 @@ componentDidMount() {
 }
     
 componentDidUpdate() {
+  
+        if (this.props.url != this.props.url || this.props.url.length >= 1){
+          
+          
+        window.location = this.props.url;
         
-        if (this.props.url != this.props.url || this.props.url.length > 3){
-          window.location = this.props.url;
         }
-      
       }
       postTransaction=()=>{
         this.props.dispatch({
@@ -64,6 +66,13 @@ add(a,b){
   return parseInt(a) + parseInt(b)
   }
 render() {
+  if(this.props.url === false){
+    alert('please fill out every item on the form and choose strudels')
+    this.props.dispatch({
+      type:'PAYMENT_VIEW',
+      payload: []
+    })
+  }
   let totalArr = this.props.cart && this.props.cart.map( (product)=>{
     return(
       product.quantity * product.product_price
