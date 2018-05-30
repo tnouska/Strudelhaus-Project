@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, FormControl, FormGroup, ControlLabel}  from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+let moment = require('moment');
 
 class EditCampForm extends Component {
     constructor(props) {
@@ -14,7 +17,9 @@ class EditCampForm extends Component {
                 notes: this.props.campaign.notes,
                 goal: this.props.campaign.goal,
                 campaign_id: this.props.campaign.campaign_id,
-            }
+            },
+            startDate: '',
+            endDate: ''
         });
     };
 
@@ -31,7 +36,27 @@ class EditCampForm extends Component {
                 goal: '',
             }
         })
-    }
+    };
+
+    handleStartDate = (date) => {
+        this.setState({
+            updateCamp: {
+                ...this.state.updateCamp,
+                date_start: moment(date).format("MM-DD-YYYY")
+            },
+            startDate: date
+        })
+    };
+
+    handleEndDate = (date) => {
+        this.setState({
+            updateCamp: {
+                ...this.state.updateCamp,
+                date_end: moment(date).format("MM-DD-YYYY")
+            },
+            endDate: date
+        })
+    };
 
     handleInput = (propertyName) => {
         return (event) => {
@@ -43,7 +68,7 @@ class EditCampForm extends Component {
             })
             
         }
-    }
+    };
 
     render(){
         return (
@@ -52,8 +77,18 @@ class EditCampForm extends Component {
                     <FormGroup>
                         <FormControl value={this.state.updateCamp.url} placeholder="URL" onChange={this.handleInput("url")}/>
                         <FormControl value={this.state.updateCamp.name} placeholder="Name" onChange={this.handleInput("name")}/>
-                        <FormControl value={this.state.updateCamp.date_start} placeholder="Date Start" onChange={this.handleInput("date_start")}/>
-                        <FormControl value={this.state.updateCamp.date_end} placeholder="Date End" onChange={this.handleInput("date_end")}/>
+                        <DatePicker
+                            dateFormat="MM/DD/YY"
+                            selected={this.state.startDate}
+                            placeholderText="Start Date"
+                            onChange={this.handleStartDate}
+                        />
+                        <DatePicker
+                            dateFormat="MM/DD/YY"
+                            selected={this.state.endDate}
+                            placeholderText="End Date"
+                            onChange={this.handleEndDate}
+                        />
                         <FormControl value={this.state.updateCamp.notes} placeholder="Notes" onChange={this.handleInput("notes")}/>
                         <FormControl value={this.state.updateCamp.goal} placeholder="Goal" onChange={this.handleInput("goal")}/>
                         <Button type="submit" onClick={this.editCampaign}>Save</Button>
