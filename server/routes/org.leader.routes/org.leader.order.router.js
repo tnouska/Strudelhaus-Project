@@ -18,7 +18,12 @@ router.get('/:id', (req, res) => {
                     customer.name_of_reference,
                     customer.notes,
                     customer.date_of_order,
-                    customer.id as customer_id
+                    customer.id as customer_id,
+                    customer.street_address,
+                    customer.city,
+                    customer.state,
+                    customer.zip_code,
+                    customer.email_address
                     FROM customer
                     WHERE campaign_id = $1;`
                 const campaignOrders = await client.query(queryText, [req.params.id])
