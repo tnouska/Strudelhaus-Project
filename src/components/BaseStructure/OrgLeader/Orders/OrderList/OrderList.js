@@ -7,7 +7,6 @@ import OrderItem from './OrderItem/OrderItem';
 
 class OrderList extends Component {
 
-
     render() {
         // map over all Orders (for selected Campaign) to create unique items for each Order Object
         let orderRows = this.props.reduxState.order.map((order) => {
@@ -18,7 +17,8 @@ class OrderList extends Component {
             <div>
                 <Table striped bordered condensed hover>
                     <thead>
-                        <tr><th>Customer Name</th>
+                        <tr>
+                            <th>Customer Name</th>
                             <th>Referral Name</th>
                             <th>Order Date</th>
                             <th>Notes</th>
@@ -28,6 +28,7 @@ class OrderList extends Component {
                         {orderRows}
                     </tbody>
                 </Table>
+
             </div>
         )
     }
