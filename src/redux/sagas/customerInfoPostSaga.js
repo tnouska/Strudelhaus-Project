@@ -9,6 +9,7 @@ function* customerInfoPostSaga() {
 function* customerInfoPost(action) {
     console.log('post customer info', action);
     try{
+        const squareInfo = yield call(axios.post, `/api/payment/squareInfo`, action.payload);
         const postTransaction = yield call(axios.post, `/api/payment/customerinfo`, action.payload);
         
         console.log(postTransaction.data)
