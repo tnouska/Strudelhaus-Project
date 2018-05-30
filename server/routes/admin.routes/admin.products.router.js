@@ -50,10 +50,10 @@ router.delete('/:id', (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/', (req, res) => {
     if (req.isAuthenticated()) {
         let queryText = `UPDATE product SET name = $1, description = $2, price = $3, sku = $4, img_url_1 = $5, img_url_2 = $6, product_type = $7 WHERE id = $8 `
-        let productValues = [req.body.name, req.body.description, req.body.price, req.body.sku, req.body.img_url_1, req.body.img_url_2, req.body.product_type,req.params.id]
+        let productValues = [req.body.name, req.body.description, req.body.price, req.body.sku, req.body.img_url_1, req.body.img_url_2, req.body.product_type,req.body.product_id]
         pool.query(queryText, productValues)
             .then(() => {
                 res.sendStatus(200);
@@ -66,4 +66,5 @@ router.put('/:id', (req, res) => {
         res.sendStatus(403);
     }
 })
+
 module.exports = router;
