@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, DropdownButton, MenuItem , FormControl, FormGroup, ControlLabel}  from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import Select from 'react-select';
 import * as Animated from 'react-select/lib/animated';
+let moment = require('moment');
 
 
 class AddCampaignForm extends Component {
@@ -19,7 +22,9 @@ class AddCampaignForm extends Component {
                 date_end: '',
                 goal: '',
                 products: []
-            }
+            },
+            startDate: '',
+            endDate: ''
         });
     };
 
@@ -50,6 +55,25 @@ class AddCampaignForm extends Component {
             }
         })
     };
+
+    handleStartDate = (date) => {
+        this.setState({
+            newCampaign: {
+                ...this.state.newCampaign,
+                date_start: moment(date).format("MM-DD-YYYY")
+            },
+            startDate: date
+        })
+    }
+    handleEndDate = (date) => {
+        this.setState({
+            newCampaign: {
+                ...this.state.newCampaign,
+                date_end: moment(date).format("MM-DD-YYYY")
+            },
+            endDate: date
+        })
+    }
 
     // Capture user inputs so we can store in our local state
     handleInput = (propertyName) => {
@@ -99,8 +123,20 @@ class AddCampaignForm extends Component {
                         <FormControl value={this.state.newCampaign.url} placeholder="Campaign URL" onChange={this.handleInput("url")} />
                         <FormControl value={this.state.newCampaign.info_url} placeholder="Info URL" onChange={this.handleInput("info_url")} />
                         <FormControl value={this.state.newCampaign.notes} placeholder="Notes" onChange={this.handleInput("notes")} />
-                        <FormControl value={this.state.newCampaign.date_start} placeholder="Start Date" onChange={this.handleInput("date_start")} />
-                        <FormControl value={this.state.newCampaign.date_end} placeholder="End Date" onChange={this.handleInput("date_end")} />
+                        <DatePicker
+                            dateFormat="MM/DD/YY"
+                            selected={this.state.startDate}
+                            placeholderText="Start Date"
+                            onChange={this.handleStartDate}
+                        />
+                        <DatePicker
+                            dateFormat="MM/DD/YY"
+                            selected={this.state.endDate}
+                            placeholderText="End Date"
+                            onChange={this.handleEndDate}
+                        />
+                        {/* <FormControl value={this.state.newCampaign.date_start} placeholder="Start Date" onChange={this.handleInput("date_start")} /> */}
+                        {/* <FormControl value={this.state.newCampaign.date_end} placeholder="End Date" onChange={this.handleInput("date_end")} /> */}
                         <FormControl value={this.state.newCampaign.goal} placeholder="Sales Goal ($)" onChange={this.handleInput("goal")} />
                         <Select
                             options={productOption}
