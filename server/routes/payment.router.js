@@ -70,7 +70,14 @@ router.post('/customerinfo', function (req, res) {
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error)
-    res.send(body.checkout.checkout_page_url)
+    console.log(body)
+    if(body.errors){
+      res.send(body)
+    }else{
+      
+      res.send(body.checkout.checkout_page_url)
+    }
+    
 
     console.log('TEST!!!!!');
     const user_name     = 'strudelhausproxy@gmail.com';

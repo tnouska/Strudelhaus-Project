@@ -12,6 +12,9 @@ function* customerInfoPost(action) {
         const postTransaction = yield call(axios.post, `/api/payment/customerinfo`, action.payload);
         
         console.log(postTransaction.data)
+        if(typeof postTransaction.data.errors == 'object'){
+            postTransaction.data = false
+        }
         yield put({
             type: 'PAYMENT_VIEW',
             payload: postTransaction.data

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import appleStrudelBoard from './appleStrudelBoard.jpg';
 import { Button, Row, Col, Grid } from 'react-bootstrap';
 
 
