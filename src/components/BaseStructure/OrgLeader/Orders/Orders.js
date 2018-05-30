@@ -116,7 +116,7 @@ class Orders extends Component {
                             <Button onClick={this.handleClose}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
-                    <OrderList/>
+                    <OrderList selectedCampaign={this.state.selectedCampaign}/>
                     <Button type="button" onClick={this.printOrder}>Print</Button>
                 </div>
             </div>
