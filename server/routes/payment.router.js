@@ -6,7 +6,8 @@ let request = require("request");
 const pool = require('../modules/pool');
 let nodemailer = require('nodemailer');
 
-
+let squareAppId;
+let squareLocationId;
 let customerData = {
   amount: 0,
   billingName: '',
@@ -20,7 +21,26 @@ let customerData = {
   campaignName: '',
   products: []
 }
-
+//square access token = location id
+router.post('/squareInfo', function (req, res){
+  
+  let orgUrl = req.body.campaignName
+  console.log(orgUrl)
+  //`SELECT "square_application_id", "square_location_id" FROM campaign JOIN organization ON organization.id = campaign.organization_id where campaign.url = $1;`;
+  const queryText = `SELECT square_application_id, square_location_id FROM campaign JOIN organization ON organization.id = campaign.organization_id where campaign.url = $1;`
+  console.log(queryText);
+  pool.query(queryText, [orgUrl])
+  .then((result) => {
+    
+    res.sendStatus(200);
+    console.log('square info from db', result.rows[0].square_application_id, result.rows[0].square_location_id );
+    squareAppId = result.rows[0].square_application_id
+    squareLocationId = result.rows[0].square_location_id
+}).catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+});
+})
 
 router.post('/customerinfo', function (req, res) {
 
@@ -44,12 +64,12 @@ router.post('/customerinfo', function (req, res) {
   // let totalAmount = parseInt(req.body * 100)
   let options = {
     method: 'POST',
-    url: 'https://connect.squareup.com/v2/locations/CBASEGcVZgUKS8RbqdkU-YjiBxggAQ/checkouts',
+    url: 'https://connect.squareup.com/v2/locations/'+ squareLocationId +'/checkouts',
     headers:
       {
         'Cache-Control': 'no-cache',
         Accept: 'application/json',
-        Authorization: 'Bearer sandbox-sq0atb-ffNvoCsEpPIf8cJyXHELlw',
+        Authorization: 'Bearer ' + squareAppId,
         'Content-Type': 'application/json'
       },
     body:
