@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table, Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap'
+import SweetAlert from 'sweetalert2-react';
+
 
 // This component displays more info related to each unique Order for the selected Campaign
 
@@ -9,7 +11,8 @@ class OrderItem extends Component {
     constructor(props) {
         super(props);
         this.state = ({
-            showModal: false
+            showModal: false,
+            showAlert: false
         })
     };
     handleClose = () => {
@@ -21,6 +24,23 @@ class OrderItem extends Component {
             this.setState({ showModal: true });
         }
     };
+    handleShowAlert = () => {
+        this.setState({
+            showAlert: true
+        })
+    }
+    deleteOrder = () => {
+        this.setState({
+            showAlert: false
+        })
+        this.props.dispatch({
+            type: 'DELETE_ORDER',
+            payload: {
+                customer_id: this.props.order.customer_id,
+                id: this.props.selectedCampaign
+            }
+        })
+    }
     render() {
         let orderTotal = 0
         console.log('this.props.order', this.props.order);
@@ -76,10 +96,22 @@ class OrderItem extends Component {
                         </Table>
                     </ModalBody>
                     <ModalFooter>
+                        <Button onClick={this.handleShowAlert}>Delete</Button>
                         <Button onClick={this.handleClose}>Cancel</Button>
                         <Button>Print</Button>
                     </ModalFooter>
                 </Modal>
+                <SweetAlert
+                    show={this.state.showAlert}
+                    title="Delete Order?"
+                    text="Would you like to Delete this Order?"
+                    confirmButtonText={'Yes, Delete'}
+                    confirmButtonColor={'#FF530D'}
+                    showCancelButton={true}
+                    cancelButtonText={'No'}
+                    onConfirm={this.deleteOrder}
+                    onCancel={() => this.setState({ showAlert: false})}
+                />
             </tr>
 
 
