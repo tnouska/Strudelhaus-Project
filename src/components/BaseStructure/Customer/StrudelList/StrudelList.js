@@ -37,6 +37,7 @@ addToOrder = (product)=>{
 
   const evalProduct = (item => item.product_name === product.product_name);
   const findItem = this.props.cart.find(evalProduct);
+  console.log(findItem)
   if(!findItem){
     console.log(product)
   

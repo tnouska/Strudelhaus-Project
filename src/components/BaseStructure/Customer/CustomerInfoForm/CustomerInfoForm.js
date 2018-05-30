@@ -14,6 +14,7 @@ class CustomerInfoForm extends Component {
       super(props);
       this.state = {
         //   customerInfo:{
+          show: false,
         refName: '',
         email: '',
         address: '',
@@ -26,13 +27,13 @@ class CustomerInfoForm extends Component {
       };
     }
     
-//   getValidationState =()=> {
-//     const length = this.state.value.length;
-//     if (length > 10) return 'success';
-//     else if (length > 5) return 'warning';
-//     else if (length > 0) return 'error';
-//     return null;
-//   }
+  // getValidationState =()=> {
+  //   const length = this.state.value.length;
+  //   if (length > 10) return 'success';
+  //   else if (length > 5) return 'warning';
+  //   else if (length > 0) return 'error';
+  //   return null;
+  // }
 
 handleChange = ( inputText )=>{
     
@@ -68,7 +69,7 @@ render() {
             type="text"
             placeholder="Enter Name"
             onChange={this.handleChange("refName")}
-            required
+            
           />
           <ControlLabel>Billing Name</ControlLabel>
           <FormControl
@@ -76,6 +77,7 @@ render() {
             type="text"
             placeholder="Enter Name"
             onChange={this.handleChange("billingName")}
+            
           />
           <ControlLabel>Email</ControlLabel>
           <FormControl
@@ -83,6 +85,7 @@ render() {
             type="text"
             placeholder="Enter Email"
             onChange={this.handleChange("email")}
+            
          /> 
          <ControlLabel>Address</ControlLabel>
          <FormControl
@@ -90,6 +93,7 @@ render() {
             type="text"
             placeholder="Enter Address"
             onChange={this.handleChange("address")}
+           
          /> 
          <ControlLabel>City</ControlLabel>
          <FormControl
@@ -97,6 +101,7 @@ render() {
             type="text"
             placeholder="Enter City"
             onChange={this.handleChange("city")}
+            required
          /> 
          <ControlLabel>State</ControlLabel>
          <FormControl
@@ -104,6 +109,7 @@ render() {
             type="text"
             placeholder="Enter State"
             onChange={this.handleChange("state")}
+            required
          /> 
          <ControlLabel>Zip</ControlLabel>
          <FormControl
@@ -111,6 +117,7 @@ render() {
             type="text"
             placeholder="Enter Zip Code"
             onChange={this.handleChange("zip")}
+            
          /> 
          <ControlLabel>Notes</ControlLabel>
          <FormControl
@@ -118,6 +125,7 @@ render() {
             type="text"
             placeholder="Enter Notes"
             onChange={this.handleChange("notes")}
+           
          /> 
           {/* <FormControl.Feedback />
           <HelpBlock>Validation is based on string length.</HelpBlock>  */}

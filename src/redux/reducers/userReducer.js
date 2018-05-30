@@ -12,6 +12,17 @@ const userName = (state = null, action) => {
   }
 };
 
+const userId = (state = null, action) => {
+  switch (action.type) {
+    case USER_ACTIONS.SET_USERID:
+      return action.user.id || state;
+    case USER_ACTIONS.UNSET_USERID:
+      return null;
+    default:
+      return state;
+  }
+};
+
 const isLoading = (state = false, action) => {
   switch (action.type) {
     case USER_ACTIONS.REQUEST_START:
@@ -37,4 +48,5 @@ export default combineReducers({
   userName,
   isLoading,
   userRole,
+  userId
 });

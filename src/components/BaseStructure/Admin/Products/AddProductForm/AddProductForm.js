@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, FormControl, FormGroup, ControlLabel}  from 'react-bootstrap';
+import Select from 'react-select';
 
 // This component is a form which the Admin uses to create a new product/strudel that can be sold in a Campaign
 
@@ -54,16 +56,18 @@ class AddProductForm extends Component {
         return(
             <div>
                 <form id="addProductForm">
-                    <input value={this.state.newProduct.name} placeholder="Name" onChange={this.handleInput("name")}/>
-                    <input value={this.state.newProduct.sku} placeholder="SKU #" onChange={this.handleInput("sku")}/>
-                    <input value={this.state.newProduct.product_price} placeholder="Price $" onChange={this.handleInput("product_price")}/>
-                    <select value={this.state.newProduct.product_type} onChange={this.handleInput("product_type")}>
-                        <option value="1">Sweet</option>
-                        <option value="2">Savory</option>
-                    </select>
-                    <input value={this.state.newProduct.image_url_1} placeholder="Image URL" onChange={this.handleInput("image_url_1")}/>
-                    <input value={this.state.newProduct.description} placeholder="description" onChange={this.handleInput("description")}/>
-                    <button type="submit" onClick={this.addProduct}>Create!</button>
+                    <FormGroup>
+                        <FormControl value={this.state.newProduct.name} placeholder="Name" onChange={this.handleInput("name")}/>
+                        <FormControl value={this.state.newProduct.sku} placeholder="SKU #" onChange={this.handleInput("sku")}/>
+                        <FormControl value={this.state.newProduct.product_price} placeholder="Price $" onChange={this.handleInput("product_price")}/>
+                        <select value={this.state.newProduct.product_type} onChange={this.handleInput("product_type")}>
+                            <option value="1">Sweet</option>
+                            <option value="2">Savory</option>
+                        </select>
+                        <FormControl value={this.state.newProduct.image_url_1} placeholder="Image URL" onChange={this.handleInput("image_url_1")}/>
+                        <FormControl value={this.state.newProduct.description} placeholder="description" onChange={this.handleInput("description")}/>
+                        <Button type="submit" onClick={this.addProduct}>Create!</Button>
+                    </FormGroup>
                 </form>
             </div>
         )

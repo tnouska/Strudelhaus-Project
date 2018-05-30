@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, FormControl, FormGroup, ControlLabel}  from 'react-bootstrap';
 
 class EditOrgForm extends Component {
     constructor(props) {
@@ -50,15 +51,17 @@ class EditOrgForm extends Component {
         return(
             <div>
                 <form>
-                    <input value={this.state.updateOrg.name} placeholder="Name" onChange={this.handleInput("name")}/>
-                    <input value={this.state.updateOrg.street_address} placeholder="Street Address" onChange={this.handleInput("street_address")}/>
-                    <input value={this.state.updateOrg.city} placeholder="City" onChange={this.handleInput("city")}/>
-                    <input value={this.state.updateOrg.state} placeholder="State" onChange={this.handleInput("state")}/>
-                    <input value={this.state.updateOrg.zip_code} placeholder="Zip Code" onChange={this.handleInput("zip_code")}/>
-                    <input value={this.state.updateOrg.contact_name} placeholder="Contact Name" onChange={this.handleInput("contact_name")}/>
-                    <input value={this.state.updateOrg.contact_phone} placeholder="Contact Phone" onChange={this.handleInput("contact_phone")}/>
-                    <input value={this.state.updateOrg.contact_email} placeholder="Contact Email" onChange={this.handleInput("contact_email")}/>
-                    <button type="submit" onClick={this.editOrganization}>Create!</button>
+                    <FormGroup>
+                        <FormControl value={this.state.updateOrg.name} placeholder="Name" onChange={this.handleInput("name")}/>
+                        <FormControl value={this.state.updateOrg.street_address} placeholder="Street Address" onChange={this.handleInput("street_address")}/>
+                        <FormControl value={this.state.updateOrg.city} placeholder="City" onChange={this.handleInput("city")}/>
+                        <FormControl value={this.state.updateOrg.state} placeholder="State" onChange={this.handleInput("state")}/>
+                        <FormControl value={this.state.updateOrg.zip_code} placeholder="Zip Code" onChange={this.handleInput("zip_code")}/>
+                        <FormControl value={this.state.updateOrg.contact_name} placeholder="Contact Name" onChange={this.handleInput("contact_name")}/>
+                        <FormControl value={this.state.updateOrg.contact_phone} placeholder="Contact Phone" onChange={this.handleInput("contact_phone")}/>
+                        <FormControl value={this.state.updateOrg.contact_email} placeholder="Contact Email" onChange={this.handleInput("contact_email")}/>
+                        <Button type="submit" onClick={this.editOrganization}>Save</Button>
+                    </FormGroup>
                 </form>
             </div>
         )

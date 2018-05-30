@@ -44,18 +44,24 @@ router.get('/logout', (req, res) => {
 });
 
 router.put('/newpassword', (req, res) => {
+  console.log('req.body', req.body)
   const password = encryptLib.encryptPassword(req.body.password)
   const token = req.body.token
+  const appId = req.body.square_application_id
+  const locationId = req.body.square_location_id
   if (token.length === 40) {
     (async () => {
       const client = await pool.connect();
       try {
+        console.log('req.body in async try: ', req.body)
         await client.query('BEGIN')
         const queryText = `UPDATE person SET password = $1 WHERE token = $2`
         await client.query(queryText, [password, token])
-        const queryText2 = `UPDATE person SET token = $1`
+        const queryText2 = `UPDATE person SET token = $1 RETURNING "id"`
         const newToken = ''
-        await client.query(queryText2, [newToken])
+        let personId = await client.query(queryText2, [newToken])
+        const queryText3 = `UPDATE organization SET square_application_id = $1, square_location_id = $2 WHERE organization.person_id = $3`
+        await client.query(queryText3,[appId,locationId,personId.rows[0].id])
         await client.query('COMMIT')
         res.sendStatus(201);
       } catch (error) {

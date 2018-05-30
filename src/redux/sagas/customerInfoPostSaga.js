@@ -9,6 +9,7 @@ function* customerInfoPostSaga() {
 function* customerInfoPost(action) {
     console.log('post customer info', action);
     try{
+        const squareInfo = yield call(axios.post, `/api/payment/squareInfo`, action.payload);
         const postTransaction = yield call(axios.post, `/api/payment/customerinfo`, action.payload);
         
         console.log(postTransaction.data)
@@ -19,9 +20,14 @@ function* customerInfoPost(action) {
             type: 'PAYMENT_VIEW',
             payload: postTransaction.data
         })
-        yield call(axios.post, `/api/payment/postcustomer`)
+        yield call(axios.post, `/api/payment/postcustomer`);
     } catch (error) {
         console.log('error ing POST customerinfo:', error);
+        let catchError = false
+        yield put({
+            type: 'PAYMENT_VIEW',
+            payload: catchError
+        })
     } 
 }
 
