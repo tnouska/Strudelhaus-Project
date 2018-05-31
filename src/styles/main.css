@@ -1,5 +1,7 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Lato', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('./images/strudelBG.jpg');
+    position: fixed;
 }
 
 .instructions h1 {
@@ -14,7 +16,7 @@ body {
 }
 
 .mainDiv {
-  padding-left: 150px;
+  padding-left: 200px;
 }
 
 input {
@@ -46,7 +48,7 @@ input[type="submit"] {
   background-color: #880F1B;
   position: fixed;
   height: 100%;
-  width: 150px;
+  width: 200px;
   border-radius: 0px;
   z-index: 1;
   top: 0;
@@ -54,9 +56,9 @@ input[type="submit"] {
 }
 
 .navImage {
-  width: 136px;
-  height: 88.5px;
-  padding: 5px;
+  width: 176px;
+  height: 128.5px;
+  padding: 5px 0px 0px 13px;
   margin: 5px;
 }
 
@@ -67,22 +69,22 @@ ul {
     overflow: hidden;
 }
 
-li {
+/* li {
     float: left;
-}
+} */
 
 li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 30px 14px 10px;
     text-decoration: none;
-
+    font-size: 20px;
+    
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    text-decoration: underline;
     color: #eee;
 }
 

@@ -8,16 +8,16 @@ const AdminNav = () => (
     <div>
       <ul>
         <li>
-            <Link to="/pipeline">Pipeline</Link>
+            <Link to="/pipeline">PIPELINE</Link>
         </li>
         <li>
-            <Link to="/organizations">Organizations</Link>
+            <Link to="/organizations">ORGANIZATIONS</Link>
         </li>
         <li>
-            <Link to="/campaigns">Campaigns</Link>
+            <Link to="/campaigns">CAMPAIGNS</Link>
         </li>
         <li>
-            <Link to="/products">Products</Link>
+            <Link to="/products">PRODUCTS</Link>
         </li>
       </ul>
     </div>
