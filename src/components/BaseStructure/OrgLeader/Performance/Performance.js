@@ -4,9 +4,12 @@ import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 import PerformanceItem from './/PerformanceItem/PerformanceItem';
+import OrgChart from './orgChart';
 
 // This is the parent component and main view for the Org Leader "Performance" area of the app. It is also the default Org Leader landing page upon log in
 // The Org Leader can view high-level sales data by campaign
+
+
 
 let campaignOptions
 class Performance extends Component {
@@ -32,7 +35,7 @@ class Performance extends Component {
     // on mount get user, campaign performance data (based on user Organization) via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}});
+        // this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}});
         
 
         this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}})        
@@ -50,8 +53,7 @@ class Performance extends Component {
         if (!this.props.user.isLoading && this.props.user.userRole !== "leader"){
             this.props.history.push('home'); 
         }
-
-        if(this.props.user.userId !== this.props.user.userId || campaignOptions.length < 1)
+        if(this.props.user.userId != this.props.user.userId || campaignOptions.length < 1 || this.props.reduxState.orgLeaderPerformance[0].id != this.props.user.userId )
         this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}});
 
     };
@@ -82,6 +84,9 @@ let everything;
                             {campaignOptions}
                     </select>
                     <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
+                    <OrgChart
+                    
+                    />
                 </div>
                 </div>
         )
