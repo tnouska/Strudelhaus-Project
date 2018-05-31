@@ -1,5 +1,5 @@
 .orgListDiv {
-    margin: 50px 10px 10px 100px;
+    margin: 50px 10px 10px 120px;
     width: 900px;
     height: 650px;
     background-color: white;
@@ -19,11 +19,16 @@
 
 
 .orgPanel {
-    width: 500px;
-    margin: 20px 10px 10px 50px;
+    width: 600px;
+    margin: 20px 10px 10px 125px;
+    text-align: center
     /* padding: 10px 10px 10px 10px; */
 }
 
 .panelTitle {
     color: white;
+}
+
+h2 {
+    text-align: center
 }
