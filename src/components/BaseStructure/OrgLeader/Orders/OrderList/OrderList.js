@@ -14,7 +14,7 @@ class OrderList extends Component {
         })
 
         return (
-            <div>
+            <div id="orderTableDiv">
                 <Table striped bordered condensed hover>
                     <thead>
                         <tr>
