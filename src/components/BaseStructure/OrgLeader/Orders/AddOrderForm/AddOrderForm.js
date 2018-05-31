@@ -118,7 +118,7 @@ class AddOrderForm extends Component {
         if (this.state.newOrder.campaign_id !== undefined){
             selectedCampaign = this.props.reduxState.orgLeaderPerformance.find(
                 campaign => campaign.campaign_id == this.state.newOrder.campaign_id);
-            selectedCampaignProducts = selectedCampaign.orderList.map((product) => {
+            selectedCampaignProducts = selectedCampaign.currentProducts.map((product) => {
                 return(<option key={product.product_name} value={product.product_name}>{product.product_name}</option>)
             });
         }
