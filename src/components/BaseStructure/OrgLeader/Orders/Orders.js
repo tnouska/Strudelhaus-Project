@@ -11,7 +11,7 @@ import AddOrderForm from '../Orders/AddOrderForm/AddOrderForm';
 
 // This is the parent component and main view for the Org Leader Order management feature of the app
 // The Org Leader can view, create, edit, and delete orders from this view
-
+let campaignOptions;
 class Orders extends Component {
     constructor(props) {
         super(props);
@@ -66,7 +66,8 @@ class Orders extends Component {
         if (!this.props.user.isLoading && this.props.user.userRole !== "leader"){
             this.props.history.push('home');
         };
-       
+        if(this.props.user.userId != this.props.user.userId || campaignOptions.length < 1 || this.props.reduxState.orgLeaderPerformance[0].id != this.props.user.userId )
+        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}});
     };
     
     // log out user
@@ -87,7 +88,7 @@ class Orders extends Component {
 
     render(){
         // map over array of all Campaigns tied to the user's Organization, make unique dropdown select options for each
-        let campaignOptions = this.props.reduxState.orgLeaderPerformance.map((campaignOption) => {
+        campaignOptions = this.props.reduxState.orgLeaderPerformance.map((campaignOption) => {
             return(<option key={campaignOption.campaign_id} value={campaignOption.campaign_id}
                 >{campaignOption.campaign_name}
                 </option>)

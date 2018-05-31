@@ -4,9 +4,12 @@ import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 import PerformanceItem from './/PerformanceItem/PerformanceItem';
+import OrgChart from './orgChart';
 
 // This is the parent component and main view for the Org Leader "Performance" area of the app. It is also the default Org Leader landing page upon log in
 // The Org Leader can view high-level sales data by campaign
+
+
 
 let campaignOptions
 class Performance extends Component {
@@ -75,6 +78,9 @@ let everything;
                             {campaignOptions}
                     </select>
                     <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
+                    <OrgChart
+                    
+                    />
                 </div>
                 </div>
         )
