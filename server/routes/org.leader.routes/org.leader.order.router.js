@@ -60,6 +60,22 @@ router.get('/:id', (req, res) => {
     };//end if/else for authentication
 });//end router.get
 
+router.delete('/:id',(req,res)=>{
+    if (req.isAuthenticated()) {
+        let queryText = `DELETE FROM customer WHERE customer.id = $1`
+        pool.query(queryText, [req.params.id])
+        .then(()=>{
+            res.sendStatus(200)
+        })
+        .catch((error)=>{
+            console.log('error in org.leader.order.router.delete: ',error);
+            res.sendStatus(500)
+        })
+    } else {
+        res.sendStatus(403);
+    }
+})
+
 router.post('/', (req, res) => {
     console.log('req.body', req.body);
     

@@ -29,8 +29,16 @@ router.get('/:id', (req, res) => {
                 let campaignResult = await client.query(queryText, [req.params.id]);
                 let campaignRowsResult = campaignResult.rows;
                 for (let i = 0; i < campaignRowsResult.length; i++) {
-                    campaignRowsResult[i].goal = Number(campaignRowsResult[i].goal.replace(',', ''))
                     let queryText2 = `SELECT
+                                product.id as product_id,
+                                product.name as product_name
+                                FROM available_item
+                                JOIN product ON available_item.product_id = product.id
+                                WHERE available_item.campaign_id = $1`
+                    let campaignProducts = await client.query(queryText2, [campaignRowsResult[i].campaign_id])
+                    campaignRowsResult[i].currentProducts = campaignProducts.rows                    
+                    campaignRowsResult[i].goal = Number(campaignRowsResult[i].goal.replace(',', ''))
+                    let queryText3 = `SELECT
                                 SUM("order".quantity) as item_total,
                                 "order".product_name,
                                 "order".product_price as price
@@ -38,9 +46,8 @@ router.get('/:id', (req, res) => {
                                 WHERE "order".campaign_id = $1
                                 GROUP BY "order".product_name, "order".product_price
                                 ORDER BY "order".product_name asc;`
-                    console.log('campaignRowsResult[i].campaign_id', campaignRowsResult[i].campaign_id);
 
-                    let orderResult = await client.query(queryText2, [campaignRowsResult[i].campaign_id]);
+                    let orderResult = await client.query(queryText3, [campaignRowsResult[i].campaign_id]);
                     for (let i = 0; i < orderResult.rows.length; i++) {
                         orderResult.rows[i].price = Number(orderResult.rows[i].price);
                         orderResult.rows[i].item_total = Number(orderResult.rows[i].item_total)

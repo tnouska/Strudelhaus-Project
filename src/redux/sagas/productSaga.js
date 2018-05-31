@@ -4,7 +4,8 @@ import axios from 'axios';
 function* productSaga() {
     yield takeEvery('GET_PRODUCT', getProduct),
     yield takeEvery('ADD_PRODUCT', createProduct),
-    yield takeEvery('DELETE_PRODUCT', deleteProduct)
+    yield takeEvery('DELETE_PRODUCT', deleteProduct),
+    yield takeEvery('EDIT_PRODUCT', editProduct)
 }
 
 function* getProduct(action) {
@@ -50,6 +51,22 @@ function* deleteProduct(action) {
         })
     } catch (error) {
         console.log('error in deleteProduct:', error);
+    }
+}
+
+function* editProduct(action) {
+    console.log('editProduct triggered:', action);
+    const config = {
+        headers: {'Content-Type': 'application/json'},
+        withCredentials: true,
+    }
+    try{
+        yield call(axios.put, `/admin/product`, action.payload, config);
+        yield put({
+            type: 'GET_PRODUCT',
+        })
+    } catch (error) {
+        console.log('error in editProduct', error);
     }
 }
 

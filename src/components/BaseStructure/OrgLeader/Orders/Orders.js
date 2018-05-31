@@ -18,10 +18,19 @@ class Orders extends Component {
         super(props);
         this.state = ({
         // ensure modal does not show on page load
-            showModal: false
+            showModal: false,
+            selectedCampaign: ''
         })
     };
 
+    handleCampaignSelect = (event) => {
+        console.log(event.target.value)
+        this.setState({
+            selectedCampaign: event.target.value
+        });
+        this.props.dispatch({ type: 'GET_ORDER', payload: {id: event.target.value}})
+    };
+    
     addOrder = (order) => {
         console.log(order);
         this.props.dispatch({
@@ -44,7 +53,8 @@ class Orders extends Component {
     // on mount get user data (based on user Organization) and order data via sagas/redux
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-        this.props.dispatch({ type: 'GET_ORDER', payload: {id: 1}})
+        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}})
+        
     };
     
 
@@ -57,6 +67,7 @@ class Orders extends Component {
         if (!this.props.user.isLoading && this.props.user.userRole !== "leader"){
             this.props.history.push('home');
         };
+       
     };
     
     // log out user
@@ -76,6 +87,12 @@ class Orders extends Component {
 
 
     render(){
+        // map over array of all Campaigns tied to the user's Organization, make unique dropdown select options for each
+        let campaignOptions = this.props.reduxState.orgLeaderPerformance.map((campaignOption) => {
+            return(<option key={campaignOption.campaign_id} value={campaignOption.campaign_id}
+                >{campaignOption.campaign_name}
+                </option>)
+        });
         return(
             <div>
                 <OrgLeaderNav/>

@@ -4,9 +4,12 @@ import axios from 'axios';
 function* orgLeaderOrderSaga() {
     yield takeEvery('GET_ORDER', getOrgLeaderOrder)
     yield takeEvery('CREATE_ORDER', createOrder)
+    yield takeEvery('DELETE_ORDER', deleteOrder)
 }
 
 function * getOrgLeaderOrder(action) {
+    console.log('action.payload',action.payload);
+    
     try{
         const orgLeaderOrderResponse = yield call(axios.get, `/orgleader/order/${action.payload.id}`);
         yield put({
@@ -15,6 +18,20 @@ function * getOrgLeaderOrder(action) {
         })
     } catch (error) {
         console.log('error in getOrgLeaderOrder', error);
+    }
+}
+
+function * deleteOrder(action){
+    console.log('action.payload',action.payload);
+    
+    try {
+        yield call(axios.delete, `/orgleader/order/${action.payload.customer_id}`)
+        yield put({
+            type: 'GET_ORDER',
+            payload: action.payload
+        })
+    } catch (error) {
+        console.log('error in deleteOrder saga: ',error);
     }
 }
 

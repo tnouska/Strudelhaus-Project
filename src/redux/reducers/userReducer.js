@@ -34,6 +34,17 @@ const isLoading = (state = false, action) => {
   }
 };
 
+const orgId = (state = null, action) => {
+  switch (action.type) {
+    case USER_ACTIONS.SET_ORGID:
+      return action.user.org_id || state;
+    case USER_ACTIONS.UNSET_ORGID:
+      return null;
+    default:
+      return state;
+  }
+};
+
 const userRole = (state = 'customer', action) => {
   switch (action.type) {
     case USER_ACTIONS.SET_ROLE:
@@ -48,5 +59,7 @@ export default combineReducers({
   userName,
   isLoading,
   userRole,
-  userId
+  userId,
+  orgId
+
 });

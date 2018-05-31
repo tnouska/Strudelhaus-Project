@@ -10,7 +10,7 @@ class OrderList extends Component {
     render() {
         // map over all Orders (for selected Campaign) to create unique items for each Order Object
         let orderRows = this.props.reduxState.order.map((order) => {
-            return(<OrderItem key={order.customer_id} order={order}/>)
+            return(<OrderItem  selectedCampaign={this.props.selectedCampaign} key={order.customer_id} order={order}/>)
         })
 
         return (

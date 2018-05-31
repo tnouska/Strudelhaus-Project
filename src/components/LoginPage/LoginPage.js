@@ -20,14 +20,18 @@ class LoginPage extends Component {
   }
 
   componentDidMount() {
+    
     this.props.dispatch(clearError());
   }
 
   componentWillReceiveProps(nextProps) {
+    
     if (nextProps.user.userName && nextProps.user.userRole === 'admin') {
       this.props.history.push('/pipeline');
+      
     } else if(nextProps.user.userName && nextProps.user.userRole === 'leader'){
       this.props.history.push('/performance');
+      
     }
   }
 
@@ -37,6 +41,7 @@ class LoginPage extends Component {
       this.props.dispatch(formError());
     } else {
       this.props.dispatch(triggerLogin(this.state.username, this.state.password));
+      
     }
   }
 

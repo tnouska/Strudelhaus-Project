@@ -8,6 +8,7 @@ import PerformanceItem from './/PerformanceItem/PerformanceItem';
 // This is the parent component and main view for the Org Leader "Performance" area of the app. It is also the default Org Leader landing page upon log in
 // The Org Leader can view high-level sales data by campaign
 
+
 class Performance extends Component {
     constructor(props){
         super(props);
@@ -18,6 +19,7 @@ class Performance extends Component {
 
     // handle Campaign dropdown selection, set state as selected CampaignID
     handleCampaignSelect = (event) => {
+        
         this.setState({
             selectedCampaign: event.target.value
         });
@@ -27,7 +29,8 @@ class Performance extends Component {
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         
-        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}})
+       
+       
     };
 
     componentDidUpdate() {
@@ -39,6 +42,7 @@ class Performance extends Component {
         if (!this.props.user.isLoading && this.props.user.userRole !== "leader"){
             this.props.history.push('home');
         }
+        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}})
     };
     
     // log out user
