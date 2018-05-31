@@ -34,6 +34,11 @@ class Performance extends Component {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}});
         
+
+        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}})        
+       
+       
+
     };
 
     componentDidUpdate() {
@@ -45,8 +50,10 @@ class Performance extends Component {
         if (!this.props.user.isLoading && this.props.user.userRole !== "leader"){
             this.props.history.push('home'); 
         }
+
         if(this.props.user.userId !== this.props.user.userId || campaignOptions.length < 1)
         this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}});
+
     };
     
     // log out user

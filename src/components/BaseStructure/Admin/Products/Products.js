@@ -67,7 +67,6 @@ class Products extends Component {
             <div>
                 <AdminNav/>
                 <div className="mainDiv">
-                    <Button onClick={this.handleShow}>Add Product</Button>
                     <Modal show={this.state.showModal} onHide={this.handleClose}>
                         <ModalHeader>
                             <Modal.Title>Enter Product Details</Modal.Title>
@@ -79,7 +78,11 @@ class Products extends Component {
                             <Button onClick={this.handleClose}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
-                    <ProductList/>
+                    <div className="productListDiv">
+                        <Button onClick={this.handleShow}>Add Product</Button>
+                        <h2>Products</h2>
+                        <ProductList/>
+                    </div>
                 </div>
             </div>
         )

@@ -82,7 +82,6 @@ class Campaigns extends Component {
             <div>
                 <AdminNav/>
                 <div className="mainDiv">
-                    <Button onClick={this.handleShow}>Create Campaign</Button>
                     <br/>
                     <Modal show={this.state.showModal} onHide={this.handleClose}>
                         <ModalHeader>
@@ -95,11 +94,18 @@ class Campaigns extends Component {
                             <Button onClick={this.handleClose}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
-                    <select title="Organization"
-                            value={this.state.selectedOrganization} onChange={this.handleOrgSelect}>
-                            {orgOptions}
-                    </select>
-                    <CampaignList selectedOrganization={this.state.selectedOrganization}/>
+                    <div className="campaignListDiv">
+                        <Button onClick={this.handleShow}>Create Campaign</Button>
+                        <div id="select">
+                            <p>Sort by Organization</p>
+                            <select title="Organization"
+                                value={this.state.selectedOrganization} onChange={this.handleOrgSelect}>
+                                {orgOptions}
+                            </select>
+                        </div>
+                        <h2>Campaigns</h2>
+                        <CampaignList selectedOrganization={this.state.selectedOrganization}/>
+                    </div>
                 </div>
             </div>
         )

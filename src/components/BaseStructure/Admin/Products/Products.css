@@ -1,3 +1,15 @@
+.productListDiv {
+    margin: 50px 10px 10px 120px;
+    width: 900px;
+    height: 650px;
+    background-color: white;
+    padding: 5px 5px 30px 10px;
+    border-radius: 1%;
+    opacity: .90;
+    overflow: scroll;
+ }
+
+
 .productItemDiv {
     width: 300px;
     height: 300px;
@@ -5,6 +17,17 @@
     padding: 5px;
     margin: 5px;
     float: left;
+}
+
+.productPanel {
+    width: 600px;
+    margin: 20px 10px 10px 125px;
+    text-align: center
+    /* padding: 10px 10px 10px 10px; */
+}
+
+.panelTitle {
+    color: white;
 }
 
 .smallProductImg {
