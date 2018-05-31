@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../../modules/pool');
 const { rejectUnauthenticated } = require('../../modules/authentication-middleware');
 const router = express.Router();
+const moment = require('moment')
 
 /**
  * GET route template
@@ -29,6 +30,7 @@ router.get('/', (req, res) => {
 
                 let campaignResult = await client.query(queryText)
                 for (let i = 0; i < campaignResult.rows.length; i++) {
+                    campaignResult.rows[i].due_date = moment(campaignResult.campaign_date_end).add(10,'days').format('MM-DD-YY')
                     let queryText2 = `SELECT
                     SUM("order".quantity) as product_total,
                     "order".product_name
