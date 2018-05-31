@@ -66,7 +66,6 @@ class Organizations extends Component {
             <div>
                 <AdminNav/>
                 <div className="mainDiv">
-                    <Button onClick={this.handleShow}>Create Organization</Button>
                     <Modal show={this.state.showModal} onHide={this.handleClose}>
                         <ModalHeader>
                             <Modal.Title>Enter Organization Details</Modal.Title>
@@ -78,7 +77,9 @@ class Organizations extends Component {
                             <Button onClick={this.handleClose}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
-                    <div id="orgListDiv">
+                    <div className="orgListDiv">
+                        <h2>Organizations</h2>
+                        <Button onClick={this.handleShow}>Create Organization</Button>
                         <OrgList/>
                     </div>
                 </div>

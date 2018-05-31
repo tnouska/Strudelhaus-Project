@@ -1,6 +1,7 @@
 body {
     font-family: 'Lato', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('./images/strudelBG.jpg')
+    background-image: url('./images/strudelBG.jpg');
+    position: fixed;
 }
 
 .instructions h1 {
@@ -74,7 +75,7 @@ ul {
 
 li a {
     display: block;
-    color: beige;
+    color: white;
     text-align: center;
     padding: 30px 14px 10px;
     text-decoration: none;
