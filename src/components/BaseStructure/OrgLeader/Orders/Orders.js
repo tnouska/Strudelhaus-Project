@@ -109,6 +109,11 @@ class Orders extends Component {
                         </ModalFooter>
                     </Modal>
                     <div className="orderListDiv">
+                        <select title="Campaign"
+                            value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
+                            <option>Campaign</option>
+                            {campaignOptions}
+                        </select>
                         <Button onClick={this.handleShow}>Add Cash/Check Order</Button>
                         <h2>Orders</h2>
                         <OrderList/>
