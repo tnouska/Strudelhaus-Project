@@ -7,6 +7,7 @@ import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 import OrderList from '../Orders/OrderList/OrderList';
 import printJS from 'print-js'
 import AddOrderForm from '../Orders/AddOrderForm/AddOrderForm';
+import './Orders.css'
 
 
 // This is the parent component and main view for the Org Leader Order management feature of the app
@@ -27,7 +28,7 @@ class Orders extends Component {
         this.setState({
             selectedCampaign: event.target.value
         });
-        this.props.dispatch({ type: 'GET_ORDER', payload: {id: event.target.value}})
+        this.props.dispatch({ type: 'GET_ORDER', payload: event.target.value})
     };
     
     addOrder = (order) => {
@@ -97,15 +98,6 @@ class Orders extends Component {
             <div>
                 <OrgLeaderNav/>
                 <div className="mainDiv">
-                    <Button onClick={this.handleShow}>Add Order</Button>
-                    
-                    <h3>Campaign Performance</h3>
-                    
-                    <select title="Campaign"
-                            value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
-                            <option>Campaign</option>
-                            {campaignOptions}
-                    </select>
                     <Modal show={this.state.showModal} onHide={this.handleClose}>
                         <ModalHeader>
                             <Modal.Title>Enter Order Details</Modal.Title>
@@ -117,8 +109,17 @@ class Orders extends Component {
                             <Button onClick={this.handleClose}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
-                    <OrderList selectedCampaign={this.state.selectedCampaign}/>
-                    <Button type="button" onClick={this.printOrder}>Print</Button>
+                    <div className="orderListDiv">
+                        <select title="Campaign"
+                            value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
+                            <option>Campaign</option>
+                            {campaignOptions}
+                        </select>
+                        <Button onClick={this.handleShow}>Add Cash/Check Order</Button>
+                        <h2>Orders</h2>
+                        <OrderList/>
+                        <Button type="button" onClick={this.printOrder}>Print</Button>
+                    </div>
                 </div>
             </div>
         )

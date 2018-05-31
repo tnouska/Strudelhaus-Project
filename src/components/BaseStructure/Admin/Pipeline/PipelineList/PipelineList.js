@@ -22,8 +22,7 @@ class PipelineList extends Component {
             return <PipelineItem key={pipelineItem.campaign_id} pipelineItem={pipelineItem}/>
         })
         return(
-            <div>
-                <h4>Pipeline List</h4>
+            <div id="pipelineList">
                 {pipelineList}
             </div>
         )

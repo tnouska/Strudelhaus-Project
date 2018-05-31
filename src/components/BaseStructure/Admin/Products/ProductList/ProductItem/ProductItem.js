@@ -40,11 +40,14 @@ class ProductItem extends Component {
     }
 
     render() {
+
+        let panelColor = {backgroundColor: '#880F1B'};
+
         return(
             <div>
-                <Panel id="collapsible-panel-example-2">
-                    <Panel.Heading>
-                        <Panel.Title toggle>
+                <Panel className="productPanel">
+                    <Panel.Heading style={panelColor}>
+                        <Panel.Title className="panelTitle" toggle>
                         {this.props.product.name}
                         </Panel.Title>
                     </Panel.Heading>

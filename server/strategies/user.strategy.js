@@ -11,7 +11,6 @@ passport.deserializeUser((id, done) => {
   pool.query('SELECT * , organization.id AS org_id FROM person JOIN organization ON person.id = organization.person_id WHERE person.id = $1;', [id]).then((result) => {
     // Handle Errors
     const user = result && result.rows && result.rows[0];
-console.log('user info 1', user)
     if (!user) {
       // user not found
       done(null, false, { message: 'Incorrect credentials.' });

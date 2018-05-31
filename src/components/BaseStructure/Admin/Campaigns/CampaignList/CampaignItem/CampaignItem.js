@@ -52,12 +52,13 @@ class CampaignItem extends Component {
             totalSales = totalSales + this.props.campaign.productList[i].productSales;
             goalPercentage = totalSales/this.props.campaign.goal * 100;
         };
+        let panelColor = {backgroundColor: '#880F1B'};
 
         return(
             <div>
-                <Panel id="collapsible-panel-example-2">
-                    <Panel.Heading>
-                        <Panel.Title toggle>
+                <Panel className="campaignPanel">
+                    <Panel.Heading style={panelColor}>
+                        <Panel.Title className="panelTitle" toggle>
                         {this.props.campaign.campaign_name}
                         </Panel.Title>
                     </Panel.Heading>

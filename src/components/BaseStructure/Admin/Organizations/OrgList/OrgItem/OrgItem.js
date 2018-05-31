@@ -47,12 +47,13 @@ class OrgItem extends Component {
         let campaignList = campaigns.map((campaign) => {
             return(<OrgItemCampaign key={campaign.campaign_id} campaign={campaign}/>)
         })
+        let panelColor = {backgroundColor: '#880F1B'}
 
         return(
             <div>
-                <Panel id="collapsible-panel-example-2">
-                    <Panel.Heading>
-                        <Panel.Title toggle>
+                <Panel className="orgPanel">
+                    <Panel.Heading style={panelColor}>
+                        <Panel.Title className="panelTitle" toggle>
                         {this.props.org.organization_name}
                         </Panel.Title>
                     </Panel.Heading>

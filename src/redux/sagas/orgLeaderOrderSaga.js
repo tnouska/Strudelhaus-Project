@@ -11,7 +11,7 @@ function * getOrgLeaderOrder(action) {
     console.log('action.payload',action.payload);
     
     try{
-        const orgLeaderOrderResponse = yield call(axios.get, `/orgleader/order/${action.payload.id}`);
+        const orgLeaderOrderResponse = yield call(axios.get, `/orgleader/order/${action.payload}`);
         yield put({
             type: 'FETCH_ORDER',
             payload: orgLeaderOrderResponse.data,
@@ -39,13 +39,24 @@ function * createOrder(action) {
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
-    }
+    }    
     try{
-        yield call(axios.post, `/orgleader/order`, action.payload.csvOrders, config);
-        yield put({
-            type: 'GET_ORDER',
-            payload: action.payload
-        })
+        if (action.payload.csvOrders) {
+            yield call(axios.post, `/orgleader/order`, action.payload.csvOrders, config);
+            yield put({
+                type: 'GET_ORDER',
+                payload: action.payload.csvOrders[0].campaign_id
+            })
+        } else {
+
+            let newOrderArray = []
+            newOrderArray.push(action.payload.newOrder)
+            yield call(axios.post, `/orgleader/order`, newOrderArray, config)
+            yield put({
+                type: 'GET_ORDER',
+                payload: action.payload.newOrder.campaign_id
+            })
+        }
     } catch (error) {
         console.log('error ing POST createOrder:', error);
     }
