@@ -7,7 +7,10 @@ import Moment from 'moment';
 
 class PipelineList extends Component {
     filterCampaigns =()=>{
-        console.log(Moment().format('M-D-YY'))
+        let currentDate = Moment().format('M-D-YY')
+        const dateSort = (item => item.due_date != currentDate );
+        let upcommingOrders = this.props.reduxState.pipeline.filter(dateSort);
+        console.log(upcommingOrders)
     }
     
     componentDidMount() {

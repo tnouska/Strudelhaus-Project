@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 
                 let campaignResult = await client.query(queryText)
                 for (let i = 0; i < campaignResult.rows.length; i++) {
-                    campaignResult.rows[i].due_date = moment(campaignResult.campaign_date_end).add(10,'days').format('MM-DD-YY')
+                    campaignResult.rows[i].due_date = moment(campaignResult.campaign_date_end).add(10,'days').format('M-D-YY')
                     let queryText2 = `SELECT
                     SUM("order".quantity) as product_total,
                     "order".product_name
