@@ -28,7 +28,7 @@ class Orders extends Component {
         this.setState({
             selectedCampaign: event.target.value
         });
-        this.props.dispatch({ type: 'GET_ORDER', payload: {id: event.target.value}})
+        this.props.dispatch({ type: 'GET_ORDER', payload: event.target.value})
     };
     
     addOrder = (order) => {

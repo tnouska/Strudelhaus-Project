@@ -29,6 +29,7 @@ class Performance extends Component {
     componentDidMount() {
         this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
         
+        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}})        
        
        
     };
@@ -42,7 +43,6 @@ class Performance extends Component {
         if (!this.props.user.isLoading && this.props.user.userRole !== "leader"){
             this.props.history.push('home');
         }
-        this.props.dispatch({type: 'GET_PERFORMANCE', payload: {id: this.props.user.userId}})
     };
     
     // log out user
