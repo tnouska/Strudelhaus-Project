@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
                 res.send(organizationArray)
                 //will send campaignArray to finish request
             } catch (error) {
-                console.log('ROLLBACK', error);
+                console.log('ROLLBACK error in admin.organization.router.get', error);
                 await client.query('ROLLBACK');
                 //if error is presesnt this will revert all changes done since the 'BEGIN' query was sent 
                 throw error;
@@ -52,7 +52,7 @@ router.get('/', (req, res) => {
                 //will end connection to database
             };//end try/catch/finally
         })().catch((error) => {
-            console.log('error in CATCH: ', error);
+            console.log('CATCH error in admin.organization.router.get ', error);
             res.sendStatus(500);
         });//end async/await
     } else {
@@ -78,8 +78,6 @@ router.post('/', (req, res) => {
                     RETURNING "id","username"`
 
                 const personResult = await client.query(queryText, [req.body.contact_email, 'leader', password, token]);
-
-                            console.log('req.body:',req.body);
                 const user_name     = 'strudelhausproxy@gmail.com';
                 const refresh_token = process.env.REFRESH_TOKEN;
                 const access_token  = process.env.ACCESS_TOKEN;
@@ -117,7 +115,7 @@ router.post('/', (req, res) => {
                 // send mail with defined transport object
                 transporter.sendMail(mailOptions, function (error, info) {
                     if (error) {
-                        return console.log(error);
+                        return console.log('error in transporter.sendMail',error);
                     }
                     console.log('Message sent: ' + info.response);
                 });
@@ -141,7 +139,7 @@ router.post('/', (req, res) => {
                 await client.query('COMMIT');
                 res.sendStatus(201);
             } catch (error) {
-                console.log('ROLLBACK', error);
+                console.log('ROLLBACK in admin.organization.router.post: ', error);
                 await client.query('ROLLBACK');
                 //if error is presesnt this will revert all changes done since the 'BEGIN' query was sent 
                 throw error;
@@ -150,7 +148,7 @@ router.post('/', (req, res) => {
                 //will end connection to database
             };//end  try/catch/finally
         })().catch((error) => {
-            console.log('error in Catch: ', error);
+            console.log('CATCH in admin.organization.router.post', error);
             res.sendStatus(500)
         });//end async/await
     } else {
@@ -167,7 +165,7 @@ router.delete('/:id', (req, res) => {
                 res.sendStatus(200);
             })
             .catch((error) => {
-                console.log('error in deleteAdminOrg', error);
+                console.log('ERROR in admin.organization.router.delete ', error);
                 res.sendStatus(500);
             })
     } else {
@@ -182,11 +180,10 @@ router.put('/', (req, res) => {
         let queryText = `UPDATE organization SET name = $1, street_address = $2, contact_name = $3, contact_phone = $4, contact_email = $5 WHERE id = $6`;
         pool.query(queryText, [newInfo.name, newInfo.street_address, newInfo.contact_name, newInfo.contact_phone, newInfo.contact_email, newInfo.organization_id])
         .then( (result) => {
-            console.log('successfull Update:', result);
             res.sendStatus(201);
         })
         .catch( (error) => {
-            console.log('error in UPDATE:', error);
+            console.log('ERROR in admin.organization.router.put', error);
             res.sendStatus(500);
         })
     } else {

@@ -64,14 +64,14 @@ router.put('/newpassword', (req, res) => {
         await client.query('COMMIT')
         res.sendStatus(201);
       } catch (error) {
-        console.log('ROLLBACK', error);
+        console.log('ROLLBACK in user.router.put', error);
         await client.query('ROLLBACK');
         throw error;
       } finally {
         client.release();
       };//end try/catch/finally
     })().catch((error) => {
-      console.log('CATCH', error);
+      console.log('CATCH in user.router.put', error);
       res.sendStatus(500);
     });//end async function
   } else {

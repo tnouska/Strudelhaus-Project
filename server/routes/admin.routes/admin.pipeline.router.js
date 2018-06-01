@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
                 res.send(campaignArray)
                 //will send campaignArray to finish request
             } catch (error) {
-                console.log('ROLLBACK', error);
+                console.log('ROLLBACK in admin.pipeline.router.get', error);
                 await client.query('ROLLBACK');
                 //if error is presesnt this will revert all changes done since the 'BEGIN' query was sent 
                 throw error;
@@ -58,7 +58,7 @@ router.get('/', (req, res) => {
                 //will end connection to database
             };//end try/catch/finally
         })().catch((error) => {
-            console.log('error in CATCH: ', error);
+            console.log('CATCH in admin.pipeline.router.get', error);
             res.sendStatus(500);
         });//end async/await
     } else {

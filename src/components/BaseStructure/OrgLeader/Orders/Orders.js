@@ -28,7 +28,7 @@ class Orders extends Component {
     handleCampaignSelect = (event) => {
         this.setState({
             selectedCampaign: event.target.value
-        });
+        });        
         this.props.dispatch({ type: 'GET_ORDER', payload: event.target.value})
     };
     
@@ -125,7 +125,7 @@ class Orders extends Component {
                         </select>
                         <Button onClick={this.handleShow} className="button">Add Cash/Check Order</Button>
                         <h2>Orders</h2>
-                        <OrderList/>
+                        <OrderList selectedCampaign={this.state.selectedCampaign}/>
                         <Button type="button" onClick={this.printOrder}>Print</Button>
                         <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center',}} open={this.state.snackOpen}
                                 autoHideDuration={1500} onClose={this.handleSnackClose} 

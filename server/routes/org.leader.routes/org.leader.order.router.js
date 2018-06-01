@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
                 await client.query('COMMIT');
                 res.send(campaignOrders.rows)
             } catch (error) {
-                console.log('ROLLBACK', error);
+                console.log('ROLLBACK in org.leader.order.router.get', error);
                 await client.query('ROLLBACK');
                 throw error;
             } finally {
@@ -54,7 +54,7 @@ router.get('/:id', (req, res) => {
                 //will release/end query('BEGIN')
             };//end try/catch
         })().catch((error) => {
-            console.log('CATCH', error);
+            console.log('CATCH in org.leader.order.router.get', error);
             res.sendStatus(500);
         })//end async
     } else {
@@ -131,14 +131,14 @@ router.post('/', (req, res) => {
                 await client.query('COMMIT');
                 res.sendStatus(200);
             } catch (error) {
-                console.log('ROLLBACK', error);
+                console.log('ROLLBACK org.leader.order.router.post', error);
                 await client.query('ROLLBACK');
                 throw error;
             } finally {
                 client.release();
             };//end try/catch/finally
         })().catch((error) => {
-            console.log('error in catch: ', error);
+            console.log('CATCH org.leader.order.router.post', error);
             res.sendStatus(500);
         });//end async/await
     } else {

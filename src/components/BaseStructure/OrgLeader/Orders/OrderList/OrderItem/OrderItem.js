@@ -65,7 +65,7 @@ class OrderItem extends Component {
                         <Modal.Title>Order Details for {this.props.order.name}</Modal.Title>
                     </ModalHeader>
                     <ModalBody>
-                        <Table>
+                        <Table striped bordered condensed hover>
                             <thead>
                                 <th>Contact Address</th>
                             </thead>
