@@ -34,12 +34,11 @@ class PipelineItem extends Component {
         return(
             <div className="pipelineItem">
                 <div className="pipelineItemHeader">
-                    <p>{this.props.pipelineItem.campaign_name} - {this.props.pipelineItem.organization_name} 
-                        - Ends {this.props.pipelineItem.campaign_date_end} - Due {dueDate}</p>
+                    <h4>{this.props.pipelineItem.campaign_name} -- Due {dueDate}</h4>
                     <hr/>
                 </div>
                 {pipelineItemProducts}
-                <Button type='button' onClick={this.printPipeline}>Print</Button>
+                <Button type='button' onClick={this.printPipeline} className="button">Print</Button>
             </div>
         )
     }

@@ -1,6 +1,6 @@
 body {
     font-family: 'Lato', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('./images/strudelBG.jpg');
+    background-color: rgb(105, 105, 105);
     position: fixed;
 }
 
@@ -56,7 +56,7 @@ input[type="submit"] {
 }
 
 .navImage {
-  width: 176px;
+  width: 180px;
   height: 128.5px;
   padding: 5px 0px 0px 13px;
   margin: 5px;

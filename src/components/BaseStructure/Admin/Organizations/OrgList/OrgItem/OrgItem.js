@@ -59,11 +59,18 @@ class OrgItem extends Component {
                     </Panel.Heading>
                     <Panel.Collapse>
                         <Panel.Body>
-                        Contact: {this.props.org.contact_name}
-                        <p>Campaigns</p>
-                        {campaignList}
-                        <Button onClick={this.handleShow}>Edit</Button>
-                        <Button onClick={this.deleteOrg}>Delete</Button> 
+                        <div className="column">
+                            <p><strong>Contact</strong></p>
+                            {this.props.org.contact_name}<br/>
+                            {this.props.org.street_address}<br/>
+                            {this.props.org.city},{this.props.org.state} {this.props.org.zip_code}<br/>
+                        </div>
+                        <div className="column">
+                            <p><strong>Campaigns</strong></p>
+                            {campaignList}
+                        </div>
+                            <Button onClick={this.handleShow}>Edit</Button>
+                            <Button onClick={this.deleteOrg}>Delete</Button> 
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>

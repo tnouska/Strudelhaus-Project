@@ -1,10 +1,9 @@
 .productListDiv {
-    margin: 50px 10px 10px 120px;
-    width: 900px;
+    margin: 30px 10px 10px 100px;
+    width: 1000px;
     height: 650px;
     background-color: white;
     padding: 5px 5px 30px 10px;
-    border-radius: 1%;
     opacity: .90;
     overflow: scroll;
  }
@@ -21,8 +20,7 @@
 
 .productPanel {
     width: 600px;
-    margin: 20px 10px 10px 125px;
-    text-align: center
+    margin: 20px 10px 10px 200px;
     /* padding: 10px 10px 10px 10px; */
 }
 
@@ -33,4 +31,8 @@
 .smallProductImg {
     width: 250px;
     height: 214px;
+}
+
+.button {
+    float: right;
 }

@@ -38,7 +38,6 @@ class Pipeline extends Component {
             <div>
                 <AdminNav/>
                 <div className="mainDiv">
-                    <button onClick={this.logout}>Log Out</button>
                     <div className="pipelineListDiv">
                         <h2>Production Pipeline</h2>
                         <PipelineList/>

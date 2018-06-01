@@ -79,7 +79,7 @@ class Products extends Component {
                         </ModalFooter>
                     </Modal>
                     <div className="productListDiv">
-                        <Button onClick={this.handleShow}>Add Product</Button>
+                        <Button onClick={this.handleShow} className="button">Add Product</Button>
                         <h2>Products</h2>
                         <ProductList/>
                     </div>
