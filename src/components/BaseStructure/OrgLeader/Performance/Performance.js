@@ -76,7 +76,7 @@ let everything;
             <div>
                 <OrgLeaderNav/>
                 <div className="mainDiv">
-                    <button onClick={this.logout}>Log Out</button>
+                    {/* <button onClick={this.logout}>Log Out</button> */}
                     <h3>Campaign Performance</h3>
                     <select title="Campaign"
                             value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
