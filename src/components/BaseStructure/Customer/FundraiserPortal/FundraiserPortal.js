@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CustomerInforForm from '../CustomerInfoForm/CustomerInfoForm'
+import CustomerInfoForm from '../CustomerInfoForm/CustomerInfoForm'
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Grid } from 'react-bootstrap';
@@ -98,13 +98,13 @@ if (this.props.cart.length > 0){
               text="Please complete the form and choose your strudels."
               onConfirm={() => this.setState({ show: false })}
             />
-              <h2>Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
+              <h2 className="welcome">Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
               <Grid>
         <Row className="show-grid">
           <Col xs={12} md={8}>
                   <StrudelList campaignName={this.props.match.params.name} />
-                  <CustomerInforForm />
-                  <Button onClick={this.postTransaction}>
+                  <CustomerInfoForm />
+                  <Button className="checkout" onClick={this.postTransaction}>
                   Checkout 
                   </Button>
                   
