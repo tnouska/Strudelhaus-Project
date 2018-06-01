@@ -5,7 +5,12 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    const queryText = `SELECT product.id as product_id, * FROM product JOIN product_type ON product.product_type = product_type.id`;
+    const queryText = `SELECT 
+    product.id as product_id,
+     * 
+    FROM product 
+    JOIN product_type ON product.product_type = product_type.id
+    ORDER BY product.name asc`;
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows);

@@ -26,7 +26,8 @@ router.get('/', (req, res) => {
                 JOIN customer ON "order".customer_id = customer.id
                 JOIN campaign ON customer.campaign_id = campaign.id
                 JOIN organization ON campaign.organization_id = organization.id
-                GROUP BY organization.name, campaign.name, campaign.date_end, campaign.id;`
+                GROUP BY organization.name, campaign.name, campaign.date_end, campaign.id
+                ORDER BY campaign.date_end asc;`
 
                 let campaignResult = await client.query(queryText)
                 for (let i = 0; i < campaignResult.rows.length; i++) {

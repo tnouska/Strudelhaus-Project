@@ -35,7 +35,8 @@ router.get('/', (req, res) => {
                             *
                             FROM campaign
                             JOIN organization ON campaign.organization_id = organization.id
-                            WHERE organization_id = $1;`
+                            WHERE organization_id = $1
+                            ORDER BY campaign.date_end asc;`
                     let campaignResult = await client.query(queryText2, [organizationRowsResult[i].organization_id]);
                     let campaignRowsResult = campaignResult.rows;
                     for (let i = 0; i < campaignRowsResult.length; i++) {
