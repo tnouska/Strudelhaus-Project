@@ -26,6 +26,18 @@ class CustomerInfoForm extends Component {
         //   }
       };
     }
+    autoFill = () => {
+      this.setState({
+        refName: 'Timmy F',
+        email: 'tnouska@gmail.com',
+        address: '123 fake st',
+        city: 'Woodbury',
+        state: 'MN',
+        zip: '55125',
+        notes: 'School Pickup',
+        billingName: 'Joshua J Leary'
+      })
+    }
     
   // getValidationState =()=> {
   //   const length = this.state.value.length;
@@ -127,6 +139,7 @@ render() {
             onChange={this.handleChange("notes")}
            
          /> 
+         <div onClick={this.autoFill}> </div>
           {/* <FormControl.Feedback />
           <HelpBlock>Validation is based on string length.</HelpBlock>  */}
       </FormGroup>
