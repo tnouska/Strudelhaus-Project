@@ -25,7 +25,8 @@ router.get('/:id', (req, res) => {
                             organization.id
                             FROM campaign
                             JOIN organization ON campaign.organization_id = organization.id
-                            WHERE organization_id = $1;`
+                            WHERE organization_id = $1
+                            ORDER BY campaign.date_end asc;`
                 let campaignResult = await client.query(queryText, [req.params.id]);
                 let campaignRowsResult = campaignResult.rows;
                 for (let i = 0; i < campaignRowsResult.length; i++) {
@@ -34,7 +35,8 @@ router.get('/:id', (req, res) => {
                                 product.name as product_name
                                 FROM available_item
                                 JOIN product ON available_item.product_id = product.id
-                                WHERE available_item.campaign_id = $1`
+                                WHERE available_item.campaign_id = $1
+                                ORDER BY product_name asc`
                     let campaignProducts = await client.query(queryText2, [campaignRowsResult[i].campaign_id])
                     campaignRowsResult[i].currentProducts = campaignProducts.rows                    
                     campaignRowsResult[i].goal = Number(campaignRowsResult[i].goal.replace(',', ''))

@@ -7,7 +7,7 @@ class CampaignItemProduct extends Component {
     render(){
         return(
             <div className="campaignItemProduct">
-                <p>{this.props.product.product_name}</p>
+                <p>{this.props.product.name}</p>
             </div>
         )
     }

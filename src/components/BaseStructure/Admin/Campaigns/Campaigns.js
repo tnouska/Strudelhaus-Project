@@ -95,11 +95,11 @@ class Campaigns extends Component {
                         </ModalFooter>
                     </Modal>
                     <div className="campaignListDiv">
-                        <Button onClick={this.handleShow}>Create Campaign</Button>
+                        <Button onClick={this.handleShow} className="button">Create Campaign</Button>
                         <div id="select">
-                            <p>Sort by Organization</p>
                             <select title="Organization"
                                 value={this.state.selectedOrganization} onChange={this.handleOrgSelect}>
+                                <option>Sort by Organization</option>
                                 {orgOptions}
                             </select>
                         </div>

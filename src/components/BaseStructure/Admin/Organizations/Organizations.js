@@ -78,7 +78,7 @@ class Organizations extends Component {
                         </ModalFooter>
                     </Modal>
                     <div className="orgListDiv">
-                        <Button onClick={this.handleShow}>Add Organization</Button>
+                        <Button onClick={this.handleShow} className="button">Add Organization</Button>
                         <h2>Organizations</h2>
                         <OrgList/>
                     </div>

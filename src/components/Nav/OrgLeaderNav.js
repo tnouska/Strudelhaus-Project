@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const OrgLeaderNav = () => (
   <div className="navbar">
@@ -7,13 +8,13 @@ const OrgLeaderNav = () => (
     <div>
       <ul>
         <li>
-            <Link to="/performance">PERFORMANCE</Link>
+            <Link to="/performance"><Button className="navButton">PERFORMANCE</Button></Link>
         </li>
         <li>
-            <Link to="/orders">ORDERS</Link>
+            <Link to="/orders"><Button className="navButton">ORDERS</Button></Link>
         </li>
         <li>
-            <Link to="/account">ACCOUNT</Link>
+            <Link to="/account"><Button className="navButton">ACCOUNT</Button></Link>
         </li>
         <br/>
         <br/>

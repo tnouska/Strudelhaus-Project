@@ -32,7 +32,7 @@ class PerformanceItem extends Component {
         }
         
         return(
-            <div>
+            <div className="performanceItem">
                 <h2>Current Sales: ${totalSales}</h2>
                 <h2>Campaign Goal: ${goal}</h2>
                 <h2>{goalPercentage}%</h2>

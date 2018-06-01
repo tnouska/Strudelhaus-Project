@@ -1,0 +1,8 @@
+.portalDiv {
+    margin: 50px 10px 10px 50px;
+    width: 90%;
+    height: 650px;
+    background-color: white;
+    padding: 5px 5px 30px 10px;
+    overflow: scroll;
+ }

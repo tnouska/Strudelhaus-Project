@@ -42,8 +42,8 @@ class CampaignItem extends Component {
 
     render() {
         // map over list of products offered by a specific Campaign, create unique components for each to display on DOM
-        let campaignProducts = this.props.campaign.productList.map((product) => {
-            return (<CampaignItemProduct key={product.product_name} product={product}/>)
+        let campaignProducts = this.props.campaign.availableProducts.map((product) => {
+            return (<CampaignItemProduct key={product.name} product={product}/>)
         });
         // loop over sales for each Campaign product to get a sum of all Campaign sales, then calculate % of Campaign sales goal
         let totalSales = 0;
@@ -64,15 +64,22 @@ class CampaignItem extends Component {
                     </Panel.Heading>
                     <Panel.Collapse>
                         <Panel.Body>
-                            <p>Start Date: {this.props.campaign.date_start}</p>
-                            <p>End Date: {this.props.campaign.date_end}</p>
-                            <p>Sales Goal: ${this.props.campaign.goal}</p>
-                            <p>Total Sales: ${totalSales}</p>
-                            <ProgressBar now={goalPercentage} />
-                            <p>Products:</p>
-                            {campaignProducts}
-                            <Button onClick={this.handleShow}>Edit</Button>
-                            <Button onClick={this.deleteCampaign}>Delete</Button>
+                            <div>
+                                <ProgressBar now={goalPercentage} />
+                                <div className="column">
+                                    <p>Sales Goal: ${this.props.campaign.goal}</p>
+                                    <p>Total Sales: ${totalSales}</p>
+                                    <p>Start Date: {this.props.campaign.date_start}</p>
+                                    <p>End Date: {this.props.campaign.date_end}</p>
+                                    <p><strong>www.strudelhaus.fundraiser/{this.props.campaign.url}</strong></p>
+                                </div>
+                                <div className="column">
+                                    <p><strong>Products</strong></p>
+                                    {campaignProducts}
+                                </div>
+                                <Button onClick={this.handleShow}>Edit</Button>
+                                <Button onClick={this.deleteCampaign}>Delete</Button>
+                            </div>
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>
