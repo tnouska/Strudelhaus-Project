@@ -19,6 +19,17 @@ const AdminNav = () => (
         <li>
             <Link to="/products">PRODUCTS</Link>
         </li>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <li>
+            <Link to="/home">Log Out</Link>
+        </li>
       </ul>
     </div>
   </div>
