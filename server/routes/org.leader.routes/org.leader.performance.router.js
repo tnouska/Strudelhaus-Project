@@ -62,7 +62,7 @@ router.get('/:id', (req, res) => {
                 await client.query('COMMIT');
                 res.send(performancePageArray)
             } catch (error) {
-                console.log('ROLLBACK', error);
+                console.log('ROLLBACK org.leader.performance.router.get', error);
                 await client.query('ROLLBACK');
                 throw error;
             } finally {
@@ -70,7 +70,7 @@ router.get('/:id', (req, res) => {
                 //will end connection to database
             };// end try/catch
         })().catch((error) => {
-            console.log('CATCH', error);
+            console.log('CATCH org.leader.order.router.get', error);
             res.sendStatus(500);
         })//end async
     } else {

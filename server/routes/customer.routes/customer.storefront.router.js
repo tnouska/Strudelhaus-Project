@@ -34,7 +34,7 @@ router.get('/:id', (req, res) => {
             await client.query('COMMIT');
             res.send(availableItems.rows)
         } catch (error) {
-            console.log('ROLLBACK', error);
+            console.log('ROLLBACK in customer.storefront.router.get: ', error);
             await client.query('ROLLBACK');
             throw error;
         } finally {
@@ -42,7 +42,7 @@ router.get('/:id', (req, res) => {
             //will release end query('BEGIN')
         };// end try/catch
     })().catch((error) => {
-        console.log('CATCH', error);
+        console.log('CATCH in customer.storefront.router.get: ', error);
         res.sendStatus(500);
     })//end async
 });//end router.get for products
@@ -77,14 +77,14 @@ router.post('/', (req, res) => {
             await client.query('COMMIT')
             res.sendStatus(201)
         } catch (error) {
-            console.log('ROLLBACK', error);
+            console.log('ROLLBACK in customer.storefront.router: ', error);
             await client.query('ROLLBACK');
             throw error;
         } finally {
             client.release();
         };//end try/catch/finally
     })().catch((error) => {
-        console.log('CATCH', error);
+        console.log('CATCH in customer.storefront.router: ', error);
         res.sendStatus(500);
     })//end async function
 });//end customer.storefront.router.post

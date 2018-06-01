@@ -90,7 +90,6 @@ router.post('/customerinfo', function (req, res) {
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error)
-    console.log(body)
     if(body.errors){
       res.send(body)
     }else{
@@ -99,7 +98,6 @@ router.post('/customerinfo', function (req, res) {
     
     
 
-    console.log('TEST!!!!!');
     const user_name     = 'strudelhausproxy@gmail.com';
     const refresh_token = process.env.REFRESH_TOKEN;
     const access_token  = process.env.ACCESS_TOKEN;
@@ -203,7 +201,7 @@ router.post('/postcustomer', (req, res) => {
          res.sendStatus(200);
       }
     } catch (error) {
-      console.log('ROLLBACK in payment.router', error);
+      console.log('ROLLBACK in org.leader.order.router.post', error);
       await client.query('ROLLBACK');
       throw error;
     } finally {
@@ -211,7 +209,7 @@ router.post('/postcustomer', (req, res) => {
     };//end try/catch/finally
   })
     ().catch((error) => {
-      console.log('error in catch: ', error);
+      console.log('CATCH in org.leader.order.router.post', error);
       res.sendStatus(500);
     });//end async/await
 })

@@ -28,7 +28,7 @@ function * deleteOrder(action){
         yield call(axios.delete, `/orgleader/order/${action.payload.customer_id}`)
         yield put({
             type: 'GET_ORDER',
-            payload: action.payload
+            payload: action.payload.id
         })
     } catch (error) {
         console.log('error in deleteOrder saga: ',error);
