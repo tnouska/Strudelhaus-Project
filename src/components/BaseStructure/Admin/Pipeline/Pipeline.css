@@ -10,9 +10,9 @@
 
 .pipelineItem {
     width: 90%;
-    height: 250px;
+    height: auto;
     border: 1px solid black;
-    padding: 0px 0px 5px 0px;
+    padding: 0px 0px 50px 0px;
     margin: 5px 5px 20px 5px;
     text-align: center;
 }
@@ -24,8 +24,11 @@
 }
 
 .pipelineItemProduct {
-    float: left;
     margin: 20px;
+}
+
+.pipelineTh {
+    text-align: unset
 }
 
 .button {

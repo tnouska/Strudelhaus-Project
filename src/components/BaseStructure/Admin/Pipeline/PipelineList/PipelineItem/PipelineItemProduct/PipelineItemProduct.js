@@ -6,11 +6,16 @@ class PipelineItemProduct extends Component {
 
     render(){
         return(
-            <div className="pipelineItemProduct">
-                <span className="productName"><strong>{this.props.product.product_name}:</strong></span>
-                <span>{this.props.product.product_total}</span>
-            </div>
-        
+            <tbody>
+                <tr>
+                    <td>
+                        {this.props.product.product_name}
+                    </td>
+                    <td>
+                        {this.props.product.product_total}
+                    </td>
+                </tr>
+            </tbody>
         )
     }
 }
