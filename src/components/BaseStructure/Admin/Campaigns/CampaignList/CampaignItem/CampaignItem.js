@@ -42,8 +42,8 @@ class CampaignItem extends Component {
 
     render() {
         // map over list of products offered by a specific Campaign, create unique components for each to display on DOM
-        let campaignProducts = this.props.campaign.productList.map((product) => {
-            return (<CampaignItemProduct key={product.product_name} product={product}/>)
+        let campaignProducts = this.props.campaign.availableProducts.map((product) => {
+            return (<CampaignItemProduct key={product.name} product={product}/>)
         });
         // loop over sales for each Campaign product to get a sum of all Campaign sales, then calculate % of Campaign sales goal
         let totalSales = 0;

@@ -25,7 +25,8 @@ router.get('/:id', (req, res) => {
                     customer.zip_code,
                     customer.email_address
                     FROM customer
-                    WHERE campaign_id = $1;`
+                    WHERE campaign_id = $1
+                    ORDER BY customer.date_of_order asc;`
                 const campaignOrders = await client.query(queryText, [req.params.id])
                 for (let i = 0; i < campaignOrders.rows.length; i++) {
                     campaignOrders.rows[i].customer_id;
@@ -34,7 +35,8 @@ router.get('/:id', (req, res) => {
                         product_price as price,
                         "order".quantity
                         FROM "order"
-                        WHERE "order".customer_id = $1;`
+                        WHERE "order".customer_id = $1
+                        ORDER BY product_name asc;`
                     const customerOrder = await client.query(queryText2, [campaignOrders.rows[i].customer_id]);
                     for (let i = 0; i < customerOrder.rows.length; i++) {
                         customerOrder.rows[i].price = Number(customerOrder.rows[i].price);

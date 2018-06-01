@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
 
+
 // This component displays more info related to the specific Campaign selected by the Org Leader
 
 class PerformanceItem extends Component {

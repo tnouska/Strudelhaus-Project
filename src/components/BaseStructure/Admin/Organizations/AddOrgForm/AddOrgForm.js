@@ -40,6 +40,21 @@ class AddOrgForm extends Component {
         })
     };
 
+    fillForm = () =>{
+        this.setState({
+            newOrg: {
+                name: 'test',
+                street_address: '807 oriole ln',
+                city: 'chaska',
+                state: 'MN',
+                zip_code: '55318',
+                contact_name: 'Teagan',
+                contact_phone: '952-250-7726',
+                contact_email: 'tnouska@gmail.com'
+            }
+        })
+    }
+
     // Capture user inputs so we can store in our local state
     handleInput = (propertyName) => {
         return (event) => {          
@@ -66,6 +81,9 @@ class AddOrgForm extends Component {
                         <FormControl value={this.state.newOrg.contact_name} placeholder="Contact Name" onChange={this.handleInput("contact_name")}/>
                         <FormControl value={this.state.newOrg.contact_phone} placeholder="Contact Phone" onChange={this.handleInput("contact_phone")}/>
                         <FormControl value={this.state.newOrg.contact_email} placeholder="Contact Email" onChange={this.handleInput("contact_email")}/>
+                        <div onClick={this.fillForm}> </div>{/* special blank character in between  */}
+                        <Button type="submit" onClick={this.addOrganization}>Create!</Button>
+
                     </FormGroup>
                 </form>
                 <Button type="submit" onClick={this.addOrganization}>Create!</Button>
