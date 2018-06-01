@@ -90,7 +90,6 @@ let everything;
                     
                     />
                 </div>
-                </div>
             </div>
         )
     
