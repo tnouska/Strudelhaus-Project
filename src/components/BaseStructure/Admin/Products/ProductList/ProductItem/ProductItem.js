@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody, Panel } from 'react-bootstrap';
+import Snackbar from '@material-ui/core/Snackbar';
 import EditProductForm from '../../EditProductForm/EditProductForm';
 
 // This component displays more info related to each unique Strudel
@@ -11,12 +12,13 @@ class ProductItem extends Component {
         // ensure the expansion panel is set to closed upon load
         this.state = ({
             panelOpen: false,
-            showModal: false
+            showModal: false,
+            snackOpen: false
         })
     };
 
     handleClose = () => {
-        this.setState({ showModal: false });
+        this.setState({ showModal: false, snackOpen: false });
     }
 
     handleShow = () => {
@@ -36,7 +38,7 @@ class ProductItem extends Component {
             type: 'EDIT_PRODUCT',
             payload: updateProduct
         })
-        this.setState({ showModal: false });
+        this.setState({ showModal: false, snackOpen: true  });
     }
 
     render() {
@@ -75,6 +77,9 @@ class ProductItem extends Component {
                         <Button onClick={this.handleClose}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
+                <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center',}} open={this.state.snackOpen}
+                            autoHideDuration={1500} onClose={this.handleClose}
+                            message={<span id="message-id">Edited {this.props.product.name} Strudel!</span>} />
             </div>
         )
     }

@@ -8,13 +8,10 @@ const OrgLeaderNav = () => (
     <div>
       <ul>
         <li>
-            <Link to="/performance"><Button className="navButton">PERFORMANCE</Button></Link>
+            <Link to="/performance">PERFORMANCE</Link>
         </li>
         <li>
-            <Link to="/orders"><Button className="navButton">ORDERS</Button></Link>
-        </li>
-        <li>
-            <Link to="/account"><Button className="navButton">ACCOUNT</Button></Link>
+            <Link to="/orders">ORDERS</Link>
         </li>
         <br/>
         <br/>

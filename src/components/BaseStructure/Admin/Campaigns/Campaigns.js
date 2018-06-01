@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap';
+import Snackbar from '@material-ui/core/Snackbar';
 import AdminNav from '../../../Nav/AdminNav';
 import AddCampaignForm from '../Campaigns/AddCampaignForm/AddCampaignForm';
 import CampaignList from './CampaignList/CampaignList';
@@ -17,19 +18,28 @@ class Campaigns extends Component {
         this.state = ({
             // ensure modal does not show on page load
             showModal: false,
+            snackOpen: false,
             selectedOrganization: undefined
         })
     }
 
     // close modal by re-setting state
     handleClose = () => {
-        this.setState({ showModal: false });
+        this.setState({ showModal: false, snackOpen: false });
       }
     
     // open modal by re-setting state
     handleShow = () => {
         this.setState({ showModal: true });
     }
+
+    handleSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({ snackOpen: false });
+    };
+
 
     // handle organization dropdown selection, set state as selected org
     handleOrgSelect = (event) => {
@@ -44,6 +54,7 @@ class Campaigns extends Component {
             type: 'ADD_CAMPAIGN',
             payload: newCampaign
         });
+        this.setState({ snackOpen: true });
         this.setState({ showModal: false });
     };
 
@@ -105,6 +116,9 @@ class Campaigns extends Component {
                         </div>
                         <h2>Campaigns</h2>
                         <CampaignList selectedOrganization={this.state.selectedOrganization}/>
+                        <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center',}} open={this.state.snackOpen}
+                                autoHideDuration={1500} onClose={this.handleSnackClose} 
+                                message={<span id="message-id">Created Campaign!</span>} />
                     </div>
                 </div>
             </div>

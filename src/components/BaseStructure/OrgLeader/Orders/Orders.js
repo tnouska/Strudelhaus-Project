@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap';
+import Snackbar from '@material-ui/core/Snackbar';
 import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 import OrderList from '../Orders/OrderList/OrderList';
 import printJS from 'print-js'
@@ -19,12 +20,12 @@ class Orders extends Component {
         this.state = ({
         // ensure modal does not show on page load
             showModal: false,
+            snakcOpen: false,
             selectedCampaign: ''
         })
     };
 
     handleCampaignSelect = (event) => {
-        console.log(event.target.value)
         this.setState({
             selectedCampaign: event.target.value
         });
@@ -32,11 +33,11 @@ class Orders extends Component {
     };
     
     addOrder = (order) => {
-        console.log(order);
         this.props.dispatch({
             type: 'CREATE_ORDER',
             payload: order
         })
+        this.setState({ snackOpen: true });
         this.setState({ showModal: false });
     };
 
@@ -48,6 +49,13 @@ class Orders extends Component {
     // open modal by re-setting state
     handleShow = () => {
         this.setState({ showModal: true });
+    };
+
+    handleSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({ snackOpen: false });
     };
 
     // on mount get user data (based on user Organization) and order data via sagas/redux
@@ -119,6 +127,9 @@ class Orders extends Component {
                         <h2>Orders</h2>
                         <OrderList/>
                         <Button type="button" onClick={this.printOrder}>Print</Button>
+                        <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center',}} open={this.state.snackOpen}
+                                autoHideDuration={1500} onClose={this.handleSnackClose} 
+                                message={<span id="message-id">Added Orders!</span>} />
                     </div>
                 </div>
             </div>

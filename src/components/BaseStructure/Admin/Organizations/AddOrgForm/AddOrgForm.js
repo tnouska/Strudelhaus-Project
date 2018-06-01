@@ -18,7 +18,8 @@ class AddOrgForm extends Component {
                 contact_name: '',
                 contact_phone: '',
                 contact_email: ''
-            }
+            },
+            open: false
         });
     };
 
