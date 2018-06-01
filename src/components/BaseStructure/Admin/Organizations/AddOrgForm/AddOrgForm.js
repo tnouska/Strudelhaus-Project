@@ -83,8 +83,10 @@ class AddOrgForm extends Component {
                         <FormControl value={this.state.newOrg.contact_email} placeholder="Contact Email" onChange={this.handleInput("contact_email")}/>
                         <div onClick={this.fillForm}> </div>{/* special blank character in between  */}
                         <Button type="submit" onClick={this.addOrganization}>Create!</Button>
+
                     </FormGroup>
                 </form>
+                <Button type="submit" onClick={this.addOrganization}>Create!</Button>
             </div>
         )
     }

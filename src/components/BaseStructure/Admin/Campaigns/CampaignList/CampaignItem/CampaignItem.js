@@ -64,15 +64,22 @@ class CampaignItem extends Component {
                     </Panel.Heading>
                     <Panel.Collapse>
                         <Panel.Body>
-                            <p>Start Date: {this.props.campaign.date_start}</p>
-                            <p>End Date: {this.props.campaign.date_end}</p>
-                            <p>Sales Goal: ${this.props.campaign.goal}</p>
-                            <p>Total Sales: ${totalSales}</p>
-                            <ProgressBar now={goalPercentage} />
-                            <p>Products:</p>
-                            {campaignProducts}
-                            <Button onClick={this.handleShow}>Edit</Button>
-                            <Button onClick={this.deleteCampaign}>Delete</Button>
+                            <div>
+                                <ProgressBar now={goalPercentage} />
+                                <div className="column">
+                                    <p>Sales Goal: ${this.props.campaign.goal}</p>
+                                    <p>Total Sales: ${totalSales}</p>
+                                    <p>Start Date: {this.props.campaign.date_start}</p>
+                                    <p>End Date: {this.props.campaign.date_end}</p>
+                                    <p><strong>www.strudelhaus.fundraiser/{this.props.campaign.url}</strong></p>
+                                </div>
+                                <div className="column">
+                                    <p><strong>Products</strong></p>
+                                    {campaignProducts}
+                                </div>
+                                <Button onClick={this.handleShow}>Edit</Button>
+                                <Button onClick={this.deleteCampaign}>Delete</Button>
+                            </div>
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>

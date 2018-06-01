@@ -53,10 +53,14 @@ class ProductItem extends Component {
                     </Panel.Heading>
                     <Panel.Collapse>
                         <Panel.Body>
-                            <img className="smallProductImg" src={this.props.product.img_url_1} alt="strudel" />
-                            <br/>
-                            <Button onClick={this.handleShow}>Edit</Button>
-                            <Button onClick={this.deleteProduct}>Delete</Button>
+                            <div className="column">
+                                <img className="smallProductImg" src={this.props.product.img_url_1} alt="strudel" />
+                            </div>
+                            <div className="column">
+                                <p>{this.props.product.description}</p>
+                                <Button onClick={this.handleShow}>Edit</Button>
+                                <Button onClick={this.deleteProduct}>Delete</Button>
+                            </div>
                         </Panel.Body>
                     </Panel.Collapse>
                 </Panel>

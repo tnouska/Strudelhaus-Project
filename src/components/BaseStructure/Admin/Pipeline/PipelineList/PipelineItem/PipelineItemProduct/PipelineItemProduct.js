@@ -7,7 +7,8 @@ class PipelineItemProduct extends Component {
     render(){
         return(
             <div className="pipelineItemProduct">
-                <span>{this.props.product.product_name}: {this.props.product.product_total}</span>
+                <span className="productName"><strong>{this.props.product.product_name}:</strong></span>
+                <span>{this.props.product.product_total}</span>
             </div>
         
         )

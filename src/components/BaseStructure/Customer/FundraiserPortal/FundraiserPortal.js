@@ -13,6 +13,7 @@ import ShoppingCartList from '../ShoppingCartList/ShoppingCartList';
 import Nav from '../../../Nav/Nav';
 import SquareForm from '../SquareForm/SquareForm';
 import SweetAlert from 'sweetalert2-react';
+import './FundraiserPortal.css';
 
 const mapStateToProps = state => ({
   view: state.toggleShoppingView,
@@ -90,31 +91,31 @@ if (this.props.cart.length > 0){
 }
 
     return (
-      <div>
-       <SweetAlert
-        show={this.state.show}
-        title="Choose Your Strudels"
-        text="Please complete the form and choose your strudels."
-        onConfirm={() => this.setState({ show: false })}
-      />
-        <h2>Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
-        <Grid>
-  <Row className="show-grid">
-    <Col xs={12} md={8}>
-             <StrudelList campaignName={this.props.match.params.name} />
-             <CustomerInforForm />
-             <Button onClick={this.postTransaction}>
-             Checkout 
-             </Button>
-            
-             {/* <SquareForm campaignName={this.props.match.params.name}/> */}
-    </Col>
-    <Col xs={6} md={4}>
-   <ShoppingCartList />
-    
-    </Col>
-  </Row>
-  </Grid>
+      <div className="portalDiv">
+            <SweetAlert
+              show={this.state.show}
+              title="Choose Your Strudels"
+              text="Please complete the form and choose your strudels."
+              onConfirm={() => this.setState({ show: false })}
+            />
+              <h2>Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
+              <Grid>
+        <Row className="show-grid">
+          <Col xs={12} md={8}>
+                  <StrudelList campaignName={this.props.match.params.name} />
+                  <CustomerInforForm />
+                  <Button onClick={this.postTransaction}>
+                  Checkout 
+                  </Button>
+                  
+                  {/* <SquareForm campaignName={this.props.match.params.name}/> */}
+          </Col>
+          <Col xs={6} md={4}>
+        <ShoppingCartList />
+          
+          </Col>
+        </Row>
+        </Grid>
    
         </div>
     )
