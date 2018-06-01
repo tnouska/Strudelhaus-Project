@@ -26,3 +26,8 @@
 #select {
     float: left;
 }
+
+.column {
+    float: left;
+    width: 50%
+}

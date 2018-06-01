@@ -63,7 +63,9 @@ class OrgItem extends Component {
                             <p><strong>Contact</strong></p>
                             {this.props.org.contact_name}<br/>
                             {this.props.org.street_address}<br/>
-                            {this.props.org.city},{this.props.org.state} {this.props.org.zip_code}<br/>
+                            {this.props.org.city}, {this.props.org.state} {this.props.org.zip_code}<br/>
+                            {this.props.org.contact_phone}<br/>
+                            {this.props.org.contact_email}<br/>
                         </div>
                         <div className="column">
                             <p><strong>Campaigns</strong></p>
