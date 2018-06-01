@@ -4,6 +4,7 @@ import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import OrgLeaderNav from '../../../Nav/OrgLeaderNav';
 import PerformanceItem from './/PerformanceItem/PerformanceItem';
+import './Performance.css'
 
 // This is the parent component and main view for the Org Leader "Performance" area of the app. It is also the default Org Leader landing page upon log in
 // The Org Leader can view high-level sales data by campaign
@@ -74,16 +75,17 @@ let everything;
             <div>
                 <OrgLeaderNav/>
                 <div className="mainDiv">
-                    <button onClick={this.logout}>Log Out</button>
-                    <h3>Campaign Performance</h3>
-                    <select title="Campaign"
-                            value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
-                            <option>Campaign</option>
-                            {campaignOptions}
-                    </select>
-                    <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
+                    <div className="performanceDiv">
+                        <h2>Campaign Performance</h2>
+                        <select title="Campaign"
+                                value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
+                                <option>Select Campaign</option>
+                                {campaignOptions}
+                        </select>
+                        <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
+                    </div>
                 </div>
-                </div>
+            </div>
         )
     
         return(

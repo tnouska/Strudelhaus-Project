@@ -1,10 +1,9 @@
 .productListDiv {
-    margin: 30px 10px 10px 100px;
+    margin: 50px 10px 10px 100px;
     width: 1000px;
     height: 650px;
     background-color: white;
     padding: 5px 5px 30px 10px;
-    opacity: .90;
     overflow: scroll;
  }
 
@@ -39,4 +38,10 @@
 .column {
     float: left;
     width: 50%
+}
+
+h2 {
+    text-align: center;
+    padding-left: 250px;
+    margin: 30px 0px 30px 0px;
 }

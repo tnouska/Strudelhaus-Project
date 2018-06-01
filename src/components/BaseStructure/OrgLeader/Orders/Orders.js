@@ -111,10 +111,10 @@ class Orders extends Component {
                     <div className="orderListDiv">
                         <select title="Campaign"
                             value={this.state.selectedCampaign} onChange={this.handleCampaignSelect}>
-                            <option>Campaign</option>
+                            <option>Select Campaign</option>
                             {campaignOptions}
                         </select>
-                        <Button onClick={this.handleShow}>Add Cash/Check Order</Button>
+                        <Button onClick={this.handleShow} className="button">Add Cash/Check Order</Button>
                         <h2>Orders</h2>
                         <OrderList/>
                         <Button type="button" onClick={this.printOrder}>Print</Button>

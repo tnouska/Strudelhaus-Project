@@ -66,9 +66,9 @@ class AddOrgForm extends Component {
                         <FormControl value={this.state.newOrg.contact_name} placeholder="Contact Name" onChange={this.handleInput("contact_name")}/>
                         <FormControl value={this.state.newOrg.contact_phone} placeholder="Contact Phone" onChange={this.handleInput("contact_phone")}/>
                         <FormControl value={this.state.newOrg.contact_email} placeholder="Contact Email" onChange={this.handleInput("contact_email")}/>
-                        <Button type="submit" onClick={this.addOrganization}>Create!</Button>
                     </FormGroup>
                 </form>
+                <Button type="submit" onClick={this.addOrganization}>Create!</Button>
             </div>
         )
     }
