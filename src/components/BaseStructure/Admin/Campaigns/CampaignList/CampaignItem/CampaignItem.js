@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody, Panel, ProgressBar } from 'react-bootstrap';
+import Snackbar from '@material-ui/core/Snackbar';
 import CampaignItemProduct from './CampaignItemProduct/CampaignItemProduct';
 import EditCampForm from '../../EditCampForm/EditCampForm';
 
@@ -12,12 +13,13 @@ class CampaignItem extends Component {
         // ensure the expansion panel is set to closed upon load
         this.state = ({
             panelOpen: false,
-            showModal: false
+            showModal: false,
+            snackOpen: false
         })
     }
 
     handleClose = () => {
-        this.setState({ showModal: false });
+        this.setState({ showModal: false, snackOpen: false });
     }
 
     handleShow = () => {
@@ -29,7 +31,7 @@ class CampaignItem extends Component {
             type: 'EDIT_CAMPAIGN',
             payload: updateCamp
         })
-        this.setState({ showModal: false });
+        this.setState({ showModal: false, snackOpen: true   });
     }
 
     // delete a specific Campaign by dispatching to saga
@@ -94,6 +96,9 @@ class CampaignItem extends Component {
                         <Button onClick={this.handleClose}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
+                <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center',}} open={this.state.snackOpen}
+                            autoHideDuration={1500} onClose={this.handleClose}
+                            message={<span id="message-id">Edited {this.props.campaign.campaign_name}!</span>} />
             </div>
         )
     };

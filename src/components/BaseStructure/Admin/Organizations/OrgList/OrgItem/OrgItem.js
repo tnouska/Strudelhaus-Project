@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OrgItemCampaign from './OrgItemCampaign/OrgItemCampaign';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody, Panel } from 'react-bootstrap';
+import Snackbar from '@material-ui/core/Snackbar';
 import EditOrgForm from '../../EditOrgForm/EditOrgForm';
 
 
@@ -13,12 +14,13 @@ class OrgItem extends Component {
         // ensure the expansion panel is set to closed upon load
         this.state = ({
             panelOpen: false,
-            showModal: false
+            showModal: false,
+            snackOpen: false
         })
     }
 
     handleClose = () => {
-        this.setState({ showModal: false });
+        this.setState({ showModal: false, snackOpen: false });
     }
 
     handleShow = () => {
@@ -30,11 +32,12 @@ class OrgItem extends Component {
             type: 'EDIT_ORGANIZATION',
             payload: updateOrg
         })
-        this.setState({ showModal: false });
+        this.setState({ showModal: false, snackOpen: true });
     }
 
     // delete a specific Org by dispatching to saga
     deleteOrg = () => {
+        this.setState({ deleteSnackOpen: true });
         this.props.dispatch({
             type: 'DELETE_ORGANIZATION',
             payload: this.props.org
@@ -87,6 +90,9 @@ class OrgItem extends Component {
                         <Button onClick={this.handleClose}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
+                <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center',}} open={this.state.snackOpen}
+                            autoHideDuration={1500} onClose={this.handleClose}
+                            message={<span id="message-id">Edited {this.props.org.organization_name}!</span>} />
             </div>
         )
     }

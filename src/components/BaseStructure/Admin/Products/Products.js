@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap';
+import Snackbar from '@material-ui/core/Snackbar';
 import AdminNav from '../../../Nav/AdminNav';
 import AddProductForm from '../Products/AddProductForm/AddProductForm';
 import ProductList from './ProductList/ProductList';
@@ -16,7 +17,8 @@ class Products extends Component {
         super(props);
         this.state = ({
         // ensure modal does not show on page load
-            showModal: false
+            showModal: false,
+            snackOpen: false
         })
     };
 
@@ -30,6 +32,13 @@ class Products extends Component {
         this.setState({ showModal: true });
     };
 
+    handleSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({ snackOpen: false });
+    };
+
 
     // dispatch action to saga to create new Product and display on DOM
     addProduct = (newProduct) => {
@@ -37,6 +46,7 @@ class Products extends Component {
             type: 'ADD_PRODUCT',
             payload: newProduct
         });
+        this.setState({ snackOpen: true });
         this.setState({ showModal: false });
     };
 
@@ -82,6 +92,9 @@ class Products extends Component {
                         <Button onClick={this.handleShow} className="button">Add Product</Button>
                         <h2>Products</h2>
                         <ProductList/>
+                        <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center',}} open={this.state.snackOpen}
+                                autoHideDuration={1500} onClose={this.handleSnackClose} 
+                                message={<span id="message-id">Added Product!</span>} />
                     </div>
                 </div>
             </div>

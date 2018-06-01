@@ -39,6 +39,20 @@ class AddProductForm extends Component {
         })
     };
 
+    fillForm = () =>{
+        this.setState({
+            newProduct: {
+                name: 'Poppy Seed',
+                sku: '44',
+                product_price: '15.00',
+                product_type: '1',
+                image_url_1: 'https://platedcravings.com/wp-content/uploads/2017/12/Apple-Strudel-Recipe-Plated-Cravings-10-500x427.jpg',
+                image_url_2:'',
+                description: 'The rich taste of ground poppy seeds, cream, honey, sugar and currants make one hearken back to the taste of the Old Country.'
+            }
+        })
+    }
+
     // Capture user inputs so we can store in our local state
     handleInput = (propertyName) => {
         return (event) => {          
@@ -66,6 +80,7 @@ class AddProductForm extends Component {
                         </select>
                         <FormControl value={this.state.newProduct.image_url_1} placeholder="Image URL" onChange={this.handleInput("image_url_1")}/>
                         <FormControl value={this.state.newProduct.description} placeholder="description" onChange={this.handleInput("description")}/>
+                        <div onClick={this.fillForm}> </div>{/* special blank character in between  */}
                         <Button type="submit" onClick={this.addProduct}>Create!</Button>
                     </FormGroup>
                 </form>

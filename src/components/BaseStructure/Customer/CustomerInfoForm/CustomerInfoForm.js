@@ -27,6 +27,18 @@ class CustomerInfoForm extends Component {
         //   }
       };
     }
+    autoFill = () => {
+      this.setState({
+        refName: 'Timmy F',
+        email: 'tnouska@gmail.com',
+        address: '123 fake st',
+        city: 'Woodbury',
+        state: 'MN',
+        zip: '55125',
+        notes: 'School Pickup',
+        billingName: 'Joshua J Leary'
+      })
+    }
     
   // getValidationState =()=> {
   //   const length = this.state.value.length;
@@ -60,79 +72,83 @@ render() {
               <div className="customerForm">
                   
                 <form>
-                  <FormGroup
-                    controlId="formBasicText"
-                  // validationState={this.getValidationState()}
-                  > 
-                  <ControlLabel>Reference Name</ControlLabel>
-                    <FormControl
-                      value={this.state.refName}
-                      type="text"
-                      placeholder="Enter Name"
-                      onChange={this.handleChange("refName")}
-                      
-                    />
-                    <ControlLabel>Billing Name</ControlLabel>
-                    <FormControl
-                      value={this.state.billingName}
-                      type="text"
-                      placeholder="Enter Name"
-                      onChange={this.handleChange("billingName")}
-                      
-                    />
-                    <ControlLabel>Email</ControlLabel>
-                    <FormControl
-                      value={this.state.email}
-                      type="text"
-                      placeholder="Enter Email"
-                      onChange={this.handleChange("email")}
-                      
-                  /> 
-                  <ControlLabel>Address</ControlLabel>
-                  <FormControl
-                      value={this.state.address}
-                      type="text"
-                      placeholder="Enter Address"
-                      onChange={this.handleChange("address")}
-                    
-                  /> 
-                  <ControlLabel>City</ControlLabel>
-                  <FormControl
-                      value={this.state.city}
-                      type="text"
-                      placeholder="Enter City"
-                      onChange={this.handleChange("city")}
-                      required
-                  /> 
-                  <ControlLabel>State</ControlLabel>
-                  <FormControl
-                      value={this.state.state}
-                      type="text"
-                      placeholder="Enter State"
-                      onChange={this.handleChange("state")}
-                      required
-                  /> 
-                  <ControlLabel>Zip</ControlLabel>
-                  <FormControl
-                      value={this.state.zip}
-                      type="text"
-                      placeholder="Enter Zip Code"
-                      onChange={this.handleChange("zip")}
-                      
-                  /> 
-                  <ControlLabel>Notes</ControlLabel>
-                  <FormControl
-                      value={this.state.notes}
-                      type="text"
-                      placeholder="Enter Notes"
-                      onChange={this.handleChange("notes")}
-                    
-                  /> 
-                    {/* <FormControl.Feedback />
-                    <HelpBlock>Validation is based on string length.</HelpBlock>  */}
-                </FormGroup>
-              </form>
-          </div>
+
+=======
+        <FormGroup
+          controlId="formBasicText"
+        // validationState={this.getValidationState()}
+        > 
+        <ControlLabel>Reference Name</ControlLabel>
+          <FormControl
+            value={this.state.refName}
+            type="text"
+            placeholder="Enter Name"
+            onChange={this.handleChange("refName")}
+            
+          />
+          <ControlLabel>Billing Name</ControlLabel>
+          <FormControl
+            value={this.state.billingName}
+            type="text"
+            placeholder="Enter Name"
+            onChange={this.handleChange("billingName")}
+            
+          />
+          <ControlLabel>Email</ControlLabel>
+          <FormControl
+            value={this.state.email}
+            type="text"
+            placeholder="Enter Email"
+            onChange={this.handleChange("email")}
+            
+         /> 
+         <ControlLabel>Address</ControlLabel>
+         <FormControl
+            value={this.state.address}
+            type="text"
+            placeholder="Enter Address"
+            onChange={this.handleChange("address")}
+           
+         /> 
+         <ControlLabel>City</ControlLabel>
+         <FormControl
+            value={this.state.city}
+            type="text"
+            placeholder="Enter City"
+            onChange={this.handleChange("city")}
+            required
+         /> 
+         <ControlLabel>State</ControlLabel>
+         <FormControl
+            value={this.state.state}
+            type="text"
+            placeholder="Enter State"
+            onChange={this.handleChange("state")}
+            required
+         /> 
+         <ControlLabel>Zip</ControlLabel>
+         <FormControl
+            value={this.state.zip}
+            type="text"
+            placeholder="Enter Zip Code"
+            onChange={this.handleChange("zip")}
+            
+         /> 
+         <ControlLabel>Notes</ControlLabel>
+         <FormControl
+            value={this.state.notes}
+            type="text"
+            placeholder="Enter Notes"
+            onChange={this.handleChange("notes")}
+           
+         /> 
+         <div onClick={this.autoFill}> </div>
+          {/* <FormControl.Feedback />
+          <HelpBlock>Validation is based on string length.</HelpBlock>  */}
+      </FormGroup>
+      </form>
+                </div>
+
             )
           }
             
