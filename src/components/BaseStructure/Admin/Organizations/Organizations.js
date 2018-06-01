@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { USER_ACTIONS } from '../../../../redux/actions/userActions';
 import { triggerLogout } from '../../../../redux/actions/loginActions';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'react-bootstrap';
+import Snackbar from '@material-ui/core/Snackbar';
 import AdminNav from '../../../Nav/AdminNav';
 import AddOrgForm from '../Organizations/AddOrgForm/AddOrgForm';
 import OrgList from './OrgList/OrgList';
@@ -16,7 +17,8 @@ class Organizations extends Component {
         super(props);
         this.state = ({
             // ensure modal does not show on page load
-            showModal: false
+            showModal: false,
+            snackOpen: false
         })
     }
 
@@ -30,12 +32,21 @@ class Organizations extends Component {
         this.setState({ showModal: true });
     }
 
+
+    handleSnackClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({ snackOpen: false });
+    };
+
     // dispatch action to saga to create new Org and display on DOM
     addOrganization = (newOrg) => {
         this.props.dispatch({
             type: 'ADD_ORGANIZATION',
             payload: newOrg
-        })
+        });
+        this.setState({ snackOpen: true });
         this.setState({ showModal: false });
     };
 
@@ -81,6 +92,9 @@ class Organizations extends Component {
                         <Button onClick={this.handleShow} className="button">Add Organization</Button>
                         <h2>Organizations</h2>
                         <OrgList/>
+                        <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center',}} open={this.state.snackOpen}
+                                autoHideDuration={1500} onClose={this.handleSnackClose} 
+                                message={<span id="message-id">Added Organization!</span>} />
                     </div>
                 </div>
             </div>
