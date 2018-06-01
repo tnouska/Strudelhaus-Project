@@ -37,6 +37,7 @@ class OrgItem extends Component {
 
     // delete a specific Org by dispatching to saga
     deleteOrg = () => {
+        this.setState({ deleteSnackOpen: true });
         this.props.dispatch({
             type: 'DELETE_ORGANIZATION',
             payload: this.props.org
