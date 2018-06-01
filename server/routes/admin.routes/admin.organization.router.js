@@ -22,7 +22,8 @@ router.get('/', (req, res) => {
                         organization.contact_name,
                         organization.id as organization_id,
                         * 
-                        FROM organization;`
+                        FROM organization
+                        ORDER BY organization.name asc;`
                 let organizationResult = await client.query(queryText)
                 let orgResult = organizationResult.rows
                 for (let i = 0; i < orgResult.length; i++) {
@@ -30,7 +31,8 @@ router.get('/', (req, res) => {
                     campaign.name as campaign_name,
                     campaign.id as campaign_id
                     FROM campaign
-                    WHERE organization_id = $1`
+                    WHERE organization_id = $1
+                    ORDER BY campaign_name asc;`
                     let organizationId = orgResult[i].organization_id;
                     let campaignResult = await client.query(queryText2, [organizationId])
                     orgResult[i].campaignData = campaignResult.rows
