@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button,FormGroup,ControlLabel,FormControl,HelpBlock } from 'react-bootstrap';
+import '../CustomerInfoForm/CustomerInfoForm.css';
 
 
 const mapStateToProps = state => ({
@@ -68,9 +69,11 @@ handleChange = ( inputText )=>{
 render() {
   
             return (
-              <div>
+              <div className="customerForm">
                   
                 <form>
+
+=======
         <FormGroup
           controlId="formBasicText"
         // validationState={this.getValidationState()}
@@ -145,6 +148,7 @@ render() {
       </FormGroup>
       </form>
                 </div>
+
             )
           }
             

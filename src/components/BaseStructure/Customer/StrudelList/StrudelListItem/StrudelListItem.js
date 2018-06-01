@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button,Modal,OverlayTrigger } from 'react-bootstrap';
+import '../StrudelListItem/StrudelListItem.css';
 
 const mapStateToProps = state => ({
     // user: state.user,
@@ -37,7 +38,7 @@ class StrudelListItem extends React.Component {
       
   
       return (
-        <div>
+        <div className="strudelName">
           {/* <p>Click to get the full Modal experience!</p> */}
   
           <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>

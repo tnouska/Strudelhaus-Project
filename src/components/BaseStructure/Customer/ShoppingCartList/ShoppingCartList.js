@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import '../ShoppingCartList/ShoppingCartList.css';
 
 const mapStateToProps = state => ({
     
@@ -101,7 +102,7 @@ if (this.props.cart.length >= 1){
 
     
     return (
-      <div>
+      <div className="shoppingCart">
              
              <h2>Shopping Cart</h2>
              {displayOrder}
