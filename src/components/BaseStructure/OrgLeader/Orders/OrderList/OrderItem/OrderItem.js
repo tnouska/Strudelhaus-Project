@@ -47,7 +47,7 @@ class OrderItem extends Component {
         let productsOrdered = this.props.order.customer_order.map((product) => {
             orderTotal += (product.price * product.quantity)
             return (
-                <tr>
+                <tr key={product.name}>
                     <td>{product.name}, ${product.price}.00</td>
                     <td>{product.quantity}</td>
                 </tr>
