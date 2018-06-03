@@ -1,3 +1,7 @@
 .strudelName {
     padding: 10px;
 }
+
+.column {
+    width: 50%
+}

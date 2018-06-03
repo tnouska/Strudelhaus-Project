@@ -99,23 +99,13 @@ if (this.props.cart.length > 0){
               onConfirm={() => this.setState({ show: false })}
             />
               <h2 className="welcome">Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
-              <Grid>
-        <Row className="show-grid">
-          <Col xs={12} md={8}>
-                  <StrudelList campaignName={this.props.match.params.name} />
+              <StrudelList campaignName={this.props.match.params.name} />
+                  <ShoppingCartList />
                   <CustomerInfoForm />
                   <Button className="checkout" onClick={this.postTransaction}>
                   Checkout 
                   </Button>
-                  
                   {/* <SquareForm campaignName={this.props.match.params.name}/> */}
-          </Col>
-          <Col xs={6} md={4}>
-        <ShoppingCartList />
-          
-          </Col>
-        </Row>
-        </Grid>
    
         </div>
     )
