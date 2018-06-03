@@ -44,7 +44,7 @@ class AddOrderForm extends Component {
                 for(let i=1; i < parsedResult.length; i++) {
                     let order = parsedResult[i]
                     let csvOrder = {
-                        campaign_id: order[0],
+                        campaign_id: this.state.newOrder.campaign_id,
                         name: order[1],
                         street_address: order[2],
                         city: order[3],
@@ -128,6 +128,13 @@ class AddOrderForm extends Component {
             <div>
                 <h4>Select local CSV File:</h4>
                 <FormControl id="csv" type="file"/>
+                <select title="Campaign"
+                    value={this.state.newOrder.campaign_id} onChange={this.handleSelectCampaign("campaign_id")}>
+                    <option>Select Campaign</option>
+                    {campaignOptions}
+                </select>
+                <br/>
+                <br/>
                 <Button type="submit" onClick={this.addCsvOrder}>Upload!</Button>
                 <hr/>
                 <h4>OR</h4>

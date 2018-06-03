@@ -41,14 +41,17 @@ function * createOrder(action) {
         withCredentials: true,
     }    
     try{
-        if (action.payload.csvOrders) {
+        if (action.payload.csvOrders.length >= 1) {
+            console.log('in if of createOrder:', action.payload);
+            
             yield call(axios.post, `/orgleader/order`, action.payload.csvOrders, config);
             yield put({
                 type: 'GET_ORDER',
                 payload: action.payload.csvOrders[0].campaign_id
             })
         } else {
-
+            console.log('in else of createOrder: ',action.payload);
+            
             let newOrderArray = []
             newOrderArray.push(action.payload.newOrder)
             yield call(axios.post, `/orgleader/order`, newOrderArray, config)
