@@ -108,7 +108,7 @@ if (this.props.cart.length >= 1){
              <h2 className="shopH2">Shopping Cart</h2>
              {displayOrder}
              
-             <h1>Total ${total}</h1>
+             <h3>Total ${total}</h3>
              {/* <Button>Submit Order</Button> */}
       </div>
     )

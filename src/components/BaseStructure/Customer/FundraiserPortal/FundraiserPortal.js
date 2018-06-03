@@ -91,23 +91,34 @@ if (this.props.cart.length > 0){
 }
 
     return (
-      <div className="portalDiv">
-            <SweetAlert
-              show={this.state.show}
-              title="Choose Your Strudels"
-              text="Please complete the form and choose your strudels."
-              onConfirm={() => this.setState({ show: false })}
-            />
-              <h2 className="welcome">Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
-              <StrudelList campaignName={this.props.match.params.name} />
-                  <ShoppingCartList />
+      <div id="portalDiv">
+        <div id="portalContainer">
+          <SweetAlert show={this.state.show} title="Choose Your Strudels"
+            text="Please complete the form and choose your strudels."onConfirm={() => this.setState({ show: false })}/>
+          <Grid>
+            <Row>
+              <Col md={10}>
+                <div id="titleDiv">
+                  <h2 className="welcome">Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
+                </div>
+                <div id="strudelListDiv">
+                  <StrudelList campaignName={this.props.match.params.name} />
+                </div>
+                <div id="customerFormDiv">
                   <CustomerInfoForm />
-                  <Button className="checkout" onClick={this.postTransaction}>
-                  Checkout 
-                  </Button>
+                </div>
+                  <Button className="checkout" onClick={this.postTransaction}>Checkout </Button>
                   {/* <SquareForm campaignName={this.props.match.params.name}/> */}
-   
+              </Col>
+              <Col md={2}>
+                <div id="shoppingCartDiv">
+                  <ShoppingCartList />
+                </div>
+              </Col>
+            </Row>
+          </Grid>
         </div>
+      </div>
     )
   }
   
