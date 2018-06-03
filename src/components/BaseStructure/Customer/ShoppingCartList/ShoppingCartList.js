@@ -105,7 +105,7 @@ if (this.props.cart.length >= 1){
     return (
       <div className="shoppingCart">
              
-             <h2 className="shopH2">Shopping Cart</h2>
+             <h3 className="shopH2">Shopping Cart</h3>
              {displayOrder}
              
              <h3>Total ${total}</h3>
