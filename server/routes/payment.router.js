@@ -28,16 +28,18 @@ router.post('/squareInfo', function (req, res){
   console.log(orgUrl)
   //`SELECT "square_application_id", "square_location_id" FROM campaign JOIN organization ON organization.id = campaign.organization_id where campaign.url = $1;`;
   const queryText = `SELECT square_application_id, square_location_id FROM campaign JOIN organization ON organization.id = campaign.organization_id where campaign.url = $1;`
-  console.log(queryText);
+
   pool.query(queryText, [orgUrl])
   .then((result) => {
+    console.log('squareInfo: ', result.rows);
     
-    res.sendStatus(200);
+    
     console.log('square info from db', result.rows[0].square_application_id, result.rows[0].square_location_id );
     squareAppId = result.rows[0].square_application_id
     squareLocationId = result.rows[0].square_location_id
+    res.sendStatus(200);
 }).catch((error) => {
-    console.log(error);
+    console.log('error in /squareInfo', error);
     res.sendStatus(500);
 });
 })
@@ -184,14 +186,13 @@ router.post('/postcustomer', (req, res) => {
       for (let i = 0; i < customerData.products.length; i++) {
         let productInfo = await client.query(queryText3, [customerData.products[i].name]);
         const queryText4 = `INSERT INTO "order" 
-            (customer_id, product_name,product_price,product_sku,product_description,campaign_id,quantity)
-            VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "id"`
+            (customer_id, product_name,product_price,product_sku,campaign_id,quantity)
+            VALUES ($1,$2,$3,$4,$5,$6) RETURNING "id"`
         let orderValues = [
           productInfo.rows[0].id,
           customerData.products[i].name,
           productInfo.rows[0].price,
           productInfo.rows[0].sku,
-          productInfo.rows[0].description,
           campaignId.rows[0].id,
           customerData.products[i].quantity]
 
