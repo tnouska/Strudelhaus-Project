@@ -61,7 +61,7 @@ componentDidUpdate() {
         }
       }
       postTransaction=()=>{
-
+        
         this.props.dispatch({
           type: 'POST_CUSTINFO',
           payload: {

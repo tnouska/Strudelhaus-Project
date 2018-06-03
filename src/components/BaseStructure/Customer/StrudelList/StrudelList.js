@@ -35,12 +35,11 @@ componentDidUpdate() {
 
 addToOrder = (product)=>{
 
-  const evalProduct = (item => item.product_name === product.product_name);
+  const evalProduct = (item => item.product_name == product.product_name || item.name == product.product_name);
   const findItem = this.props.cart.find(evalProduct);
   console.log(findItem)
   if(!findItem){
-    console.log(product)
-  
+    
     product.quantity = 1
     this.props.dispatch({
       type: 'CURRENT_ORDER',
@@ -48,6 +47,7 @@ addToOrder = (product)=>{
       quantity: "1",
       base_price_money: { amount: (parseInt(product.product_price)* 100), currency: 'USD' } }
     });
+   
   }
   
 }

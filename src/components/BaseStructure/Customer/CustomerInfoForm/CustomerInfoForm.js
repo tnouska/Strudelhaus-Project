@@ -27,19 +27,33 @@ class CustomerInfoForm extends Component {
         //   }
       };
     }
+
     autoFill = () => {
-      this.setState({
-        refName: 'Timmy F',
-        email: 'tnouska@gmail.com',
-        address: '123 fake st',
-        city: 'Woodbury',
-        state: 'MN',
-        zip: '55125',
-        notes: 'School Pickup',
-        billingName: 'Joshua J Leary'
-      })
+      
+        this.setState({
+          refName: 'Timmy F',
+          email: 'tnouska@gmail.com',
+          address: '123 fake st',
+          city: 'Woodbury',
+          state: 'MN',
+          zip: '55125',
+          notes: 'School Pickup',
+          billingName: 'Joshua J Leary'
+        });
+      
+      
+      
     }
-    
+updateReducer=()=>{
+  this.autoFill()
+  this.updatedInfoReducer()
+}
+    updatedInfoReducer = ()=>{
+      this.props.dispatch({
+        type: 'CURRENT_CUSTOMERINFO',
+        payload: {customerInfo:this.state}
+      });
+    }
   // getValidationState =()=> {
   //   const length = this.state.value.length;
   //   if (length > 10) return 'success';
@@ -73,7 +87,6 @@ render() {
                   
                 <form>
 
-=======
         <FormGroup
           controlId="formBasicText"
         // validationState={this.getValidationState()}
@@ -142,7 +155,7 @@ render() {
             onChange={this.handleChange("notes")}
            
          /> 
-         <div onClick={this.autoFill}> </div>
+         <div onClick={this.updateReducer}> </div>
           {/* <FormControl.Feedback />
           <HelpBlock>Validation is based on string length.</HelpBlock>  */}
       </FormGroup>

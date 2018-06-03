@@ -39,9 +39,9 @@ this.setState({
 
 }
 minusQuantity = (product)=>{
-  parseInt(product.quantity)
+  product.quantity = parseInt(product.quantity)
 if (product.quantity <= 1){
-  const evalProduct = (item => item.product_name === product.product_name);
+  const evalProduct = (item => item.name === product.name);
   const findItem = this.props.cart.findIndex(evalProduct);
   this.props.cart.splice(findItem, 1)
   product.quantity = 0;
@@ -78,9 +78,10 @@ return parseInt(a) + parseInt(b)
         let displayOrder = this.props.cart && this.props.cart.map( (product) => {
           return(
             <div key={product.name}>
-            <Button onClick={()=>this.addQuantity(product)}>+</Button>
+            <Button onClick={()=>this.minusQuantity(product)}>-</Button>
             <span> {product.quantity} </span>
-            <Button onClick={()=>this.minusQuantity(product)}>-</Button> 
+            <Button onClick={()=>this.addQuantity(product)}>+</Button>
+             
             <strong>{product.name} ${product.base_price_money.amount/100}</strong>
             </div>
           )
