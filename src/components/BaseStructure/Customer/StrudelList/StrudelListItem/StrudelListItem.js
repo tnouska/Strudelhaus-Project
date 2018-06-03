@@ -51,10 +51,11 @@ class StrudelListItem extends React.Component {
             </Modal.Header>
             <Modal.Body>
               {this.props.product.product_description}
+              <img src={this.props.product.img_url_1}/>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={()=>this.handleAdd(this.props.product)}>Add to Cart</Button>
-              <Button onClick={this.handleClose}>Close</Button>
+              {/* <Button onClick={this.handleClose}>Close</Button> */}
             </Modal.Footer>
           </Modal>
         </div>

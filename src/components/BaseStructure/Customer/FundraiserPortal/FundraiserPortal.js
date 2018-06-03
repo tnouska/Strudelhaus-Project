@@ -84,12 +84,14 @@ render() {
     return(
       product.quantity * product.product_price
     )
-})
+  });
 
-if (this.props.cart.length > 0){
-   total = totalArr.reduce(this.add);
-}
+  if (this.props.cart.length > 0){
+    total = totalArr.reduce(this.add);
+  };
 
+  let orgName = this.props.match.params.name.replace(/-/g, " ")
+  
     return (
       <div id="portalDiv">
         <div id="portalContainer">
@@ -102,7 +104,7 @@ if (this.props.cart.length > 0){
               </Col>
               <Col md={8}>
                 <div>
-                    <h2 className="welcome">{this.props.match.params.name} Strudel Fundraiser</h2>
+                    <h2 className="welcome">{orgName} Strudel Fundraiser</h2>
                 </div>
               </Col>
               <Col md={2}>
@@ -124,7 +126,9 @@ if (this.props.cart.length > 0){
                 </div>
               </Col>
             </Row>
+            <br/>
             <hr/>
+            <br/>
             <Row>
               <Col md={1}></Col>
               <Col md={10}>

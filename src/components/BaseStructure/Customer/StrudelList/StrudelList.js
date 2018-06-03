@@ -75,11 +75,11 @@ let displaySavory = savoryProducts.map( (product) => {
     return (
       <div>
           <div className="column">
-            <h4>Sweet Strudels</h4>
+            <h3>Sweet Strudels</h3>
             {displaySweet}
           </div>
           <div className="column">
-            <h4>Savory Strudels</h4>
+            <h3>Savory Strudels</h3>
             {displaySavory}
           </div>
       </div>
