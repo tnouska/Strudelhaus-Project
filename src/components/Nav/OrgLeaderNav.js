@@ -1,30 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 const OrgLeaderNav = () => (
   <div className="navbar">
-    <img src="http://www.thestrudelhaus.net/uploads/2/1/8/6/21866322/favicon.png" className="navImage"/>
+    <img src="http://www.thestrudelhaus.net/uploads/2/1/8/6/21866322/favicon.png" className="navImage" />
     <div>
       <ul>
         <li>
-            <Link to="/performance">PERFORMANCE</Link>
+          <NavLink to="/performance" activeClassName="selected">PERFORMANCE</NavLink>
         </li>
         <li>
-            <Link to="/orders">ORDERS</Link>
+          <NavLink to="/orders" activeClassName="selected">ORDERS</NavLink>
         </li>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <li>
-        <Link to="/home">Log Out</Link>
-         </li> 
+          <NavLink to="/home">Log Out</NavLink>
+        </li>
       </ul>
     </div>
   </div>
