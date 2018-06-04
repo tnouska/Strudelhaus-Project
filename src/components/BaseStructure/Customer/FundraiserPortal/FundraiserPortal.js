@@ -84,40 +84,65 @@ render() {
     return(
       product.quantity * product.product_price
     )
-})
+  });
 
-if (this.props.cart.length > 0){
-   total = totalArr.reduce(this.add);
-}
+  if (this.props.cart.length > 0){
+    total = totalArr.reduce(this.add);
+  };
 
+  let orgName = this.props.match.params.name.replace(/-/g, " ")
+  
     return (
-      <div className="portalDiv">
-            <SweetAlert
-              show={this.state.show}
-              title="Choose Your Strudels"
-              text="Please complete the form and choose your strudels."
-              onConfirm={() => this.setState({ show: false })}
-            />
-              <h2 className="welcome">Welcome to the {this.props.match.params.name} Strudel Fundraiser!</h2>
-              <Grid>
-        <Row className="show-grid">
-          <Col xs={12} md={8}>
+      <div id="portalDiv">
+        <div id="portalContainer">
+          <SweetAlert show={this.state.show} title="Choose Your Strudels"
+            text="Please complete the form and choose your strudels."onConfirm={() => this.setState({ show: false })}/>
+          <Grid fluid>
+            <Row id="titleDiv">
+              <Col md={2}>
+                <img src="http://www.thestrudelhaus.net/uploads/2/1/8/6/21866322/favicon.png" id="portalLogo1"/>
+              </Col>
+              <Col md={8}>
+                <div>
+                    <h2 className="welcome">{orgName} Strudel Fundraiser</h2>
+                </div>
+              </Col>
+              <Col md={2}>
+                <img src="https://cdn.shopify.com/s/files/1/0228/8585/products/M-EAGAN_WILDCATS_ksu_for_website-01_1024x1024.png?v=1381497555"
+                    id="portalLogo2"/>
+              </Col>
+            </Row>
+            <Row>
+              {/* <Col md={1}>
+              </Col> */}
+              <Col md={9}>
+                <div id="strudelListDiv">
                   <StrudelList campaignName={this.props.match.params.name} />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div id="shoppingCartDiv">
+                  <ShoppingCartList />
+                </div>
+              </Col>
+            </Row>
+            <br/>
+            <hr/>
+            <br/>
+            <Row>
+              <Col md={1}></Col>
+              <Col md={9}>
+                <div id="customerFormDiv">
                   <CustomerInfoForm />
-                  <Button className="checkout" onClick={this.postTransaction}>
-                  Checkout 
-                  </Button>
-                  
+                </div>
+              <Col md={1}></Col>
+                  <Button bsStyle="primary" id="checkoutBtn" onClick={this.postTransaction}>Checkout </Button>
                   {/* <SquareForm campaignName={this.props.match.params.name}/> */}
-          </Col>
-          <Col xs={6} md={4}>
-        <ShoppingCartList />
-          
-          </Col>
-        </Row>
-        </Grid>
-   
+              </Col>
+            </Row>
+          </Grid>
         </div>
+      </div>
     )
   }
   

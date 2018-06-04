@@ -77,12 +77,12 @@ return parseInt(a) + parseInt(b)
       render() {
         let displayOrder = this.props.cart && this.props.cart.map( (product) => {
           return(
-            <div key={product.name}>
-            <Button onClick={()=>this.minusQuantity(product)}>-</Button>
-            <span> {product.quantity} </span>
-            <Button onClick={()=>this.addQuantity(product)}>+</Button>
-             
-            <strong>{product.name} ${product.base_price_money.amount/100}</strong>
+            <div key={product.name} className="itemDiv">
+              <Button className="cartBtn" onClick={()=>this.minusQuantity(product)}>-</Button>
+              <span><strong>{product.quantity}</strong></span>
+              <Button className="cartBtn" onClick={()=>this.addQuantity(product)}>+</Button>
+              
+              <strong>{product.name} (${product.base_price_money.amount/100})</strong>
             </div>
           )
         })
@@ -104,12 +104,9 @@ if (this.props.cart.length >= 1){
     
     return (
       <div className="shoppingCart">
-             
-             <h2 className="shopH2">Shopping Cart</h2>
+             <h3>Shopping Cart</h3>
              {displayOrder}
-             
-             <h1>Total ${total}</h1>
-             {/* <Button>Submit Order</Button> */}
+             <h3>Total ${total}</h3>
       </div>
     )
   }

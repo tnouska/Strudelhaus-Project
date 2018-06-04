@@ -62,22 +62,27 @@ subtractFromOrder = (product)=>{
   });
 }
 render() {
-  
-let displayProducts = this.props.products && this.props.products.map( (product) => {
-  return(
-    
-      <StrudelListItem key={product.product_name} 
-      addToOrder={this.addToOrder}
-      product={product}/>
-      
-  )
-})
+
+let sweetProducts = this.props.products.filter(product => product.product_type === "sweet");
+let savoryProducts = this.props.products.filter(product => product.product_type === "savory");
+let displaySweet = sweetProducts.map( (product) => {
+  return( <StrudelListItem key={product.product_name} addToOrder={this.addToOrder} product={product}/>)
+});
+let displaySavory = savoryProducts.map( (product) => {
+  return( <StrudelListItem key={product.product_name} addToOrder={this.addToOrder} product={product}/>)
+});
 
     return (
       <div>
-       
-        { displayProducts }
-        </div>
+          <div className="column">
+            <h3>Sweet Strudels</h3>
+            {displaySweet}
+          </div>
+          <div className="column">
+            <h3>Savory Strudels</h3>
+            {displaySavory}
+          </div>
+      </div>
     )
   }
     

@@ -1,3 +1,22 @@
 .strudelName {
     padding: 10px;
 }
+
+.column {
+    width: 50%;
+    text-align: center;
+}
+
+.portalStrudelImg {
+    width: 250px;
+    height: 214px;
+    padding: 10px;
+    margin-top: 50px;
+    float: left;
+}
+
+.addCartBtn {
+    margin: 100px;
+    padding: 20px;
+}
+

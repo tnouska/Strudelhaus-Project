@@ -1,9 +1,8 @@
-.shopH2 {
-    text-align: center;
-    padding-left: 0%;
-    margin: 0%
-}
 
 .shoppingCart {
-    padding: 30px;
+    padding: 0px 0px 0px 0px;
+}
+
+.cartBtn {
+    margin: 10px;
 }

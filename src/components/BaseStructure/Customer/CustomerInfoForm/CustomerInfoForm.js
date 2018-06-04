@@ -91,14 +91,6 @@ render() {
           controlId="formBasicText"
         // validationState={this.getValidationState()}
         > 
-        <ControlLabel>Reference Name</ControlLabel>
-          <FormControl
-            value={this.state.refName}
-            type="text"
-            placeholder="Enter Name"
-            onChange={this.handleChange("refName")}
-            
-          />
           <ControlLabel>Billing Name</ControlLabel>
           <FormControl
             value={this.state.billingName}
@@ -147,13 +139,20 @@ render() {
             onChange={this.handleChange("zip")}
             
          /> 
+        <ControlLabel>Reference Name</ControlLabel>
+          <FormControl
+            value={this.state.refName}
+            type="text"
+            placeholder="Enter Name"
+            onChange={this.handleChange("refName")}
+            
+          />
          <ControlLabel>Notes</ControlLabel>
          <FormControl
             value={this.state.notes}
             type="text"
             placeholder="Enter Notes"
             onChange={this.handleChange("notes")}
-           
          /> 
          <div onClick={this.updateReducer}> </div>
           {/* <FormControl.Feedback />
