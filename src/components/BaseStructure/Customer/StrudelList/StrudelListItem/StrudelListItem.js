@@ -48,16 +48,17 @@ class StrudelListItem extends React.Component {
           <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
-              {this.props.product.product_name} -
-              ${this.props.product.product_price}
+              <h3>{this.props.product.product_name} -
+              ${this.props.product.product_price}</h3>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              {this.props.product.product_description}
+              <p className="description">{this.props.product.product_description}</p>
               <img src={this.props.product.img_url_1} className="portalStrudelImg"/>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={()=>this.handleAdd(this.props.product)} bsStyle="primary">Add to Cart</Button>
+              <Button onClick={()=>this.handleAdd(this.props.product)} bsStyle="primary" 
+                className="addCartBtn">Add to Cart</Button>
               {/* <Button onClick={this.handleClose}>Close</Button> */}
             </Modal.Footer>
           </Modal>
