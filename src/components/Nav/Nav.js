@@ -1,19 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Nav = () => (
   <div className="navbar">
     <div>
       <ul>
         <li>
-          <Link to="/user">
+          <NavLink to="/user" activeClassName="selected">
             User Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/info">
+          <NavLink to="/info" activeClassName="selected">
             Info Page
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </div>

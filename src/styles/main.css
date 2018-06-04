@@ -256,6 +256,9 @@ li a:hover {
     background-color: #880F1B;
 
   }
+  .selected{
+    background-color: rgb(105, 105, 105)
+  }
   /* .upcomming{
     background-color:#ffebcc;
     
