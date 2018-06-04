@@ -85,10 +85,10 @@ let everything;
                         </select>
                         <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
                     </div>
-                    <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
+                    {/* <PerformanceItem selectedCampaign={this.state.selectedCampaign}/>
                     <OrgChart
                     
-                    />
+                    /> */}
                 </div>
             </div>
         )

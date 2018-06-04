@@ -44,14 +44,14 @@ class AddOrgForm extends Component {
     fillForm = () =>{
         this.setState({
             newOrg: {
-                name: 'Eagan High School',
-                street_address: '4185 Braddock Trail',
+                name: 'All Saints Lutheran Church',
+                street_address: '101 Wescott Trail',
                 city: 'Eagan',
                 state: 'MN',
                 zip_code: '55123',
-                contact_name: 'Teagan Nouska',
+                contact_name: 'Jeff Olson',
                 contact_phone: '952-250-7726',
-                contact_email: 'tnouska@ehs.com'
+                contact_email: 'jolson@aslc.org'
             }
         })
     }

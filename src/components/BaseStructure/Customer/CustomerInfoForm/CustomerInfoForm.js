@@ -33,11 +33,11 @@ class CustomerInfoForm extends Component {
         this.setState({
           refName: 'Timmy F',
           email: 'tnouska@gmail.com',
-          address: '123 fake st',
-          city: 'Woodbury',
+          address: '2517 79th St E',
+          city: 'Inver Grove Heights',
           state: 'MN',
-          zip: '55125',
-          notes: 'School Pickup',
+          zip: '55006',
+          notes: 'Timmy will deliver to Josh',
           billingName: 'Joshua J Leary'
         });
       
@@ -139,7 +139,7 @@ render() {
             onChange={this.handleChange("zip")}
             
          /> 
-        <ControlLabel>Reference Name</ControlLabel>
+        <ControlLabel>Student Contact</ControlLabel>
           <FormControl
             value={this.state.refName}
             type="text"

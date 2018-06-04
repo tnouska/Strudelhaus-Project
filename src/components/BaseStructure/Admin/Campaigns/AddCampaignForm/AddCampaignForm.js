@@ -92,11 +92,11 @@ class AddCampaignForm extends Component {
     fillForm = () =>{
         this.setState({
             newCampaign: {
-                organization_id: '1',
-                name: 'EHS Girls Swimming Summer 2018',
-                url: 'EHS-Girls-Swimming-Summer-2018',
+                organization_id: '',
+                name: 'All Saints Youth Summer Camp 2018',
+                url: 'ASLC-Youth-Camp-Summer-2018',
                 info_url: '',
-                notes: 'For new pool',
+                notes: 'For a new recreational room',
                 date_start: '',
                 date_end: '',
                 goal: '5,000'
