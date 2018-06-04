@@ -21,9 +21,12 @@ class PipelineItem extends Component {
 
     render(){
         // convert Campaign end date to moment format
-        let endDate = moment(this.props.pipelineItem.campaign_date_end).format("MM-DD-YY");
+        let endDate = moment(this.props.pipelineItem.campaign_date_end).format("M-D-YY");
         // calculate delivery due date based on campaign end date (10 days)
-        let dueDate = moment(endDate).add(10, 'days').format("MM-DD-YY");
+        let dueDate = moment(endDate).add(10, 'days').format("M-D-YY");
+        
+        
+
         // map over list of products offered by a specific Campaign, create unique components for each to display on DOM
         let pipelineItemProducts = this.props.pipelineItem.orderData.map((product) => {
             return(<PipelineItemProduct key={product.product_name} product={product}/>)
