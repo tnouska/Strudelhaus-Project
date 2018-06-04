@@ -257,7 +257,7 @@ li a:hover {
 
   }
   .selected{
-    background-color: rgb(105, 105, 105)
+    color: orange;
   }
   /* .upcomming{
     background-color:#ffebcc;
