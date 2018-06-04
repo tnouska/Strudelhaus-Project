@@ -27,6 +27,14 @@
     margin: 20px;
 }
 
+.upcomming .pipelineItem {
+    background-color: antiquewhite
+}
+
+table thead tr {
+    background-color: white
+}
+
 .pipelineTh {
     text-align: unset
 }
