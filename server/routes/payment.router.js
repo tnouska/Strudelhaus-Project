@@ -95,8 +95,8 @@ router.post('/customerinfo', function (req, res) {
     if(body.errors){
       res.send(body)
     }else{
-      
       res.send(body.checkout.checkout_page_url)
+      
     
     
 
@@ -123,6 +123,7 @@ router.post('/customerinfo', function (req, res) {
             accessToken: access_token,
             expires: 1527200298318 + 3600      
         }
+        
     });
  
   console.log(emailProducts)
@@ -166,7 +167,7 @@ router.post('/customerinfo', function (req, res) {
     });
   }
   });//end request
-
+  
 });
 
 router.post('/postcustomer', (req, res) => {
@@ -209,9 +210,9 @@ router.post('/postcustomer', (req, res) => {
       client.release();
     };//end try/catch/finally
   })
-    ().catch((error) => {
-      console.log('CATCH in org.leader.order.router.post', error);
-      res.sendStatus(500);
-    });//end async/await
+    // ().catch((error) => {
+    //   console.log('CATCH in org.leader.order.router.post', error);
+    //   res.sendStatus(500);
+    // });//end async/await
 })
 module.exports = router;
