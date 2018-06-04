@@ -113,14 +113,14 @@ render() {
               </Col>
             </Row>
             <Row>
-              <Col md={1}>
-              </Col>
+              {/* <Col md={1}>
+              </Col> */}
               <Col md={9}>
                 <div id="strudelListDiv">
                   <StrudelList campaignName={this.props.match.params.name} />
                 </div>
               </Col>
-              <Col md={2}>
+              <Col md={3}>
                 <div id="shoppingCartDiv">
                   <ShoppingCartList />
                 </div>
@@ -131,12 +131,12 @@ render() {
             <br/>
             <Row>
               <Col md={1}></Col>
-              <Col md={10}>
+              <Col md={9}>
                 <div id="customerFormDiv">
                   <CustomerInfoForm />
                 </div>
               <Col md={1}></Col>
-                  <Button className="checkout" onClick={this.postTransaction}>Checkout </Button>
+                  <Button bsStyle="primary" id="checkoutBtn" onClick={this.postTransaction}>Checkout </Button>
                   {/* <SquareForm campaignName={this.props.match.params.name}/> */}
               </Col>
             </Row>
