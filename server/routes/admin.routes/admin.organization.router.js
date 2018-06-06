@@ -117,7 +117,6 @@ router.post('/', (req, res) => {
                     if (error) {
                         return console.log('error in transporter.sendMail',error);
                     }
-                    console.log('Message sent: ' + info.response);
                 });
 
                 const personId = personResult.rows[0].id;
@@ -174,7 +173,6 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/', (req, res) => {
-    console.log('req.body:', req.body);
     if(req.isAuthenticated()){
         const newInfo = req.body;
         let queryText = `UPDATE organization SET name = $1, street_address = $2, contact_name = $3, contact_phone = $4, contact_email = $5 WHERE id = $6`;

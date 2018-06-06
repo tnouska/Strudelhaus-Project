@@ -29,8 +29,6 @@ componentDidUpdate() {
       }
 
 addQuantity = (product)=>{
-  // parseInt(product.quantity)
-console.log("product quantity", product)
 product.quantity++
 product.quantity = product.quantity.toString()
 this.setState({
@@ -50,12 +48,10 @@ if (product.quantity <= 1){
     currentCart: this.props.cart
   })
 }else{
-  console.log("product quantity", product)
   // parseInt(product.quantity)
   
   product.quantity--
   product.quantity = product.quantity.toString()
-  console.log(product.quantity)
   this.setState({
     currentCart: this.props.cart
   })
@@ -64,7 +60,6 @@ if (product.quantity <= 1){
   
   }
 submitTotal = (total)=>{
-console.log(total)
 this.props.dispatch({
   type: 'CURRENT_TOTAL',
   payload: total
@@ -91,7 +86,6 @@ return parseInt(a) + parseInt(b)
 let total = 0;
 if (this.props.cart.length >= 1){
   
-  console.log(this.props.cart)
   
   total = this.props.cart.map( (product) =>{
       return(

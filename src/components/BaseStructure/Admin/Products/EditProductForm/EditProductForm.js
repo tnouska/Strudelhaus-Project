@@ -6,7 +6,6 @@ import Select from 'react-select';
 class EditProductForm extends Component {
     constructor(props){
         super(props);
-        console.log('props.product:', this.props.product);
         this.state = ({
             updateProduct: {
                 name: this.props.product.name,

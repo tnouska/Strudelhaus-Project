@@ -6,10 +6,8 @@ function* customerProductsSaga() {
 }
 
 function* getCustomerProducts(action) {
-    console.log('getcustomerproducts:', action.payload);
     try{
         const customerProductsResponse = yield call(axios.get, '/fundraiser/' + action.payload);
-        console.log('customerproductsReducer:', customerProductsResponse);
         yield put({
             type: 'CUSTOMER_PRODUCTS',
             payload: customerProductsResponse.data,

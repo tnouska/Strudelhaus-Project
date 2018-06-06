@@ -4,7 +4,6 @@ import axios from 'axios';
 function* getOrgLeaderPerformance(action){
     try {
         const performanceResult = yield axios.get(`/orgleader/performance/${action.payload.id}`)
-        console.log('action.payload.id');
         
         yield put({
             type: 'FETCH_PERFORMANCE',

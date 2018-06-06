@@ -31,7 +31,6 @@ class PipelineItem extends Component {
         let pipelineItemProducts = this.props.pipelineItem.orderData.map((product) => {
             return(<PipelineItemProduct key={product.product_name} product={product}/>)
         })
-        console.log('this.props.reduxState', this.props.reduxState);
         
 
         return(

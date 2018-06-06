@@ -57,7 +57,6 @@ router.get('/:id', (req, res) => {
                     }
                     campaignRowsResult[i].orderList = orderResult.rows
                     performancePageArray.push(campaignRowsResult[i])
-                    // console.log('campaignRowsResult', campaignRowsResult);
                 };//end for loop                        
                 await client.query('COMMIT');
                 res.send(performancePageArray)
@@ -78,11 +77,5 @@ router.get('/:id', (req, res) => {
     };//end if/else
 });//end router.post
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-
-});
 
 module.exports = router;

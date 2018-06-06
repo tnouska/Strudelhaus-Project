@@ -160,7 +160,6 @@ let chargeCardWithNonce = (nonce)=> {
   
      paymentFormSubmit = function(total){
 
-      console.log('total', total);
       document.getElementById('submit').disabled = true;
       this.paymentForm.requestCardNonce();
       // paymentForm.destroy();

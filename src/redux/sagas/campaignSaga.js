@@ -10,7 +10,6 @@ function* campaignSaga() {
 }
 
 function* createCampaign(action) {
-    console.log('createCampign triggered:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
@@ -26,7 +25,6 @@ function* createCampaign(action) {
 }
 
 function* deleteCampaign(action) {
-    console.log('deleteCampaign triggered:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
@@ -42,10 +40,8 @@ function* deleteCampaign(action) {
 }
 
 function* getCampaign(action) {
-    console.log('getCampaign triggered:', action);
     try {
         const campaignResponse = yield call(axios.get, `/admin/campaign`);
-        console.log('campaignResponse:', campaignResponse);
         yield put({
             type: 'FETCH_CAMPAIGN',
             payload: campaignResponse.data,
@@ -56,7 +52,6 @@ function* getCampaign(action) {
 }
 
 function* editCampaign(action) {
-    console.log('editCampaign triggered:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,

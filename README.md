@@ -1,85 +1,67 @@
-# Express/Passport with React
-This version uses React to control the login requests and redirection in coordination with client-side routing.
+# Strudel Haus
 
-We **STONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+Full-stack application that facilitates online fundraising sales, tracks detailed fundraising sales data, and streamlines the entire fundraising process.  There will be three types of users who interact with this application: Administrator, Organization Leader, and Customer. The Administrator (Thomas Ruhland) will be able to create and manage organizations, fundraising campaigns and strudel products, and will be able to view their current production pipeline based on campaign dates. An Organization leader will be able to manage all orders for each campaign tied to their organization, as well as access current sales data for each campaign. Finally, a Customer will be able to purchase strudels via our fundraising sales portal (driven by Square).
 
-## Prerequisites
+## Built With
 
-Before you get started, make sure you have the following software installed on your computer:
+Node.js, Express, Postgresql, React.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+- [Express](https://expressjs.com/en/guide/routing.html)
+- [Postgresql](https://www.postgresql.org/docs/)
+- [React](https://reactjs.org/docs/hello-world.html)
 
-## Create database and table
 
-Create a new database called `prime_app` and create a `person` table:
+### Installing
 
-```SQL
-CREATE TABLE person (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR (80) UNIQUE NOT NULL,
-    password VARCHAR (1000) NOT NULL
+Steps to get the development environment running.
+
+```sql
+CREATE TABLE "users" (
+  "id" serial primary key,
+  "username" varchar(80) not null UNIQUE,
+  "password" varchar(240) not null
 );
 ```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+## Screen Shot
 
-## Download (Don't Clone) This Repository
+Include one or two screen shots of your project here (optional). Remove if unused.
 
-* Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
-* Unzip the project and start with the code in that folder.
-* Create a new GitHub project and push this code to the new repository.
+## Documentation
 
-## Development Setup Instructions
+Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
 
-* Run `npm install`
-* Create a `.env` file at the root of the project and paste this line into the file:
-    ```
-    SERVER_SESSION_SECRET=superDuperSecret
-    ```
-    While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm run dev`
-* Navigate to `localhost:3000`
+### Completed Features
 
-## Debugging
+High level list of items completed.
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run dev:client`. Start the debugging server by selecting the Debug button.
+- [x] Feature a
+- [x] Feature b
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+### Next Steps
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+Features that you would like to add at some point in the future.
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
-
-## Linting
-
-The Airbnb ESLint for react is a part of this project. If you would like to take advantage of this in VS Code, you can add the `ESLint` extension. Click the `Extensions` button (the button right below the `Debug`) and search for `ESLint`. Click `install` for the first result and then click `Reload`. Then it should be all set up!
-
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-## Production Build
-
-This is the build Heroku will run, but during development, you will likely not need to use it.
-
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm start`
-* Navigate to `localhost:5000`
-
-## Lay of the Land
-
-* `src/` contains the React application
-* `public/` contains static assets for the client-side
-* `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-* `server/` contains the Express App
+- [ ] Feature c
 
 ## Deployment
 
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Herkoku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
+Add additional notes about how to deploy this on a live system
+
+## Authors
+
+* Name of author(s)
+
+
+## Acknowledgments
+
+* Hat tip to anyone who's code was used

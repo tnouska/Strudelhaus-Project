@@ -22,10 +22,8 @@ function* getAllProducts(action) {
 }
 
 function* getOrganization(action) {
-    console.log('getOrganization:', action);
     try{
         const organizationResponse = yield call(axios.get, `/admin/organization`);
-        console.log('organizationResponse:', organizationResponse);
         yield put({
             type: 'FETCH_ORGANIZATION',
             payload: organizationResponse.data,
@@ -36,7 +34,6 @@ function* getOrganization(action) {
 }
 
 function* createOrganization(action) {
-    console.log('createOrganization:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
@@ -52,7 +49,6 @@ function* createOrganization(action) {
 }
 
 function* deleteOrganization(action) {
-    console.log('deleteOraganization triggered:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
@@ -69,7 +65,6 @@ function* deleteOrganization(action) {
 }
 
 function* editOrganzation(action) {
-    console.log('editOrganzation triggered:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
