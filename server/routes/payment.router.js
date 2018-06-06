@@ -210,9 +210,9 @@ router.post('/postcustomer', (req, res) => {
       client.release();
     };//end try/catch/finally
   })
-    // ().catch((error) => {
-    //   console.log('CATCH in org.leader.order.router.post', error);
-    //   res.sendStatus(500);
-    // });//end async/await
+    ().catch((error) => {
+      console.log('CATCH in org.leader.order.router.post', error);
+      res.sendStatus(500);
+    });//end async/await
 })
 module.exports = router;
