@@ -25,16 +25,10 @@ let customerData = {
 router.post('/squareInfo', function (req, res){
   
   let orgUrl = req.body.campaignName
-  console.log(orgUrl)
-  //`SELECT "square_application_id", "square_location_id" FROM campaign JOIN organization ON organization.id = campaign.organization_id where campaign.url = $1;`;
   const queryText = `SELECT square_application_id, square_location_id FROM campaign JOIN organization ON organization.id = campaign.organization_id where campaign.url = $1;`
 
   pool.query(queryText, [orgUrl])
-  .then((result) => {
-    console.log('squareInfo: ', result.rows);
-    
-    
-    console.log('square info from db', result.rows[0].square_application_id, result.rows[0].square_location_id );
+  .then((result) => {    
     squareAppId = result.rows[0].square_application_id
     squareLocationId = result.rows[0].square_location_id
     res.sendStatus(200);
@@ -126,7 +120,6 @@ router.post('/customerinfo', function (req, res) {
         
     });
  
-  console.log(emailProducts)
     // setup e-mail data with unicode symbols
     let mailOptions = {
         from    : user_name, // sender address
@@ -145,16 +138,6 @@ router.post('/customerinfo', function (req, res) {
             cid: 'unique@kreata.ee' //same cid value as in the html img src
         }]
 
-      //   '<body>'+
-      //   '<div style="margin:0 auto; width:600px; height:00px">'+
-      //   '<div style="background-color:#880F1B;">'+
-      //   '<h2>' +'Thank You'+ '</h2>' + '<h1>'+ customerData.billingName + '</h1>' +
-      //   '<div>' + emailProducts + '</div>'+
-      //   '</br></br>'+
-      //  '<p>' + 'Thanks' + '</p>'+
-      
-      //   '</div>'+'</div>'+
-      // '</body>' , // html body,
         
     };
 
@@ -163,7 +146,6 @@ router.post('/customerinfo', function (req, res) {
         if (error) {
             return console.log(error);
         }
-        console.log('Message sent: ' + info.response);
     });
   }
   });//end request
@@ -190,7 +172,7 @@ router.post('/postcustomer', (req, res) => {
             (customer_id, product_name,product_price,product_sku,campaign_id,quantity)
             VALUES ($1,$2,$3,$4,$5,$6) RETURNING "id"`
         let orderValues = [
-          productInfo.rows[0].id,
+          customerId.rows[0].id,
           customerData.products[i].name,
           productInfo.rows[0].price,
           productInfo.rows[0].sku,

@@ -79,7 +79,6 @@ router.delete('/:id',(req,res)=>{
 })
 
 router.post('/', (req, res) => {
-    console.log('req.body', req.body);
     
     if (req.isAuthenticated()) {
         (async () => {
@@ -100,7 +99,6 @@ router.post('/', (req, res) => {
                         req.body[i].email_address, 
                         req.body[i].name_of_reference];                    
                     customerId = await client.query(queryText, customerValues)
-                    console.log(customerId.rows[0]);
                     
                     strudelItems = []
                     strudelItems.push({ product_name: req.body[i].item1Name, quantity: req.body[i].item1Qty })
@@ -112,7 +110,6 @@ router.post('/', (req, res) => {
                     }
                     for (let z = 0; z < strudelItems.length; z++) {
                         let queryText2 = `SELECT id,price,sku FROM product WHERE "name" = $1`
-                        console.log('strudel Name: ', strudelItems[z]);
                         
                         productInfo = await client.query(queryText2, [strudelItems[z].product_name]);                        
                         let queryText3 = `INSERT INTO "order" 

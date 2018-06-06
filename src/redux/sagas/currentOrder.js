@@ -6,7 +6,6 @@ function* createOrder() {
 }
 
 function* currentOrder(action){
-    console.log('create order saga')
     try {
         yield put({
             type: 'ORDER_VIEW',

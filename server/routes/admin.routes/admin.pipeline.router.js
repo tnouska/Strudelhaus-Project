@@ -67,12 +67,6 @@ router.get('/', (req, res) => {
     };//end authorization if/else
 });//end admin.campaign.router.get
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-
-});
 
 module.exports = router;
 

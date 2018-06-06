@@ -43,7 +43,6 @@ router.get('/logout', (req, res) => {
 });
 
 router.put('/newpassword', (req, res) => {
-  console.log('req.body', req.body)
   const password = encryptLib.encryptPassword(req.body.password)
   const token = req.body.token
   const appId = req.body.square_application_id
@@ -52,7 +51,6 @@ router.put('/newpassword', (req, res) => {
     (async () => {
       const client = await pool.connect();
       try {
-        console.log('req.body in async try: ', req.body)
         await client.query('BEGIN')
         const queryText = `UPDATE person SET password = $1 WHERE token = $2`
         await client.query(queryText, [password, token])

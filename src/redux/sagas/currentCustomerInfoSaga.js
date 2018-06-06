@@ -6,7 +6,6 @@ function* currentCustomerInfoSaga() {
 }
 
 function* currentCustomerInfo(action){
-    console.log('create order saga')
     try {
         yield put({
             type: 'CURRENT_CUSTOMER',

@@ -43,7 +43,6 @@ class OrderItem extends Component {
     }
     render() {
         let orderTotal = 0
-        console.log('this.props.order', this.props.order);
         let productsOrdered = this.props.order.customer_order.map((product) => {
             orderTotal += (product.price * product.quantity)
             return (

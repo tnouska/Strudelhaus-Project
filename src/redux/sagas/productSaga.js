@@ -9,10 +9,8 @@ function* productSaga() {
 }
 
 function* getProduct(action) {
-    console.log('getProduct triggered:', action);
     try {
         const productResponse = yield call(axios.get, `/admin/product`);
-        console.log('productResponse:', productResponse);
         yield put({
             type: 'FETCH_PRODUCT',
             payload: productResponse.data,
@@ -23,7 +21,6 @@ function* getProduct(action) {
 }
 
 function* createProduct(action) {
-    console.log('createProduct triggered:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
@@ -39,7 +36,6 @@ function* createProduct(action) {
 } 
 
 function* deleteProduct(action) {
-    console.log('deleteProduct triggered:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,
@@ -55,7 +51,6 @@ function* deleteProduct(action) {
 }
 
 function* editProduct(action) {
-    console.log('editProduct triggered:', action);
     const config = {
         headers: {'Content-Type': 'application/json'},
         withCredentials: true,

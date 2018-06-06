@@ -8,7 +8,6 @@ function* orgLeaderOrderSaga() {
 }
 
 function * getOrgLeaderOrder(action) {
-    console.log('action.payload',action.payload);
     
     try{
         const orgLeaderOrderResponse = yield call(axios.get, `/orgleader/order/${action.payload}`);
@@ -22,7 +21,6 @@ function * getOrgLeaderOrder(action) {
 }
 
 function * deleteOrder(action){
-    console.log('action.payload',action.payload);
     
     try {
         yield call(axios.delete, `/orgleader/order/${action.payload.customer_id}`)
@@ -42,7 +40,6 @@ function * createOrder(action) {
     }    
     try{
         if (action.payload.csvOrders.length >= 1) {
-            console.log('in if of createOrder:', action.payload);
             
             yield call(axios.post, `/orgleader/order`, action.payload.csvOrders, config);
             yield put({
@@ -50,7 +47,6 @@ function * createOrder(action) {
                 payload: action.payload.csvOrders[0].campaign_id
             })
         } else {
-            console.log('in else of createOrder: ',action.payload);
             
             let newOrderArray = []
             newOrderArray.push(action.payload.newOrder)
