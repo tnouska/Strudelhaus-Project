@@ -27,27 +27,8 @@ class CustomerInfoForm extends Component {
         //   }
       };
     }
+      
 
-    autoFill = () => {
-      
-        this.setState({
-          refName: 'Timmy F',
-          email: 'tnouska@gmail.com',
-          address: '2517 79th St E',
-          city: 'Inver Grove Heights',
-          state: 'MN',
-          zip: '55006',
-          notes: 'Timmy will deliver to Josh',
-          billingName: 'Joshua J Leary'
-        });
-      
-      
-      
-    }
-updateReducer=()=>{
-  this.autoFill()
-  this.updatedInfoReducer()
-}
     updatedInfoReducer = ()=>{
       this.props.dispatch({
         type: 'CURRENT_CUSTOMERINFO',
@@ -71,7 +52,7 @@ handleChange = ( inputText )=>{
                 [inputText]: event.target.value
               
               });
-              console.log(this.state)
+
               this.props.dispatch({
                 type: 'CURRENT_CUSTOMERINFO',
                 payload: {customerInfo:this.state}
@@ -154,7 +135,6 @@ render() {
             placeholder="Enter Notes"
             onChange={this.handleChange("notes")}
          /> 
-         <div onClick={this.updateReducer}> </div>
           {/* <FormControl.Feedback />
           <HelpBlock>Validation is based on string length.</HelpBlock>  */}
       </FormGroup>

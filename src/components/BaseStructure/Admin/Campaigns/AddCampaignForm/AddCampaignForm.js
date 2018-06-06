@@ -89,21 +89,6 @@ class AddCampaignForm extends Component {
     }
 
 
-    fillForm = () =>{
-        this.setState({
-            newCampaign: {
-                organization_id: '',
-                name: 'All Saints Youth Summer Camp 2018',
-                url: 'ASLC-Youth-Camp-Summer-2018',
-                info_url: '',
-                notes: 'For a new recreational room',
-                date_start: '',
-                date_end: '',
-                goal: '5,000'
-            }
-        })
-    }
-
 
     onChange = (value) => {
         let valueArray = [];
@@ -162,7 +147,6 @@ class AddCampaignForm extends Component {
                             components={Animated}
                             onChange={this.onChange}
                         />
-                        <div onClick={this.fillForm}> </div>{/* special blank character in between  */}
                         <Button type="submit" onClick={this.addCampaign}>Create!</Button>
                     </FormGroup>
                 </form>
