@@ -175,8 +175,8 @@ router.delete('/:id', (req, res) => {
 router.put('/', (req, res) => {
     if(req.isAuthenticated()){
         const newInfo = req.body;
-        let queryText = `UPDATE organization SET name = $1, street_address = $2, contact_name = $3, contact_phone = $4, contact_email = $5 WHERE id = $6`;
-        pool.query(queryText, [newInfo.name, newInfo.street_address, newInfo.contact_name, newInfo.contact_phone, newInfo.contact_email, newInfo.organization_id])
+        let queryText = `UPDATE organization SET name = $1, street_address = $2, city = $3, state = $4, zip_code = $5, contact_name = $6, contact_phone = $7, contact_email = $8 WHERE id = $9`;
+        pool.query(queryText, [newInfo.name, newInfo.street_address, newInfo.city, newInfo.state, newInfo.zip_code, newInfo.contact_name, newInfo.contact_phone, newInfo.contact_email, newInfo.organization_id])
         .then( (result) => {
             res.sendStatus(201);
         })
