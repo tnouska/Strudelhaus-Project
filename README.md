@@ -20,48 +20,156 @@ Link to software that is required to install the app (e.g. node).
 - [React](https://reactjs.org/docs/hello-world.html)
 
 
+### Main Libraries
+
+- momentJS
+- nodeMailer
+- Chance
+- PrintJS
+- SweetAlert2-React
+- React-Bootstrap
+
+
 ### Installing
 
-Steps to get the development environment running.
+- copy or Clone GitHub Repository to your local system
+- navigate to the root folder of the project
+- create sql database with the provided structure below
+- npm install in terminal
+- npm run client in terminal
+- npm run server in terminal
+
 
 ```sql
-CREATE TABLE "users" (
-  "id" serial primary key,
-  "username" varchar(80) not null UNIQUE,
-  "password" varchar(240) not null
+CREATE TABLE "person"
+(
+    "id" serial NOT NULL PRIMARY KEY,
+    "username" varchar(80) NOT NULL UNIQUE,
+    "password" varchar(1000) NOT NULL,
+    "token" varchar(100),
+    "role" varchar(500) 
 );
-```
+
+CREATE TABLE "product_type"
+(
+    "id" serial NOT NULL PRIMARY KEY,
+    "type" varchar(500)
+);
+
+CREATE TABLE "product"
+(
+    "id" serial NOT NULL PRIMARY KEY,
+    "name" varchar(255) NOT NULL,
+    "description" varchar(1000),
+    "price" varchar(200),
+    "sku" varchar(200),
+    "img_url_1" varchar(1000),
+    "img_url_2" varchar(1000),
+    "product_type" INT REFERENCES "product_type" ON DELETE CASCADE
+);
+
+CREATE TABLE "organization"
+(
+    "id" serial NOT NULL PRIMARY KEY,
+    "person_id" INT REFERENCES "person" ON DELETE CASCADE,
+    "name" varchar(500) NOT NULL,
+    "street_address" varchar(500) NOT NULL,
+    "city" varchar(500) NOT NULL,
+    "state" varchar(500) NOT NULL,
+    "zip_code" varchar(500) NOT NULL,
+    "square_application_id" varchar(500),
+    "square_access_token" varchar(500),
+    "contact_name" varchar(500) NOT NULL,
+    "contact_phone" varchar(500),
+    "contact_email" varchar(500)
+);
+CREATE TABLE "campaign"
+(
+    "id" serial NOT NULL PRIMARY KEY,
+    "organization_id" INT REFERENCES "organization" ON DELETE CASCADE,
+    "url" varchar(500) UNIQUE,
+    "name" varchar(500) NOT NULL,
+    "date_start" varchar(500) NOT NULL,
+    "date_end" varchar(500) NOT NULL,
+    "notes" varchar(1000),
+    "info_url" varchar(1000),
+    "goal" varchar(500)
+);
+
+CREATE TABLE "customer"
+(
+    "id" serial NOT NULL PRIMARY KEY,
+    "campaign_id" int REFERENCES "campaign" ON DELETE CASCADE,
+    "notes" varchar(1000),
+    "street_address" varchar(500),
+    "city" varchar(500),
+    "state" varchar(500),
+    "zip_code" varchar(500),
+    "name" varchar(500) NOT NULL,
+    "email_address" varchar(500) NOT NULL,
+    "name_of_reference" varchar(1000),
+    "date_of_order" date NOT NULL default CURRENT_DATE
+);
+
+CREATE TABLE "available_item"
+(
+    "id" serial NOT NULL PRIMARY KEY,
+    "campaign_id" INT REFERENCES "campaign" ON DELETE CASCADE,
+    "product_id" int REFERENCES "product" ON DELETE CASCADE
+);
+
+CREATE TABLE "order"
+(
+    "id" serial NOT NULL PRIMARY KEY,
+    "customer_id" INT REFERENCES "customer" ON DELETE CASCADE,
+    "product_name" varchar(1000),
+    "product_price" varchar(200),
+    "product_sku" varchar(200),
+    "campaign_id" integer,
+    "quantity" int NOT NULL DEFAULT '0'
+);
+
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+
+![admin](adminScreenShot.png)
+![org leader](orgLeaderScreenShot.png)
+![org leader](orgLeaderOrdersScreenShot.png)
+![customer](customerPortalScreenShot.png)
+![customer](customerPortal2ScreenShot.png)
 
 ## Documentation
 
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
+
+[Scope Document](https://docs.google.com/document/d/1Pl_8QdPQX4c-ydZVE4bhBhnwC8q2ySch3dRloLTakEo/edit?usp=sharing)
 
 ### Completed Features
 
-High level list of items completed.
-
-- [x] Feature a
-- [x] Feature b
+- [x] Add/update organizations
+- [x] Add campaigns
+- [x] Print campaign totals for strudels
+- [x] Add Products
+- [x] CSV upload for Org leader
+- [x] Org Leader view with campaign progess bar
+- [x] Unique campaign customer shopping portal
+- [x] Square online payment
 
 ### Next Steps
 
-Features that you would like to add at some point in the future.
+- [ ] FileStack upload for new product images and organization images
 
-- [ ] Feature c
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* Name of author(s)
+Joshua Leary
+Steve Hogan
+Teagan Nouska
+Jonathan Kruse
 
+-- ## Acknowledgments
 
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
+-- * Hat tip to anyone who's code was used
