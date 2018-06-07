@@ -97,7 +97,6 @@ class OrderItem extends Component {
                     <ModalFooter>
                         <Button onClick={this.handleShowAlert}>Delete</Button>
                         <Button onClick={this.handleClose}>Cancel</Button>
-                        <Button>Print</Button>
                     </ModalFooter>
                 </Modal>
                 <SweetAlert
