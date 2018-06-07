@@ -21,7 +21,7 @@ class LoginPage extends Component {
   }
 
   componentDidMount() {
-    // this.props.dispatch(triggerLogout());
+    this.props.dispatch(triggerLogout());
     this.props.dispatch(clearError());
   }
 
