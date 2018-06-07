@@ -94,7 +94,7 @@ router.post('/customerinfo', function (req, res) {
     
     
 
-    const user_name     = 'strudelhausproxy@gmail.com';
+    const user_name     = process.env.EMAIL;
     const refresh_token = process.env.REFRESH_TOKEN;
     const access_token  = process.env.ACCESS_TOKEN;
     const client_id     = process.env.CLIENT_ID;

@@ -34,10 +34,25 @@ Link to software that is required to install the app (e.g. node).
 
 - copy or Clone GitHub Repository to your local system
 - navigate to the root folder of the project
-- create sql database with the provided structure below
+- create sql database with the provided structure below with name of strudelhaus
 - npm install in terminal
 - npm run client in terminal
 - npm run server in terminal
+
+### .env Requirements
+
+- you will need to create a file called ".env" and add to the root of the project
+- In the .env file you will need to create the following variables
+    - SERVER_SESSION_SECRET
+    - REFRESH_TOKEN
+    - ACCESS_TOKEN
+    - CLIENT_SECRET
+    - CLIENT_ID
+    - EMAIL
+- if you have access to the hand off document then you can you will have the values for these variables
+- if you do not have access to the hand off document then you will need to make Gmail OAuth profile to gain access to the EMAIL, REFRESH_TOKEN, CLIENT_SECRET, CLIENT_ID, AND ACCESS_TOKEN.
+[Gmail OAuth](https://developers.google.com/gmail/api/auth/about-auth)
+
 
 
 ```sql
