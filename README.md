@@ -143,7 +143,7 @@ CREATE TABLE "order"
     "campaign_id" integer,
     "quantity" int NOT NULL DEFAULT '0'
 );
-
+```
 
 ## Screen Shot
 
