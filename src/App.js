@@ -23,7 +23,7 @@ const App = () => (
       <Switch>
         <Redirect exact from="/" to="/home" />
         <Route path="/home" component={LoginPage}/>
-        <Route path="/register" component={RegisterPage}/>
+        {/* <Route path="/register" component={RegisterPage}/> */}
         <Route path="/organizations" component={Organizations}/>
         <Route path="/campaigns" component={Campaigns}/>
         <Route path="/products" component={Products}/>
